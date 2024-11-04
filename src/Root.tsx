@@ -1,16 +1,16 @@
-import { Outlet } from 'react-router-dom';
-// import Footer from './widgets/Footer/Footer';
+import { Route, HashRouter as Router, Routes } from 'react-router-dom';
+import { App } from './App';
 
-function Root() {
-  return (
-    <>
-      {/* <Header /> */}
-      <main>
-        <Outlet />
-      </main>
-      {/* <Footer /> */}
-    </>
-  );
-}
-
-export default Root;
+export const Root = () => (
+  <Router>
+    <Routes>
+      <Route
+        path={'/'}
+        element={<App />}>
+        {/* <Route index element={<HomePage />} /> */}
+        {/* other roots */}
+        {/* <Route path="*" element={<NotFoundPage />} /> */}
+      </Route>
+    </Routes>
+  </Router>
+);
