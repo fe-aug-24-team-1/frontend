@@ -23,6 +23,11 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      'no-var': 'error',
+      'no-console': 'error',
+      'sort-imports': 'error',
+      'prefer-const': 'error',
+      'prefer-destructuring': 'warn',
     },
   }
 );
