@@ -1,0 +1,34 @@
+/* COLORS */
+:root {
+  --color-accent: #4219d0;
+  --color-secondary-accent: #f4ba47;
+  --color-primary: #0f0f11;
+  --color-secondary: #89939a;
+  --color-icons: #b4bdc3;
+  --color-elements: #e2e6e9;
+  --color-action: #e2e6e9;
+  --color-white: #ffffff;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+}
+
+// not complete, need to investigate colors in figma
+:root [data-theme='dark'] {
+  --color-accent: #905bff;
+  --color-secondary-accent: #f4ba47;
+  --color-primary: #0f0f11;
+  --color-secondary: #75767f;
+  --color-icons: #4a4d58;
+  --color-elements: #e2e6e9;
+  --color-action: #e2e6e9;
+  --color-white: #f1f2f9;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+}
+
+/* BREAKPOINTS */
+$min-tablet-width: 640px;
+$min-desktop-width: 1200px;
+
+/* TRANSITIONS */
+$effect-duration: 0.3s;
