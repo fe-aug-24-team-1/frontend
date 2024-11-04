@@ -21,4 +21,4 @@ jobs:
           target_branch: gh-pages
           build_dir: build
         env:
-          GITHUB_TOKEN: ${{ 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 }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
