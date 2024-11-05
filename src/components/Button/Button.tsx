@@ -21,7 +21,7 @@ export const Button: React.FC<Props> = ({
         )}
         onClick={() => onAction()}>
         {isGoodInCart ? (
-          <p className={styles.button__text}>Selected</p>
+          <p className={styles.button__text}>Added to cart</p>
         ) : (
           <p className={styles.button__text}>{children}</p>
         )}

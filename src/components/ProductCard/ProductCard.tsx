@@ -34,8 +34,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <div className={styles[`product__decorative-line`]}></div>
 
       <div className={styles[`product__specs`]}>
-        {/*{product.category === 'phone' && <PhoneCardSpecs product={product} />}*/}
-        <PhoneCardSpecs product={product} />
+        {product.category === 'phones' && <PhoneCardSpecs product={product} />}
       </div>
 
       <div className={styles[`product__buttons-container`]}>
