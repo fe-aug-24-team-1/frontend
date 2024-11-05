@@ -1,0 +1,62 @@
+.no-product-page {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+
+  padding: 40px;
+  gap: 20px;
+
+  &__photo {
+    height: auto;
+    width: 200px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0;
+    padding-bottom: 10px;
+  }
+  
+  &__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  &__query {
+    color: #4219D0;
+  }
+
+  &__link {
+    color: #FFF;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  &__button {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #4219D0;
+    transition: background-color 0.3s;
+
+    width: 160px;
+    height: 40px; 
+    border-radius: 48px;
+  }
+
+  &__button:hover {
+    background-color: #FFF;
+    border: 1px solid #E2E6E9;
+    cursor: pointer;
+  }
+
+  &__button:hover &__link{
+    color: #4219D0;
+  }
+}
