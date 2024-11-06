@@ -68,7 +68,8 @@ export const Favorite: React.FC = () => {
           {test ? 'Variable item(s)' : 'No favorites yet'}
         </p>
 
-        <div className={styles[`favorite-page__grid`]}>
+        {/*<div className={styles[`favorite-page__grid`]}>*/}
+        <div className={'grid'}>
           <ProductCard product={products} />
           <ProductCard product={products} />
           <ProductCard product={products} />

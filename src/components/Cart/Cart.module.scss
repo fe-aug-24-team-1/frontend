@@ -36,22 +36,6 @@
   }
 }
 
-.container {
-  margin: 0 auto;
-  max-width: calc(2 * 16px + 288px);
-  padding: 0 16px;
-
-  @include on-tablet {
-    max-width: calc(2 * 24px + 592px);
-    padding: 0 24px;
-  }
-
-  @include on-desktop {
-    max-width: calc(2 * 32px + 1136px);
-    padding: 0 32px;
-  }
-}
-
 .cart {
   display: flex;
   flex-direction: column;
