@@ -81,29 +81,38 @@
     color: var(--color-primary);
   }
 
-  &__plus {
-    background: url('@/assets/images/icons/plus.svg') center no-repeat, 16px 16px;
+  &__amount-button {
+    //background: url('@/assets/images/icons/plus.svg') center no-repeat, 16px 16px;
     width: 32px;
     height: 32px;
     border: 1px solid var(--color-icons);
     border-radius: 50%;
     transition: border $effect-duration;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:hover {
       border: 1px solid #0F0F11;
     }
-  }
 
-  &__minus {
-    background: url('@/assets/images/icons/minus.svg') center no-repeat, 16px 16px;
-    width: 32px;
-    height: 32px;
-    border: 1px solid var(--color-icons);
-    border-radius: 50%;
-    transition: border $effect-duration;
+    &[disabled] {
+      border: 1px solid var(--color-action);
+      cursor: default;
 
-    &:hover {
-      border: 1px solid #0F0F11;
+      &:hover {
+        border: 1px solid var(--color-action);
+      }
     }
   }
+
+  &__amount-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.test {
+  height: 16px;
+  width: 16px;
 }
