@@ -1,0 +1,83 @@
+@import '@/styles/index.scss';
+
+.favorite-page {
+  background-color: var(--main-bg-color);
+  padding-bottom: 56px;
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    margin: 24px 0 32px;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+      margin-top: 40px;
+    }
+  }
+
+  &__brad-crams {
+  }
+
+  &__counter {
+    margin: 8px 0 32px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: var(--color-secondary);
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    margin: 0 auto;
+    grid-auto-columns: 287px;
+    grid-auto-rows: 440px;
+    grid-template-columns: repeat(auto-fit, 287px);
+    column-gap: 16px;
+    row-gap: 40px;
+    justify-content: center;
+
+    @include on-tablet {
+      grid-auto-columns: minmax(229px, 288px);
+      grid-auto-rows: 506px;
+      grid-template-columns: repeat(auto-fill, minmax(229px, 288px));
+    }
+
+    @include on-desktop {
+      grid-auto-columns: 272px;
+      grid-template-columns: repeat(auto-fill, 272px);
+      grid-auto-rows: 506px;
+    }
+  }
+}
+
+.container {
+  width: 100vw;
+  margin: 0 auto;
+  padding: 0 17px;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    width: calc(2 * 31px + 1136px);
+    padding: 0 31px;
+  }
+}

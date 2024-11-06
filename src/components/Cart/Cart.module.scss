@@ -37,18 +37,18 @@
 }
 
 .container {
-
   margin: 0 auto;
-
-  max-width: 288px;
+  max-width: calc(2 * 16px + 288px);
+  padding: 0 16px;
 
   @include on-tablet {
-    max-width: 592px;
-    //max-width: calc(100vw - 30px);
+    max-width: calc(2 * 24px + 592px);
+    padding: 0 24px;
   }
 
   @include on-desktop {
-    max-width: 1136px;
+    max-width: calc(2 * 32px + 1136px);
+    padding: 0 32px;
   }
 }
 
