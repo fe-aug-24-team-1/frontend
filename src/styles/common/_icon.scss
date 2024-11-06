@@ -1,0 +1,99 @@
+.icon {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: end;
+  }
+
+  &--favourites {
+    width: 48px;
+    height: 48px;
+    border-inline: 1px solid var(--elements-color);
+    position: relative;
+
+    &-isActive {
+      background-color: var(--elements-color);
+    }
+
+    &:hover {
+      background-color: var(--elements-color);
+    }
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+
+    &_img {
+      padding: 16px;
+
+      &-count {
+        width: 14px;
+        height: 14px;
+        background-color: var(--color-red);
+        border: 2px solid var(--color-white);
+        border-radius: 50%;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        font-family: Mont, sans-serif;
+        font-weight: 700;
+        font-size: 9px;
+        line-height: 11.5px;
+        color: var(--color-white);
+        display: flex;
+        justify-content: center;
+      }
+
+      @include on-desktop {
+        padding: 24px;
+      }
+    }
+  }
+
+  &--cart {
+    width: 48px;
+    height: 48px;
+    position: relative;
+
+    &-isActive {
+      background-color: var(--elements-color);
+    }
+
+    &:hover {
+      background-color: var(--elements-color);
+    }
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+
+    &_img {
+      padding: 16px;
+
+      &-count {
+        width: 14px;
+        height: 14px;
+        background-color: var(--color-red);
+        border: 2px solid var(--color-white);
+        border-radius: 50%;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        font-family: Mont, sans-serif;
+        font-weight: 700;
+        font-size: 9px;
+        line-height: 11.5px;
+        color: var(--color-white);
+        display: flex;
+        justify-content: center;
+      }
+
+      @include on-desktop {
+        padding: 24px;
+      }
+    }
+  }
+}
