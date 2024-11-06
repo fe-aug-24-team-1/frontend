@@ -4,7 +4,7 @@
   box-sizing: border-box;
   width: 40px;
   height: 40px;
-  border: 1px solid #B4BDC3;
+  border: 1px solid var(--color-icons);
   border-radius: 50%;
   cursor: pointer;
   background: url('../../assets/images/icons/favourites.svg') no-repeat center, 16px 16px;
