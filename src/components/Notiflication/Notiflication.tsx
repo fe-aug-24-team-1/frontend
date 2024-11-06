@@ -3,16 +3,24 @@ import { ToastContainer, toast, ToastOptions } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 
-const Notification: React.FC = () => {
+interface NotificationProps {
+  type: 'success' | 'warning' | 'error';
+  message: string;
+  position: ToastOptions['position'];
+  duration: number;
+  redirectUrl: string;
+}
+
+const Notification: React.FC<NotificationProps> = ({
+  type,
+  message,
+  position,
+  duration,
+  redirectUrl,
+}) => {
   const navigate = useNavigate();
 
-  const notify = (
-    type: 'success' | 'warning' | 'error',
-    message: string,
-    position: ToastOptions['position'],
-    duration: number,
-    redirectUrl: string
-  ) => {
+  const notify = () => {
     const options: ToastOptions = {
       position: position,
       autoClose: duration,
@@ -22,6 +30,10 @@ const Notification: React.FC = () => {
       draggable: true,
       onClose: () => {
         navigate(redirectUrl);
+      },
+      style: {
+        background: '#1a73e8',
+        color: '#fff',
       },
     };
 
@@ -36,30 +48,7 @@ const Notification: React.FC = () => {
 
   return (
     <div>
-      <button
-        onClick={() =>
-          notify(
-            'success',
-            'Your purchase was successful!',
-            'bottom-left',
-            3000,
-            '/phones'
-          )
-        }>
-        Complete Purchase
-      </button>
-      <button
-        onClick={() =>
-          notify('warning', 'Warning!', 'bottom-left', 3000, '/phones')
-        }>
-        Show Warning
-      </button>
-      <button
-        onClick={() =>
-          notify('error', 'Error!', 'bottom-left', 3000, '/phones')
-        }>
-        Show Error
-      </button>
+      <button onClick={notify}>Show Notification</button>
       <ToastContainer />
     </div>
   );
