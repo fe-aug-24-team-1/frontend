@@ -1,0 +1,266 @@
+@import '../../styles/index.scss';
+
+.header {
+  &_nav-nav {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+    }
+  }
+
+  &__theme {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid var(--border-color);
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--elements-color);
+    }
+
+    @include on-tablet {
+      width: 48px;
+      height: 48px;
+    }
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+
+    &-button {
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      color: var(--text-color);
+      cursor: pointer;
+
+      &-img {
+        width: 24px;
+        height: 24px;
+        display: flex;
+      }
+    }
+  }
+
+  &__lang {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid var(--border-color);
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--elements-color);
+    }
+
+    @include on-tablet {
+      width: 48px;
+      height: 48px;
+    }
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+
+    &-button {
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      color: var(--text-color);
+      cursor: pointer;
+    }
+  }
+
+  &__logo {
+    padding: 16px;
+
+    @include on-desktop {
+      padding: 18px 24px;
+    }
+
+    &_img {
+      height: 22px;
+      width: 64px;
+
+      @include on-desktop {
+        height: 28px;
+        width: 80px;
+      }
+    }
+  }
+}
+
+.burger_menu_ic {
+  display: block;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.burger_menu_icon {
+  padding: 13px;
+  height: 48px;
+  width: 48px;
+  border-left: 1px solid var(--elements-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  &_img {
+    display: flex;
+    justify-content: center;
+    height: 16px;
+    width: 16px;
+  }
+}
+
+.burger_menu {
+  &__icon {
+    padding: 16px;
+    height: 48px;
+    width: 48px;
+    border-left: 1px solid var(--elements-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &_img {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    width: 100%;
+
+    &--list {
+      display: flex;
+      gap: 16px;
+      flex-direction: column;
+    }
+
+    &--item {
+      text-align: center;
+
+      &_link {
+        text-decoration: none;
+        font-family: Mont, sans-serif;
+        font-weight: 800;
+        font-size: 12px;
+        line-height: 11px;
+        letter-spacing: 4%;
+        color: var(--color-secondary);
+
+        &--active {
+          border-bottom: 1px solid var(--color-primary);
+        }
+      }
+
+      &_link:hover {
+        color: var(--text-color);
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &-theme {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      &-button {
+        &-img {
+          width: 24px;
+          height: 24px;
+          display: flex;
+        }
+      }
+    }
+
+    &-lang {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      &-button {
+        font-family: Mont, sans-serif;
+        font-weight: 800;
+        font-size: 12px;
+        line-height: 11px;
+        letter-spacing: 4%;
+        color: var(--text-color);
+      }
+    }
+
+    &-fav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-cart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &_icon {
+      height: 64px;
+      width: 100%;
+      position: relative;
+      border: 1px solid var(--elements-color);
+
+      &:hover {
+        background-color: var(--elements-color);
+      }
+
+      &--img {
+        position: relative;
+
+        &-count {
+          width: 14px;
+          height: 14px;
+          background-color: var(--color-red);
+          border: 2px solid var(--color-white);
+          border-radius: 50%;
+          position: absolute;
+          top: 30%;
+          left: 50%;
+          font-family: Mont, sans-serif;
+          font-weight: 700;
+          font-size: 9px;
+          line-height: 11.5px;
+          color: var(--color-white);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+}
