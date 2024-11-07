@@ -1,0 +1,52 @@
+@import '@/styles/index';
+
+.swiper {
+  width: 100%;
+  height: min-content;
+  overflow: visible;
+
+  @include on-desktop {
+    overflow: hidden;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    color: var(--color-primary);
+    flex-grow: 1;
+
+    @include on-tablet {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__slide {
+    height: 439px;
+    width: 212px;
+
+    @include on-tablet {
+      width: 237px;
+      height: 512px;
+    }
+
+    @include on-desktop {
+      width: 272px;
+      height: 506px;
+    }
+  }
+}

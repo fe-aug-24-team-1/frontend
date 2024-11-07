@@ -14,12 +14,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const [searchParams] = useSearchParams();
   return (
     <div className={styles.product}>
-      {/*<img*/}
-      {/*  className={styles[`product__image`]}*/}
-      {/*  alt={product.name}*/}
-      {/*  src={product.images[0]}*/}
-      {/*/>*/}
-
       <Link
         className={styles[`product__image-link`]}
         to={{
