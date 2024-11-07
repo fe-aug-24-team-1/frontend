@@ -45,6 +45,8 @@ export const MainSwiper: React.FC<Props> = ({ swiperTitle, products }) => {
           1200: {
             slidesPerView: 4,
           },
+          630: {},
+          320: {},
         }}
         modules={[FreeMode, Navigation]}
         className={styles[`swiper`]}>
