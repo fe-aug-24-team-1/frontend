@@ -1,0 +1,22 @@
+.grid {
+  display: grid;
+  margin: 0 auto;
+  grid-auto-columns: 287px;
+  grid-auto-rows: 440px;
+  grid-template-columns: repeat(auto-fit, 287px);
+  column-gap: 16px;
+  row-gap: 40px;
+  justify-content: center;
+
+  @include on-tablet {
+    grid-auto-columns: minmax(229px, 288px);
+    grid-auto-rows: 506px;
+    grid-template-columns: repeat(auto-fill, minmax(229px, 288px));
+  }
+
+  @include on-desktop {
+    grid-auto-columns: 272px;
+    grid-template-columns: repeat(auto-fill, 272px);
+    grid-auto-rows: 506px;
+  }
+}
