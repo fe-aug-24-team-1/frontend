@@ -25,7 +25,7 @@
   }
 }
 
-.iconTop {
+.iconAll {
   display: block;
   width: 16px;
   height: 16px;
@@ -36,16 +36,14 @@
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid var(--color-action);
+
+  height: 48px;
 }
 
 .nav__i {
   display: flex;
 
   align-items: center;
-}
-
-.topBar {
-  height: 48px;
 }
 
 .icon__header {
@@ -71,6 +69,10 @@
   justify-content: space-around;
   align-items: center;
   border-right: 1px solid var(--color-action);
+}
+
+.acountForProducts {
+  position: relative;
 }
 
 .buttons {

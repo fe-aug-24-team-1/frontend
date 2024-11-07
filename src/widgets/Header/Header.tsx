@@ -10,11 +10,15 @@ import i18next from 'i18next';
 import { Lang } from '@/types/Lang';
 import { Icon } from '@/components/icon/Icon';
 import { Navigation } from '@/components/Navigation';
+import { CounterGoods } from '@/components/CounterGoods';
 
 interface Props {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   isOpen: boolean;
 }
+
+const AmountProductsInCurt: number = 45;
+const AmountFavouriteProductsInCurt: number = 12;
 
 export const Header: FC<Props> = ({ isOpen, setIsOpen }) => {
   // const toggleTheme = useContext(ThemeDispatchContext);
@@ -61,17 +65,27 @@ export const Header: FC<Props> = ({ isOpen, setIsOpen }) => {
               <div className="header__lang-button">{t('header.lang')}</div>
             </div>
 
-            <NavLink to="/favorites">
+            <NavLink
+              to="/favorites"
+              className="acountForProducts">
               <Icon.Favorites className="icon--favourites_img" />
+
+              <CounterGoods
+                isOpen={isOpen}
+                amountAllProducts={AmountFavouriteProductsInCurt}
+              />
             </NavLink>
 
-            <div>
-              <NavLink
-                to="/cart"
-                className="header__icons--cart">
-                <Icon.ShoppingBag className="icon--cart_img" />
-              </NavLink>
-            </div>
+            <NavLink
+              to="/cart"
+              className="header__icons--cart acountForProducts">
+              <Icon.ShoppingBag className="icon--cart_img" />
+
+              <CounterGoods
+                isOpen={isOpen}
+                amountAllProducts={AmountProductsInCurt}
+              />
+            </NavLink>
           </div>
         </div>
 

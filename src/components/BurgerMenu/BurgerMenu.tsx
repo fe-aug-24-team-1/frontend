@@ -1,18 +1,22 @@
 import { Link, NavLink } from 'react-router-dom';
 import { FC, Dispatch, SetStateAction } from 'react';
-import cn from 'classnames';
 import '@/app/i18n';
+import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
+import { Lang } from '@/types/Lang';
+import cn from 'classnames';
+import { Icon } from '../icon/Icon';
 import { Navigation } from '../Navigation';
 import style from './BurgerMenu.module.scss';
-import i18next from 'i18next';
-import { Lang } from '@/types/Lang';
-import { useTranslation } from 'react-i18next';
-import { Icon } from '../icon/Icon';
+import { CounterGoods } from '../CounterGoods';
 
 interface Props {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
+
+const AmountProductsInCurt: number = 44;
+const AmountFavouriteProductsInCurt: number = 122;
 
 export const BurgerMenu: FC<Props> = ({ isOpen, setIsOpen }) => {
   const { t } = useTranslation();
@@ -65,7 +69,7 @@ export const BurgerMenu: FC<Props> = ({ isOpen, setIsOpen }) => {
               <Link
                 to="/"
                 onClick={() => setIsOpen(false)}>
-                <Icon.Close className={cn(style.iconTop)} />
+                <Icon.Close className={cn(style.iconAll)} />
               </Link>
             </div>
           </div>
@@ -77,14 +81,28 @@ export const BurgerMenu: FC<Props> = ({ isOpen, setIsOpen }) => {
 
         <div className={style.buttons}>
           <div className={style.icons}>
-            <NavLink to="/favourites">
-              <Icon.Favorites className={cn(style.iconTop)} />
+            <NavLink
+              to="/favourites"
+              className={style.acountForProducts}>
+              <Icon.Favorites className={cn(style.iconAll)} />
+
+              <CounterGoods
+                isOpen={isOpen}
+                amountAllProducts={AmountFavouriteProductsInCurt}
+              />
             </NavLink>
           </div>
 
           <div className={style.icons}>
-            <NavLink to="/cart">
-              <Icon.ShoppingBag className={style.iconTop} />
+            <NavLink
+              to="/cart"
+              className={style.acountForProducts}>
+              <Icon.ShoppingBag className={style.iconAll} />
+
+              <CounterGoods
+                isOpen={isOpen}
+                amountAllProducts={AmountProductsInCurt}
+              />
             </NavLink>
           </div>
         </div>
