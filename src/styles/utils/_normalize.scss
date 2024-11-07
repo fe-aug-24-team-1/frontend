@@ -1,42 +1,26 @@
-iframe {
-  display: none;
-}
-
-body,
+body, // move to reset.scss
 h1,
 h2,
 h3,
 h4,
 p,
 a,
-li,
-ul,
 button {
   margin: 0;
   padding: 0;
 }
 
-a {
+a { // move to reset.scss
   text-decoration: none;
   color: inherit;
 }
 
-li{
-  list-style: none;
-}
-
-img {
+img { // move to reset.scss
   display: block;
 }
 
 * {
   box-sizing: border-box;
-}
-
-button {
-  border: none;
-  font: inherit;
-  color: inherit;
-  background-color: transparent;
-  cursor: pointer;
+  font-size: 14px;
+  font-family: 'Mont';
 }

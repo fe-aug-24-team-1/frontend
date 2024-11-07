@@ -16,3 +16,21 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+button {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-block;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  text-decoration: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
