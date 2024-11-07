@@ -1,11 +1,11 @@
 @mixin on-tablet {
-  @media (min-width: $tablet-min-width) {
+  @media (min-width: $min-tablet-width) {
     @content;
   }
 }
 
 @mixin on-desktop {
-  @media (min-width: $desktop-min-width) {
+  @media (min-width: $min-desktop-width) {
     @content;
   }
 }
@@ -26,6 +26,24 @@
     margin-inline: auto;
     padding-inline: 24px;
   }
+}
+
+@mixin uppercase {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  
+  @content;
+}
+
+@mixin small-text {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px; // use % or rem (15.34 px is imposible value)
+  
+  @content;
 }
 
 @mixin page-grid {

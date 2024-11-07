@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
-import './App.scss';
+// import './App.scss';
 // import { Header } from './modules/shared/Header';
-// import { Footer } from './modules/shared/Footer';
+import { Footer } from '../src/components/Footer/Footer';
 
 export const App = () => {
   return (
@@ -12,7 +12,7 @@ export const App = () => {
         <Outlet />
       </main>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
