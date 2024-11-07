@@ -1,0 +1,15 @@
+.tech-spec {
+  display: flex;
+  justify-content: space-between;
+
+  line-height: 21px;
+
+  &__value {
+    font-weight: 600;
+  }
+
+  &__name {
+    font-weight: 500;
+    color: var(--color-icons);
+  }
+}
