@@ -10,13 +10,13 @@
   }
 }
 
-@mixin hover($property, $toValue) {
-  transition: $property $effect-duration;
+// @mixin hover($property, $toValue) {
+//   transition: $property $effect-duration;
 
-  &:hover {
-    #{$property}: $toValue;
-  }
-}
+//   &:hover {
+//     #{$property}: $toValue;
+//   }
+// }
 
 @mixin content-padding-inline {
   padding-inline: 16px;
