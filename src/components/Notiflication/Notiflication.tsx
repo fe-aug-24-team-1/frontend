@@ -37,12 +37,19 @@ const Notification: React.FC<NotificationProps> = ({
       },
     };
 
-    if (type === 'success') {
-      toast.success(message, options);
-    } else if (type === 'warning') {
-      toast.warning(message, options);
-    } else if (type === 'error') {
-      toast.error(message, options);
+    switch (type) {
+      case 'success':
+        toast.success(message, options);
+        break;
+      case 'warning':
+        toast.warning(message, options);
+        break;
+      case 'error':
+        toast.error(message, options);
+        break;
+      default:
+        toast.info(message, options);
+        break;
     }
   };
 
