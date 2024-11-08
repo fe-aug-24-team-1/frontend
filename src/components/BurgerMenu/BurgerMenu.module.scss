@@ -1,0 +1,89 @@
+@import '../../styles/index.scss';
+
+.pageMenu {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  height: 100vh;
+
+  opacity: 0;
+  transition: all $effect-duration;
+  transform: translateX(-100%);
+  pointer-events: none;
+
+  &--open {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.iconAll {
+  display: block;
+  width: 16px;
+  height: 16px;
+  align-self: center;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-action);
+
+  height: 48px;
+}
+
+.nav__i {
+  display: flex;
+
+  align-items: center;
+}
+
+.icon__header {
+  padding: 16px;
+}
+
+.icon__header:not(:first-child) {
+  border-left: 1px solid var(--color-elements);
+}
+
+.logo__header {
+  padding: 13px 16px;
+}
+
+.menu__nav {
+  margin-top: 24px;
+}
+
+.icons {
+  display: flex;
+  flex: 1;
+
+  justify-content: space-around;
+  align-items: center;
+  border-right: 1px solid var(--color-action);
+}
+
+.acountForProducts {
+  position: relative;
+}
+
+.buttons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid var(--color-action);
+
+  height: 64px;
+}

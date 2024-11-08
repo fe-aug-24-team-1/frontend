@@ -1,8 +1,11 @@
-import { FC, useContext } from 'react';
+import { FC, /* useContext, */ SetStateAction, Dispatch } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { IoSunnyOutline, IoMoonOutline } from 'react-icons/io5';
-import cn from 'classnames';
+
+import logo from '/logo.svg';
+
+import './Header.scss';
+// import { ThemeDispatchContext } from '@/app/providers/ThemeProvider';
 import i18next from 'i18next';
 
 import { Lang } from '@/types/Lang';
@@ -12,42 +15,27 @@ import {
   ThemeStateContext,
 } from '@/app/providers/ThemeProvider';
 import { Icon } from '@/components/icon/Icon';
+import { Navigation } from '@/components/Navigation';
+import { CounterGoods } from '@/components/CounterGoods';
 
-import logo from '/logo.svg';
+interface Props {
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  isOpen: boolean;
+}
 
-import styles from './Header.module.scss';
-
-const navItems = [
-  { path: '/', name: 'home' },
-  { path: 'phones', name: 'phones' },
-  { path: 'tablets', name: 'tablets' },
-  { path: 'accessories', name: 'accessories' },
-];
-
-export const Header: FC = () => {
-  const toggleTheme = useContext(ThemeDispatchContext);
-  const { theme } = useContext(ThemeStateContext);
+export const Header: FC<Props> = ({ isOpen, setIsOpen }) => {
+  // const toggleTheme = useContext(ThemeDispatchContext);
 
   const { t } = useTranslation();
-
-  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-    cn(styles.nav__link, {
-      [styles['nav__link--active']]: isActive,
-    });
-
-  const getActiveIcon = (
-    { isActive }: { isActive: boolean },
-    iconName: string
-  ) =>
-    cn(styles.header__iconContainer, styles[`header__${iconName}`], {
-      [styles['header__iconContainer--active']]: isActive,
-    });
 
   const changeLang = () => {
     const lang = i18next.language === Lang.EN ? Lang.UK : Lang.EN;
 
     i18next.changeLanguage(lang);
   };
+
+  const AmountProductsInCurt: number = 45;
+  const AmountFavouriteProductsInCurt: number = 12;
 
   return (
     <>
@@ -60,38 +48,21 @@ export const Header: FC = () => {
               src={logo}
               alt="Nice gadgets logo"
             />
-          </NavLink>
+          </div>
 
-          <nav className={styles.nav}>
-            <ul className={styles.nav__list}>
-              {navItems.map(({ path, name }) => (
-                <li
-                  key={name}
-                  className={styles.nav__item}>
-                  <NavLink
-                    to={path}
-                    className={getLinkClass}>
-                    {t(`header.nav.${name}`)}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <div className="header_nav-nav">
+            <Navigation isOpen={isOpen} />
+          </div>
         </div>
 
-        <div className={styles.header__right}>
-          <div
-            className={`${styles.header__iconContainer} ${styles.header__iconTheme}`}>
-            <div className={styles.header__iconCart}>
-              {theme === 'dark' ? (
-                <IoSunnyOutline
-                  className={styles.header__icon}
-                  onClick={toggleTheme}
-                />
-              ) : (
-                <IoMoonOutline
-                  className={styles.header__icon}
-                  onClick={toggleTheme}
+        <div className="top-bar_right">
+          <div className="icon">
+            <div className="header__theme">
+              <div className="header__theme-button">
+                <img
+                  alt="Theme"
+                  className="header__theme-button-img"
+                  // onClick={toggleTheme}
                 />
               )}
             </div>
@@ -103,23 +74,38 @@ export const Header: FC = () => {
             <div className={styles.header__icon}>{t('header.lang')}</div>
           </div>
 
-          <NavLink
-            to="/favorites"
-            className={({ isActive }) =>
-              getActiveIcon({ isActive }, 'iconLike')
-            }>
-            <Icon.Favorites className={styles.header__icon} />
-          </NavLink>
+            <NavLink
+              to="/favorites"
+              className="acountForProducts">
+              <Icon.Favorites className="icon--favourites_img" />
 
-          <NavLink
-            to="/cart"
-            className={({ isActive }) =>
-              getActiveIcon({ isActive }, 'iconCart')
-            }>
-            <Icon.ShoppingBag className={styles.header__icon} />
-          </NavLink>
+              <CounterGoods
+                isOpen={isOpen}
+                amountAllProducts={AmountFavouriteProductsInCurt}
+              />
+            </NavLink>
+
+            <NavLink
+              to="/cart"
+              className="header__icons--cart acountForProducts">
+              <Icon.ShoppingBag className="icon--cart_img" />
+
+              <CounterGoods
+                isOpen={isOpen}
+                amountAllProducts={AmountProductsInCurt}
+              />
+            </NavLink>
+          </div>
         </div>
-      </header>
-    </>
+
+        <div className="burger_menu_ic">
+          <div
+            className="burger_menu_icon"
+            onClick={() => setIsOpen(true)}>
+            <Icon.Menu className="burger_menu_icon_img" />
+          </div>
+        </div>
+      </div>
+    </header>
   );
 };
