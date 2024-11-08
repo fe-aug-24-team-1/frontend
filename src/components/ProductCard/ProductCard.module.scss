@@ -1,0 +1,120 @@
+@import '@/styles/index.scss';
+
+.product {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid var(--color-elements);
+  padding: 32px;
+  border-radius: 8px;
+  background-color: var(--card-color-bg);
+  width: 100%;
+  height: 100%;
+
+  transition: box-shadow $effect-duration, transform $effect-duration;
+
+  &:hover {
+    box-shadow: 0 2px 16px 0 #0000001A;
+    transform: scale(1.1);
+  }
+
+  &__image {
+    display: block;
+    margin: 0 auto;
+    height: 100%;
+    flex: 1 1;
+    width: 100%;
+    object-fit: scale-down;
+  }
+
+  &__image-link {
+    margin: 0 auto;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    flex: 1 1;
+  }
+
+  &__name {
+    padding-top: 16px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--color-primary);
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    &--current {
+      font-weight: 800;
+      font-size: 22px;
+      color: var(--color-primary);
+      line-height: 30.8px;
+
+    }
+
+    &--regular {
+      font-weight: 600;
+      font-size: 22px;
+      color: var(--color-secondary);
+      position: relative;
+      isolation: isolate;
+
+      &::after {
+        content: '';
+        height: 2px;
+        width: 102%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: var(--color-secondary);
+        mix-blend-mode: color-dodge;
+        left: -1%;
+      }
+    }
+
+  }
+
+  &__specs {
+    padding: 8px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-name {
+      font-size: 12px;
+      color: var(--color-secondary);
+      font-weight: 700;
+    }
+
+    &-value {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-primary);
+
+    }
+  }
+
+  &__decorative-line {
+    height: 1px;
+    width: 100%;
+    background-color: var(--color-elements);
+  }
+
+  &__buttons-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+}
+
+
+
