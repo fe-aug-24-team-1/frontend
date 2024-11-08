@@ -1,31 +1,35 @@
-import { FC, useContext } from 'react';
+import { FC, /* useContext, */ SetStateAction, Dispatch } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import logo from '/logo.svg';
 
 import './Header.scss';
-import cn from 'classnames';
-import { ThemeDispatchContext } from '@/app/providers/ThemeProvider';
+// import { ThemeDispatchContext } from '@/app/providers/ThemeProvider';
 import i18next from 'i18next';
 import { Lang } from '@/types/Lang';
 import { Icon } from '@/components/icon/Icon';
+import { Navigation } from '@/components/Navigation';
+import { CounterGoods } from '@/components/CounterGoods';
 
-export const Header: FC = () => {
-  const toggleTheme = useContext(ThemeDispatchContext);
+interface Props {
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  isOpen: boolean;
+}
+
+export const Header: FC<Props> = ({ isOpen, setIsOpen }) => {
+  // const toggleTheme = useContext(ThemeDispatchContext);
 
   const { t } = useTranslation();
-
-  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-    cn('header__nav--item_link', {
-      'header__nav--item_link--active': isActive,
-    });
 
   const changeLang = () => {
     const lang = i18next.language === Lang.EN ? Lang.UK : Lang.EN;
 
     i18next.changeLanguage(lang);
   };
+
+  const AmountProductsInCurt: number = 45;
+  const AmountFavouriteProductsInCurt: number = 12;
 
   return (
     <header className="header">
@@ -38,41 +42,9 @@ export const Header: FC = () => {
             />
           </div>
 
-          <nav className="header__nav">
-            <ul className="header__nav--list">
-              <li className="header__nav--item">
-                <NavLink
-                  to="/"
-                  className={getLinkClass}>
-                  {t('header.nav.home')}
-                </NavLink>
-              </li>
-
-              <li>
-                <NavLink
-                  to="/phones"
-                  className={getLinkClass}>
-                  {t('header.nav.phones')}
-                </NavLink>
-              </li>
-
-              <li>
-                <NavLink
-                  to="/tablets"
-                  className={getLinkClass}>
-                  {t('header.nav.tablets')}
-                </NavLink>
-              </li>
-
-              <li>
-                <NavLink
-                  to="/accessories"
-                  className={getLinkClass}>
-                  {t('header.nav.accessories')}
-                </NavLink>
-              </li>
-            </ul>
-          </nav>
+          <div className="header_nav-nav">
+            <Navigation isOpen={isOpen} />
+          </div>
         </div>
 
         <div className="top-bar_right">
@@ -82,7 +54,7 @@ export const Header: FC = () => {
                 <img
                   alt="Theme"
                   className="header__theme-button-img"
-                  onClick={toggleTheme}
+                  // onClick={toggleTheme}
                 />
               </div>
             </div>
@@ -93,21 +65,35 @@ export const Header: FC = () => {
               <div className="header__lang-button">{t('header.lang')}</div>
             </div>
 
-            <NavLink to="/favorites">
+            <NavLink
+              to="/favorites"
+              className="acountForProducts">
               <Icon.Favorites className="icon--favourites_img" />
+
+              <CounterGoods
+                isOpen={isOpen}
+                amountAllProducts={AmountFavouriteProductsInCurt}
+              />
             </NavLink>
 
             <NavLink
               to="/cart"
-              className="header__icons--cart">
+              className="header__icons--cart acountForProducts">
               <Icon.ShoppingBag className="icon--cart_img" />
-            </NavLink>
 
-            <a
-              href="#burger_menu"
-              className="burger_menu_icon">
-              <Icon.Menu className="burger_menu_icon_img" />
-            </a>
+              <CounterGoods
+                isOpen={isOpen}
+                amountAllProducts={AmountProductsInCurt}
+              />
+            </NavLink>
+          </div>
+        </div>
+
+        <div className="burger_menu_ic">
+          <div
+            className="burger_menu_icon"
+            onClick={() => setIsOpen(true)}>
+            <Icon.Menu className="burger_menu_icon_img" />
           </div>
         </div>
       </div>

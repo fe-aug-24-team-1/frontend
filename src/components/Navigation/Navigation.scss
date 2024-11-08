@@ -1,0 +1,67 @@
+@import '../../styles/index.scss';
+
+.header__nav {
+  &--burger {
+    margin-top: 24px;
+  }
+
+  @include on-tablet {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    height: 48px;
+    width: 100%;
+  }
+
+  &--list {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    &--burger {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      row-gap: 16px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &--item {
+    gap: 32px;
+
+    &--burger {
+      position: relative;
+    }
+
+    &_link {
+      text-decoration: none;
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      color: var(--color-secondary);
+
+      &--active {
+        color: var(--color-primary);
+        border-bottom: 2px solid var(--color-primary);
+
+        @include on-tablet {
+          padding-bottom: 11px;
+        }
+
+        @include on-desktop {
+          padding-bottom: 20px;
+        }
+      }
+    }
+
+    &_link:hover {
+      color: var(--color-primary);
+    }
+  }
+}

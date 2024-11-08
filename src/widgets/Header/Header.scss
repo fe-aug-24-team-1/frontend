@@ -1,62 +1,17 @@
 @import '../../styles/index.scss';
 
 .header {
-  &__nav {
+  &_nav-nav {
     display: none;
 
     @include on-tablet {
-      display: flex;
-      gap: 16px;
-      justify-content: space-between;
-      height: 48px;
-      width: 100%;
-    }
-
-    &--list {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-
-      @include on-desktop {
-        gap: 64px;
-      }
-    }
-
-    &--item {
-      gap: 32px;
-
-      &_link {
-        text-decoration: none;
-        font-family: Mont, sans-serif;
-        font-weight: 800;
-        font-size: 12px;
-        line-height: 11px;
-        letter-spacing: 4%;
-        color: var(--color-secondary);
-
-        &--active {
-          color: var(--color-primary);
-          border-bottom: 2px solid var(--color-primary);
-
-          @include on-tablet {
-            padding-bottom: 11px;
-          }
-
-          @include on-desktop {
-            padding-bottom: 20px;
-          }
-        }
-      }
-
-      &_link:hover {
-        color: var(--color-primary);
-      }
+      display: block;
     }
   }
 
   &__theme {
-    width: 48px;
-    height: 48px;
+    width: 16px;
+    height: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,6 +20,11 @@
 
     &:hover {
       background-color: var(--elements-color);
+    }
+
+    @include on-tablet {
+      width: 48px;
+      height: 48px;
     }
 
     @include on-desktop {
@@ -90,8 +50,8 @@
   }
 
   &__lang {
-    width: 48px;
-    height: 48px;
+    width: 16px;
+    height: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -100,6 +60,11 @@
 
     &:hover {
       background-color: var(--elements-color);
+    }
+
+    @include on-tablet {
+      width: 48px;
+      height: 48px;
     }
 
     @include on-desktop {
@@ -137,6 +102,18 @@
   }
 }
 
+.acountForProducts {
+  position: relative;
+}
+
+.burger_menu_ic {
+  display: block;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
 .burger_menu_icon {
   padding: 13px;
   height: 48px;
@@ -145,52 +122,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  &_link {
-    height: 16px;
-    width: 16px;
-  }
-
+ 
   &_img {
     display: flex;
     justify-content: center;
-  }
-
-  @include on-tablet {
-    display: none;
+    height: 16px;
+    width: 16px;
   }
 }
 
 .burger_menu {
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  pointer-events: none;
-  background-color: var(--bg-color);
-  z-index: 0;
-  transform: translateX(-100%);
-  transition: transform 0.3s;
-
-  &__top {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 48px;
-    border-bottom: 1px solid var(--elements-color);
-  }
-
-  &__logo {
-    padding: 16px;
-
-    &_img {
-      height: 22px;
-      width: 64px;
-    }
-  }
-
   &__icon {
     padding: 16px;
     height: 48px;
