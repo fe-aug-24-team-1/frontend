@@ -14,8 +14,8 @@ export const CategoriesSection: React.FC = () => {
             className={`${styles[`category__image-container`]} ${styles[`category__image-container--phones`]}`}>
             <img
               className={styles[`category__image`]}
-              src="/public/img/phones-banner.png"
-              alt=""
+              src="/src/assets/images/Banners/phones-banner.png"
+              alt="phone category image"
             />
           </Link>
 
@@ -35,8 +35,8 @@ export const CategoriesSection: React.FC = () => {
             className={`${styles[`category__image-container`]} ${styles[`category__image-container--tablets`]}`}>
             <img
               className={styles[`category__image`]}
-              src="public/img/tablets-banner.png"
-              alt=""
+              src="/src/assets/images/Banners/tablets-banner.png"
+              alt="tablets category image"
             />
           </Link>
 
@@ -56,8 +56,8 @@ export const CategoriesSection: React.FC = () => {
             className={`${styles[`category__image-container`]} ${styles[`category__image-container--accessories`]}`}>
             <img
               className={styles[`category__image`]}
-              src="/public/img/accessories-banner.png"
-              alt=""
+              src="/src/assets/images/Banners/accessories-banner.png"
+              alt="accessories category image"
             />
           </Link>
 

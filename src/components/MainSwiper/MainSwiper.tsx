@@ -6,15 +6,16 @@ import { ProductCard } from '@/components/ProductCard';
 //
 // import photo from '../../../public/img/banner-tablets.png'
 
+// import 'swiper/scss';
+// import 'swiper/css/free-mode';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-import 'swiper/scss';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-import 'swiper/css/free-mode';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-import 'swiper/scss/navigation';
+// import 'swiper/scss/navigation';
+
+// import 'swiper/css';
+// import 'swiper/scss/navigation';
+
+import 'swiper/css/bundle';
 
 import styles from './MainSwiper.module.scss';
 import { SwiperButton } from '@/components/SwiperButton';
