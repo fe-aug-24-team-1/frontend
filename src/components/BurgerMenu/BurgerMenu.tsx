@@ -15,9 +15,6 @@ interface Props {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const AmountProductsInCurt: number = 44;
-const AmountFavouriteProductsInCurt: number = 122;
-
 export const BurgerMenu: FC<Props> = ({ isOpen, setIsOpen }) => {
   const { t } = useTranslation();
 
@@ -26,6 +23,9 @@ export const BurgerMenu: FC<Props> = ({ isOpen, setIsOpen }) => {
 
     i18next.changeLanguage(lang);
   };
+
+  const AmountProductsInCurt: number = 44;
+  const AmountFavouriteProductsInCurt: number = 122;
 
   return (
     <div

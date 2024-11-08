@@ -1,4 +1,4 @@
-import { FC /* useContext */, SetStateAction, Dispatch } from 'react';
+import { FC, /* useContext, */ SetStateAction, Dispatch } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -17,9 +17,6 @@ interface Props {
   isOpen: boolean;
 }
 
-const AmountProductsInCurt: number = 45;
-const AmountFavouriteProductsInCurt: number = 12;
-
 export const Header: FC<Props> = ({ isOpen, setIsOpen }) => {
   // const toggleTheme = useContext(ThemeDispatchContext);
 
@@ -30,6 +27,9 @@ export const Header: FC<Props> = ({ isOpen, setIsOpen }) => {
 
     i18next.changeLanguage(lang);
   };
+
+  const AmountProductsInCurt: number = 45;
+  const AmountFavouriteProductsInCurt: number = 12;
 
   return (
     <header className="header">
