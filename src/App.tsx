@@ -1,11 +1,9 @@
 import { FC } from 'react';
 import { Outlet } from 'react-router-dom';
-
-import { Header } from './widgets/Header/Header';
-
 import '@/app/i18n';
 
-// import { Footer } from './modules/shared/Footer';
+import { Header } from './widgets/Header/Header';
+import { Footer } from '@/components/Footer/Footer';
 
 export const App: FC = () => {
   return (
@@ -16,7 +14,7 @@ export const App: FC = () => {
         <Outlet />
       </main>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

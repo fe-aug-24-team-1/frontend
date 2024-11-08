@@ -13,6 +13,9 @@ export const Root = () => (
         <Route path="tabs">
           {/* <Route path=":tabId?" element={<TabsPage />} /> */}
         </Route>
+        <Route path="tabs">
+          {/* <Route path=":tabId?" element={<TabsPage />} /> */}
+        </Route>
 
         {/* <Route path="*" element={<ErrorPage />} /> */}
       </Route>
