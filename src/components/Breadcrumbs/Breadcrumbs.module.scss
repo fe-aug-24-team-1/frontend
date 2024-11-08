@@ -1,0 +1,40 @@
+@import '../../styles/index.scss';
+
+.path {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  width: 100%;
+  margin-block: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+
+  &__link {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+  }
+
+  &__category {
+    color: var(--color-secondary);
+    text-transform: uppercase;
+
+    &--active {
+      color: black;
+    }
+
+    // @include hover {
+    //   transform: scale(1.02);
+    // }
+  }
+
+  &__name {
+    color: var(--color-secondary);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: default;
+  }
+}
