@@ -1,12 +1,14 @@
+import { FC } from 'react';
 import { Outlet } from 'react-router-dom';
-// import './App.scss';
-// import { Header } from './modules/shared/Header';
-import { Footer } from '../src/components/Footer/Footer';
+import '@/app/i18n';
 
-export const App = () => {
+import { Header } from './widgets/Header/Header';
+import { Footer } from '@/components/Footer/Footer';
+
+export const App: FC = () => {
   return (
     <div>
-      {/* <Header /> */}
+      <Header />
 
       <main className="App__main">
         <Outlet />

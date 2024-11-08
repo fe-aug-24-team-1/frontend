@@ -1,8 +1,8 @@
-import { Route, Routes, HashRouter as Router } from 'react-router-dom';
+import { Route, Routes, HashRouter } from 'react-router-dom';
 import { App } from './App';
 
 export const Root = () => (
-  <Router>
+  <HashRouter>
     <Routes>
       <Route
         path="/"
@@ -13,9 +13,12 @@ export const Root = () => (
         <Route path="tabs">
           {/* <Route path=":tabId?" element={<TabsPage />} /> */}
         </Route>
+        <Route path="tabs">
+          {/* <Route path=":tabId?" element={<TabsPage />} /> */}
+        </Route>
 
         {/* <Route path="*" element={<ErrorPage />} /> */}
       </Route>
     </Routes>
-  </Router>
+  </HashRouter>
 );
