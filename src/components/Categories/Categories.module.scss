@@ -1,0 +1,42 @@
+@import '../../styles/index.scss';
+
+.categories {
+  @include content-padding-inline;
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+}
+
+.category {
+  @include hover {
+    transform: scale(1.1);
+  }
+
+  flex-grow: 1;
+
+  &__img {
+    width: 100%;
+    margin-bottom: 24px;
+    display: flex;
+  }
+
+  &__name {
+    margin-bottom: 4px;
+  }
+
+  &__count {
+    color: var(--color-secondary);
+  }
+}

@@ -1,4 +1,4 @@
-import { FC, useContext } from 'react';
+import { FC, MouseEventHandler, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { IoSunnyOutline, IoMoonOutline } from 'react-icons/io5';
@@ -43,11 +43,15 @@ export const Header: FC = () => {
       [styles['header__iconContainer--active']]: isActive,
     });
 
-  const changeLang = () => {
+  const handleChangeLang = () => {
     const lang = i18next.language === Lang.EN ? Lang.UK : Lang.EN;
 
     i18next.changeLanguage(lang);
   };
+
+  // const handleChangeTheme = (event: MouseEventHandler<SVGAElement>) => {
+  //   toggleTheme(event);
+  // };
 
   return (
     <>
@@ -99,7 +103,7 @@ export const Header: FC = () => {
 
           <div
             className={`${styles.header__iconContainer} ${styles.header__iconLang}`}
-            onClick={changeLang}>
+            onClick={handleChangeLang}>
             <div className={styles.header__icon}>{t('header.lang')}</div>
           </div>
 

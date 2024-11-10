@@ -1,0 +1,36 @@
+@import '../../styles/index.scss';
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+  border-radius: 36px;
+  padding: 16px;
+  margin: 32px auto 0;
+  width: 90%;
+
+  &__img {
+    width: 100%;
+
+    @include on-tablet {
+      width: 80%;
+    }
+
+    @include on-desktop {
+      width: 60%;
+    }
+  }
+
+  &__button {
+    margin: 8px;
+    padding: 9.5px;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    border: 1px solid var(--color-secondary);
+    border-radius: 36px;
+    cursor: pointer;
+  }
+}

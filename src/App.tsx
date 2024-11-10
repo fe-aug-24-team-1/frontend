@@ -1,16 +1,21 @@
 import { FC } from 'react';
-import { Header } from './widgets/Header/Header';
+import { Outlet } from 'react-router-dom';
 
 import './app/i18n';
-import { Breadcrumbs } from './components/Breadcrumbs';
-import { Slider } from '@/modules/Slider/Slider';
+
+import { Header } from '@/widgets/Header';
+import { Footer } from '@/widgets/Footer';
 
 export const App: FC = () => {
   return (
     <>
       <Header />
-      <Breadcrumbs name="12345" />
-      <Slider />
+
+      <main>
+        <Outlet />
+      </main>
+
+      <Footer />
     </>
   );
 };
