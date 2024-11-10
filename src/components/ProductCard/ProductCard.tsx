@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 
 import styles from './ProductCard.module.scss';
 import cn from 'classnames';
+import { useAppDispatch } from '@/app/store/hooks';
+import { addToCart } from '@/features/cart/cartSlice';
 
 interface Props {
   product?: Product;
@@ -16,6 +18,8 @@ export const ProductCard: FC<Props> = ({ product, discount }) => {
     { key: 'Capacity', value: product?.capacity },
     { key: 'Ram', value: product?.ram },
   ];
+
+  const dispatch = useAppDispatch();
 
   return (
     <article className={styles.card}>
@@ -58,7 +62,8 @@ export const ProductCard: FC<Props> = ({ product, discount }) => {
         <button
           className={cn(styles.buttons__add, {
             [styles['buttons__add--active']]: true,
-          })}>
+          })}
+          onClick={() => dispatch(addToCart(product))}>
           Add to cart
         </button>
 

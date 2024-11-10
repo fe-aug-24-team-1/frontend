@@ -5,6 +5,8 @@ import { App } from './App';
 import { Wishlist } from './pages/Wishlist/Wishlist';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { Cart } from './pages/Cart/Cart';
+import { Catalog } from './pages/Catalog/Catalog';
+import { CategoryType } from './types/CategoryType';
 
 export const Root: FC = () => (
   <HashRouter>
@@ -17,16 +19,16 @@ export const Root: FC = () => (
           element={<Main />}
         />
 
-        {/* <Route path="phones">
+        <Route path="phones">
           <Route
             index
-            element={}
+            element={<Catalog category={CategoryType.Phones} />}
           />
-          <Route
+          {/* <Route
             path=":slug"
             element={}
-          />
-        </Route> */}
+          /> */}
+        </Route>
 
         <Route
           path="favorites"
