@@ -1,21 +1,10 @@
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-import { FreeMode, Navigation } from 'swiper/modules';
 import { ProductCard } from '@/components/ProductCard';
-//
-// import photo from '../../../public/img/banner-tablets.png'
 
-// import 'swiper/scss';
-// import 'swiper/css/free-mode';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-// import 'swiper/scss/navigation';
-
-// import 'swiper/css';
-// import 'swiper/scss/navigation';
-
-import 'swiper/css/bundle';
+import 'swiper/scss';
 
 import styles from './MainSwiper.module.scss';
 import { SwiperButton } from '@/components/SwiperButton';
@@ -35,7 +24,6 @@ export const MainSwiper: React.FC<Props> = ({ swiperTitle, products }) => {
       <Swiper
         slidesPerView="auto"
         spaceBetween={16}
-        freeMode={false}
         onReachBeginning={() => setReachFirst(true)}
         onReachEnd={() => setReachLast(true)}
         onFromEdge={() => {
@@ -46,10 +34,13 @@ export const MainSwiper: React.FC<Props> = ({ swiperTitle, products }) => {
           1200: {
             slidesPerView: 4,
           },
-          630: {},
-          320: {},
+          630: {
+            slidesPerView: 'auto',
+          },
+          320: {
+            slidesPerView: 'auto',
+          },
         }}
-        modules={[FreeMode, Navigation]}
         className={styles[`swiper`]}>
         <div
           className={styles[`swiper__top`]}
