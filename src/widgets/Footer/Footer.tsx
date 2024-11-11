@@ -1,9 +1,7 @@
-import { FC } from 'react';
-import { NavLink } from 'react-router-dom';
-
+import style from './Footer.module.scss';
 import logo from '/logo.svg';
-
-import styles from './Footer.module.scss';
+import { NavLink } from 'react-router-dom';
+import { FC } from 'react';
 
 const navigation = [
   {
@@ -22,25 +20,25 @@ const navigation = [
 
 export const Footer: FC = () => {
   return (
-    <footer className={styles.footer}>
+    <footer className={style.footer}>
       <a
         href="#"
-        className={styles.logo__link}>
+        className={style.logo__link}>
         <img
           src={logo}
-          className={styles.logo}
+          className={style.logo}
         />
       </a>
-      <nav className={styles.nav}>
-        <ul className={styles.nav__list}>
+      <nav className={style.nav}>
+        <ul className={style.nav__list}>
           {navigation.map(({ href, name }) => (
             <li
               key={name}
-              className={styles.nav__item}>
+              className={style.nav__item}>
               <NavLink
                 to={href}
                 target="_blank"
-                className={styles.nav__link}>
+                className={style.nav__link}>
                 {name}
               </NavLink>
             </li>
@@ -48,10 +46,10 @@ export const Footer: FC = () => {
         </ul>
       </nav>
       <button
-        className={styles['back-to-top']}
+        className={style.backToTop}
         onClick={() => window.scrollTo({ top: 0 })}>
-        <p className={styles['back-to-top__text']}>Back to top</p>
-        <div className={styles['back-to-top__button']} />
+        <p className={style.backToTop__text}>Back to top</p>
+        <div className={style.backToTop__button} />
       </button>
     </footer>
   );

@@ -1,11 +1,11 @@
 @import '../../styles/index.scss';
 
 .path {
+  margin-block: 24px;
+  width: 100%;
   display: flex;
   align-items: flex-end;
   gap: 8px;
-  width: 100%;
-  margin-block: 24px;
 
   @include on-tablet {
     margin-bottom: 40px;
@@ -17,20 +17,20 @@
     align-items: flex-end;
   }
 
-  &__category {
+  &__direction {
     color: var(--color-secondary);
-    text-transform: uppercase;
+    text-transform: capitalize;
 
     &--active {
       color: black;
     }
 
-    // @include hover {
-    //   transform: scale(1.02);
-    // }
+    @include hover {
+      transform: scale(1.02);
+    }
   }
 
-  &__name {
+  &__product {
     color: var(--color-secondary);
     overflow: hidden;
     white-space: nowrap;

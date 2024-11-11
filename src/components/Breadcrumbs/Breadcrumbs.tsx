@@ -1,43 +1,48 @@
-import { FC } from 'react';
+import style from './Breadcrumbs.module.scss';
+import home from '../../assets/images/icons/light/home.svg';
+import rightArrow from '../../assets/images/icons/light/chevron-right.svg';
 import { NavLink, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 
-import { Icon } from '../icon/Icon';
+const getActiveLink = ({ isActive }: { isActive: boolean }) =>
+  cn(style.path__direction, {
+    [style['path__direction--active']]: isActive,
+  });
 
-import styles from './Breadcrumbs.module.scss';
-
-interface Props {
+type Props = {
   name?: string | undefined;
-}
+};
 
-export const Breadcrumbs: FC<Props> = ({ name }) => {
-  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-    cn(styles.path__category, {
-      [styles['path__category--active']]: isActive,
-    });
-
+export const Breadcrumbs: React.FC<Props> = ({ name }) => {
   const category = useLocation().pathname.split('/').slice(1, 2).join();
 
   return (
-    <div className={styles.path}>
+    <div className={style.path}>
       <NavLink
         to="/"
-        className={styles.path__link}>
-        <Icon.Home className={styles.path__home} />
+        className={style.path__link}>
+        <img
+          src={home}
+          className={style.path__home}
+        />
       </NavLink>
-
-      <Icon.ChevronRight className={styles.path__arrow} />
-
+      <img
+        src={rightArrow}
+        className={style.path__arrow}
+      />
       <NavLink
         to={`/${category}`}
-        className={getLinkClass}>
+        relative="path"
+        className={getActiveLink}>
         {category}
       </NavLink>
-
       {name && (
         <>
-          <Icon.ChevronRight className={styles.path__arrow} />
-          <p className={styles.path__name}>{name}</p>
+          <img
+            src={rightArrow}
+            className={style.path__arrow}
+          />
+          <p className={style.path__product}>{name}</p>
         </>
       )}
     </div>

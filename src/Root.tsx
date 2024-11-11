@@ -1,14 +1,13 @@
-import { FC } from 'react';
-import { HashRouter, Route, Routes } from 'react-router-dom';
-import { Main } from './pages/Main/Main';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { App } from './App';
-import { Wishlist } from './pages/Wishlist/Wishlist';
-import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
-import { Cart } from './pages/Cart/Cart';
-import { Catalog } from './pages/Catalog/Catalog';
-import { CategoryType } from './types/CategoryType';
+import { HomePage } from './pages/HomePage';
+import { NotFoundPage } from './pages/NotFoundPage';
+import { FavouritesPage } from './pages/FavouritesPage';
+import { CartPage } from './pages/CartPage';
+import { CatalogPage } from './pages/CatalogPage/CatalogPage';
+import { ItemCardPage } from './pages/ItemCardPage/ItemCardPage';
 
-export const Root: FC = () => (
+export const Root = () => (
   <HashRouter>
     <Routes>
       <Route
@@ -16,28 +15,55 @@ export const Root: FC = () => (
         element={<App />}>
         <Route
           index
-          element={<Main />}
+          element={<HomePage />}
         />
-
+        <Route
+          path="home"
+          element={
+            <Navigate
+              to={'/'}
+              replace
+            />
+          }
+        />
         <Route path="phones">
           <Route
             index
-            element={<Catalog category={CategoryType.Phones} />}
+            element={<CatalogPage category="phones" />}
           />
-          {/* <Route
-            path=":slug"
-            element={}
-          /> */}
+          <Route
+            path={':productId'}
+            element={<ItemCardPage />}
+          />
+        </Route>
+        <Route path="tablets">
+          <Route
+            index
+            element={<CatalogPage category="tablets" />}
+          />
+          <Route
+            path={':productId'}
+            element={<ItemCardPage />}
+          />
+        </Route>
+        <Route path="accessories">
+          <Route
+            index
+            element={<CatalogPage category="accessories" />}
+          />
+          <Route
+            path={':productId'}
+            element={<ItemCardPage />}
+          />
         </Route>
 
         <Route
-          path="favorites"
-          element={<Wishlist />}
+          path="favourites"
+          element={<FavouritesPage />}
         />
-
         <Route
           path="cart"
-          element={<Cart />}
+          element={<CartPage />}
         />
 
         <Route

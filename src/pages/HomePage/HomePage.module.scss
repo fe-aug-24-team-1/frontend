@@ -1,0 +1,39 @@
+@import '../../styles/index.scss';
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+  }
+
+  .title {
+    @include content-padding-inline;
+
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
+    margin-block: 24px;
+
+    @include on-tablet {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 56px;
+      letter-spacing: -0.01em;
+
+      margin-block: 32px;
+    }
+
+    @include on-desktop {
+      margin-block: 56px;
+    }
+  }
+}

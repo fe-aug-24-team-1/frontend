@@ -7,7 +7,7 @@
   object-fit: cover;
 
   @include on-tablet {
-    max-width: 324px;
+    max-height: 324px;
     object-fit: contain;
     padding-inline: 75px;
     display: flex;
@@ -25,10 +25,10 @@
   margin-top: 36px;
 }
 
-.slider__button--next,
-.slider__button--prev {
-  // background-color: $hover-and-bg;
-  border: 1px solid var(--color-primary);
+.swiperButtonNext,
+.swiperButtonPrev {
+  background-color: #fafbfc;
+  border: 1px solid var(--color-icons);
   width: 32px;
   height: 80%;
   border-radius: 48px;
@@ -42,9 +42,9 @@
   transform: translateY(-50%);
   z-index: 10;
 
-  // @include hover {
-  //   background-color: rgba(0, 0, 0, 0.8);
-  // }
+  @include hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 
   @include on-desktop {
     top: 210px;
@@ -52,18 +52,18 @@
   }
 }
 
-.slider__button--next {
+.swiperButtonNext {
   right: 24px;
   background-image: url(../../assets/img/icons/arrow-right.svg);
   background-repeat: no-repeat;
   background-position: center;
-  // color: $primary;
+  color: var(--color-primary);
 }
 
-.slider__button--prev {
+.swiperButtonPrev {
   background-image: url(../../assets/img/icons/arrow-left.svg);
   background-repeat: no-repeat;
   background-position: center;
-  // color: $primary;
+  color: var(--color-primary);
   left: 24px;
 }

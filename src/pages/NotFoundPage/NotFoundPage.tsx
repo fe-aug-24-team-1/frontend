@@ -1,28 +1,24 @@
-import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
+import notFoundPage from '/img/page-not-found.png';
+import style from './NotFoundPage.module.scss';
 
-import styles from './NotFoundPage.module.scss';
-
-import notFoundImg from '/img/page-not-found.png';
-
-export const NotFoundPage: FC = () => {
+export const NotFoundPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className={styles.page}>
-      <h1 className={styles.page__title}>NotFoundPage</h1>
-
-      <img
-        src={notFoundImg}
-        className={styles.page__img}
-      />
-
+    <div className={style.pageNotFound}>
+      <h1 className={style.pageNotFound__title}>Page not found =(</h1>
       <button
         type="button"
-        className={styles.page__button}
-        onClick={() => navigate('/')}>
+        className={style.pageNotFound__button}
+        onClick={() => navigate('/home')}>
         Go to Home Page
       </button>
+      <img
+        src={notFoundPage}
+        alt="Empty Cart"
+        className={style.pageNotFound__img}
+      />
     </div>
   );
 };
