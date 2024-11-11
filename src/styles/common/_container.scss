@@ -1,0 +1,14 @@
+.container {
+  width: 100vw;
+  margin: 0 auto;
+  padding: 0 17px;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    width: calc(2 * 31px + 1136px);
+    padding: 0 31px;
+  }
+}

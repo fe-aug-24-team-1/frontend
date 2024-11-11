@@ -1,18 +1,31 @@
 import { Outlet } from 'react-router-dom';
-import './App.scss';
-// import { Header } from './modules/shared/Header';
-// import { Footer } from './modules/shared/Footer';
+import { FC, useState } from 'react';
+import { Header } from './widgets/Header/Header';
+import '@/app/i18n';
+import { BurgerMenu } from './components/BurgerMenu';
 
-export const App = () => {
+export const App: FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div>
-      {/* <Header /> */}
+      {isOpen ? (
+        <aside>
+          <BurgerMenu
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+          />
+        </aside>
+      ) : (
+        <Header
+          setIsOpen={setIsOpen}
+          isOpen={isOpen}
+        />
+      )}
 
       <main className="App__main">
         <Outlet />
       </main>
-
-      {/* <Footer /> */}
     </div>
   );
 };
