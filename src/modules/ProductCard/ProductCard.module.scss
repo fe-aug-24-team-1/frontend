@@ -137,19 +137,23 @@
       border: 1px solid var(--color-icons);
       border-radius: 48px;
       cursor: pointer;
-      background-image: url(../../assets/img/icons/like.svg);
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 16px;
+      // background-image: url(../../assets/img/icons/like.svg);
+      // background-repeat: no-repeat;
+      // background-position: center;
+      // background-size: 16px;
       width: 40px;
       height: 40px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       @include hover {
         border: 1px solid var(--color-primary);
       }
 
       &--active {
-        background-image: url(../../assets/img/icons/like-active.svg);
+        // background-image: url(../../assets/img/icons/like-active.svg);
       }
     }
   }

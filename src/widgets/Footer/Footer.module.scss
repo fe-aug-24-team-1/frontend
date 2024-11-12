@@ -89,14 +89,18 @@
     }
 
     &__button {
-      background-image: url(../../assets/img/icons/arrow-up.svg);
-      background-repeat: no-repeat;
-      background-position: center;
+      // background-image: url(../../assets/img/icons/arrow-up.svg);
+      // background-repeat: no-repeat;
+      // background-position: center;
       height: 32px;
       width: 32px;
       padding: 8px;
       border: 1px solid var(--color-icons);
       border-radius: 48px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }

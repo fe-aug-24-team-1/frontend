@@ -2,6 +2,7 @@ import style from './Footer.module.scss';
 import logo from '/logo.svg';
 import { NavLink } from 'react-router-dom';
 import { FC } from 'react';
+import { Icon } from '@/components/icon/Icon';
 
 const navigation = [
   {
@@ -49,7 +50,9 @@ export const Footer: FC = () => {
         className={style.backToTop}
         onClick={() => window.scrollTo({ top: 0 })}>
         <p className={style.backToTop__text}>Back to top</p>
-        <div className={style.backToTop__button} />
+        <div className={style.backToTop__button}>
+          <Icon.ChevronUp />
+        </div>
       </button>
     </footer>
   );
