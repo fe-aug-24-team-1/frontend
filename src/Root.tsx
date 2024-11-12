@@ -21,7 +21,7 @@ export const Root = () => (
           path="home"
           element={
             <Navigate
-              to={'/'}
+              to="/"
               replace
             />
           }

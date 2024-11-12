@@ -82,13 +82,6 @@ export const Aside: React.FC<Props> = ({ isMenuActive, setIsMenuActive }) => {
               onClick={() => setIsMenuActive(false)}
             />
           </div>
-
-          <div className={style.close}>
-            <AiOutlineClose
-              className={style.close__icon}
-              onClick={() => setIsMenuActive(false)}
-            />
-          </div>
         </div>
       </div>
 
