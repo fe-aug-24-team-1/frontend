@@ -1,13 +1,17 @@
-import style from './ProductSlider.module.scss';
 import { ProductCard } from '../ProductCard';
-import React, { useEffect, useRef, useState } from 'react';
-import cn from 'classnames';
+import React, { useEffect, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { getVisibleProducts } from '../../utils/getVisibleProducts';
-import { Product } from '../../types/Product';
+import { getVisibleProducts } from '@/utils/getVisibleProducts.ts';
+import { Product } from '@/types/Product.ts';
 import { useAppSelector } from '@/app/store/hooks';
+import { SwiperButton } from '@/components/SwiperButton';
 
-type ScrollValues = 228 | 261 | 304;
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import 'swiper/scss';
+
+import styles from './ProductSlider.module.scss';
 
 type Props = {
   title: string;
@@ -16,11 +20,6 @@ type Props = {
 };
 
 export const ProductSlider: React.FC<Props> = ({ title, discount, random }) => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [scrollValue, setScrollValue] = useState<ScrollValues>(228);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-
   const { products } = useAppSelector((state) => state.products);
 
   const [visibleList, setVisibleList] = useState<Product[]>([]);
@@ -31,84 +30,56 @@ export const ProductSlider: React.FC<Props> = ({ title, discount, random }) => {
     setVisibleList(newList);
   }, [discount, products, random]);
 
-  useEffect(() => {
-    const getScrollValue = () => {
-      if (window.innerWidth > 639) {
-        setScrollValue(261);
-      }
+  const [progressSwiper, setProgressSwiper] = useState(0);
 
-      if (window.innerWidth > 1200) {
-        setScrollValue(304);
-      }
-    };
-
-    getScrollValue();
-    window.addEventListener('resize', getScrollValue);
-
-    return () => window.removeEventListener('resize', getScrollValue);
-  }, []);
-
-  useEffect(() => {
-    const currentRef = scrollRef.current;
-    const updateScrollArrows = () => {
-      if (currentRef) {
-        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-
-        setCanScrollLeft(scrollLeft > 0);
-        setCanScrollRight(scrollLeft + clientWidth < scrollWidth);
-      }
-    };
-
-    updateScrollArrows();
-    if (currentRef) {
-      currentRef.addEventListener('scroll', updateScrollArrows);
-    }
-
-    return () => currentRef?.removeEventListener('scroll', updateScrollArrows);
-  }, []);
-
-  const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: scrollValue });
-    }
-  };
-
-  const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -scrollValue });
-    }
+  const handleProgress = (progress: number) => {
+    setProgressSwiper(progress);
   };
 
   return (
-    <section className={style.productSlider}>
-      <div className={style.productSlider__header}>
-        <h2 className={style.title}>{title}</h2>
-        <div className={style.arrows}>
-          <div
-            className={cn(style.arrows__left, {
-              [style['arrows__left--active']]: canScrollLeft,
-            })}
-            onClick={scrollLeft}
-          />
-          <div
-            className={cn(style.arrows__right, {
-              [style['arrows__right--active']]: canScrollRight,
-            })}
-            onClick={scrollRight}
-          />
+    <div className="container">
+      <Swiper
+        slidesPerView="auto"
+        spaceBetween={16}
+        onProgress={(_, progress) => {
+          handleProgress(progress);
+        }}
+        breakpoints={{
+          1200: {
+            slidesPerView: 4,
+          },
+          630: {
+            slidesPerView: 'auto',
+          },
+          320: {
+            slidesPerView: 'auto',
+          },
+        }}
+        className={styles[`swiper`]}>
+        <div
+          className={styles[`swiper__top`]}
+          slot="container-start">
+          <p className={styles[`swiper__title`]}>{title}</p>
+          <div className={styles[`swiper__buttons`]}>
+            <SwiperButton
+              direction={'left'}
+              disabled={progressSwiper === 0}
+            />
+            <SwiperButton
+              direction={'right'}
+              disabled={progressSwiper === 1}
+            />
+          </div>
         </div>
-      </div>
-      <div
-        className={style.productCard}
-        ref={scrollRef}>
-        {visibleList?.map((prod) => (
-          <ProductCard
+
+        {visibleList.map((prod) => (
+          <SwiperSlide
             key={prod.id}
-            prod={prod}
-            discount={discount}
-          />
+            className={styles[`swiper__slide`]}>
+            <ProductCard prod={prod} />
+          </SwiperSlide>
         ))}
-      </div>
-    </section>
+      </Swiper>
+    </div>
   );
 };
