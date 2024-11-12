@@ -1,47 +1,78 @@
-import React from 'react';
+import { Product } from '@/types/Product';
+import { FC } from 'react';
+import { NavLink } from 'react-router-dom';
+
 import styles from './ProductCard.module.scss';
-import { TypePhone } from '@/types/TypePhone.ts';
-import { Button } from '@/components/Button';
-import { FavoriteButton } from '@/components/FavoriteButton/FavoriteButton.tsx';
-import { PhoneCardSpecs } from '@/components/PhoneCardSpecs/PhoneCardSpecs.tsx';
+import cn from 'classnames';
+import { useAppDispatch } from '@/app/store/hooks';
+import { addToCart } from '@/features/cart/cartSlice';
 
 interface Props {
-  product: TypePhone;
+  product?: Product;
+  discount?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: FC<Props> = ({ product, discount }) => {
+  const specs = [
+    { key: 'Screen', value: product?.screen },
+    { key: 'Capacity', value: product?.capacity },
+    { key: 'Ram', value: product?.ram },
+  ];
+
+  const dispatch = useAppDispatch();
+
   return (
-    <div className={styles.product}>
-      <img
-        className={styles[`product__image`]}
-        alt={product.name}
-        src={product.images[0]}
-      />
+    <article className={styles.card}>
+      <NavLink
+        to={`${product?.category}/${product?.itemId}`}
+        className={styles.img__link}>
+        <img
+          src={product?.image}
+          className={styles.img}
+        />
+      </NavLink>
 
-      <p className={styles[`product__name`]}>{product.name}</p>
+      <NavLink
+        to={`${product?.category}/${product?.itemId}`}
+        className={styles.title}>
+        {product?.name}
+      </NavLink>
 
-      <div
-        title="Product prices"
-        className={styles[`product__prices`]}>
-        <span className={styles[`product__prices--current`]}>
-          {`$${product.priceDiscount}`}
-        </span>
-        <span className={styles[`product__prices--regular`]}>
-          {`$${product.priceRegular}`}
-        </span>
+      <div className={styles.price}>
+        <div className={styles.price__actual}>
+          ${discount ? product?.price : product?.fullPrice}
+        </div>
+        {product?.fullPrice && discount && (
+          <div className={styles.price__old}>${product.fullPrice}</div>
+        )}
       </div>
 
-      <div className={styles[`product__decorative-line`]}></div>
+      <div className={styles.divider} />
 
-      <div className={styles[`product__specs`]}>
-        {product.category === 'phones' && <PhoneCardSpecs product={product} />}
+      <div className={styles.specs}>
+        {specs.map(({ key, value }) => (
+          <div className={styles.specs__item}>
+            <div className={styles.specs__key}>{key}</div>
+            <div className={styles.specs__value}>{value}</div>
+          </div>
+        ))}
       </div>
 
-      <div className={styles[`product__buttons-container`]}>
-        <Button />
+      <div className={styles.buttons__container}>
+        <button
+          className={cn(styles.buttons__add, {
+            [styles['buttons__add--active']]: true,
+          })}
+          onClick={() => dispatch(addToCart(product))}>
+          Add to cart
+        </button>
 
-        <FavoriteButton />
+        <div
+          className={cn(styles.buttons__like, {
+            [styles['buttons__like--active']]: true,
+          })}
+        />
       </div>
-    </div>
+    </article>
   );
 };

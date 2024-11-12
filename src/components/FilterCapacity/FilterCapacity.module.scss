@@ -1,0 +1,32 @@
+@import '../../styles/index.scss';
+
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  &__cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: black;
+
+    width: 63px;
+    height: 32px;
+
+    border: 1px solid var(--color-elements);
+    border-radius: 4px;
+
+    &--active {
+      background-color: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #fff;
+    }
+
+    &:hover {
+      border-color: var(--color-icons);
+      cursor: pointer;
+    }
+  }
+}

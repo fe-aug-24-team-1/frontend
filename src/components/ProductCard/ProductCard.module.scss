@@ -1,106 +1,139 @@
-@import '@/styles/index.scss';
+@import '../../styles/index.scss';
 
-.product {
+.card {
+  padding: 32px;
+  border: 1px solid var(--color-elements);
+  border-radius: 8px;
+  background-color: var(--color-white);
   display: flex;
   flex-direction: column;
   gap: 8px;
-  border: 1px solid var(--color-elements);
-  padding: 32px;
-  border-radius: 8px;
-  background-color: var(--color-white);
 
-  transition: box-shadow $effect-duration, transform $effect-duration;
-
-  &:hover {
-    box-shadow: 0 2px 16px 0 #0000001A;
-    transform: scale(1.1);
+  @include hover {
+    box-shadow: 0 2px 16px 0 #0000001a;
   }
 
-  &__image {
-    display: block;
-    margin: 0 auto;
-    height: 100%;
-    flex-grow: 1;
-    width: 100%;
-    object-fit: scale-down;
+  .img {
+    height: 148px;
+    width: 129px;
+    margin: auto;
+    cursor: pointer;
+    object-fit: contain;
+
+    &__link {
+      display: flex;
+    }
+
+    @include on-tablet {
+      height: 202px;
+      width: 173px;
+    }
+
+    @include on-desktop {
+      height: 208px;
+      width: 196px;
+    }
+
+    @include hover {
+      transform: scale(1.1);
+      // z-index: 5;
+    }
   }
 
-  &__name {
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--color-primary);
+  .title {
+    padding-top: 16px;
+    height: 60px;
+    cursor: pointer;
+
+    @include hover {
+      color: #78787a;
+    }
   }
 
-  &__prices {
+  .price {
     display: flex;
+    align-items: center;
     gap: 8px;
 
-    &--current {
-      font-weight: 800;
-      font-size: 22px;
-      color: var(--color-primary);
+    &__actual {
     }
 
-    &--regular {
+    &__old {
+      font-size: 22px;
       font-weight: 600;
-      font-size: 22px;
+      line-height: 28.12px;
       color: var(--color-secondary);
-      position: relative;
-      isolation: isolate;
-
-      &::after {
-        content: '';
-        height: 2px;
-        width: 102%;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: var(--color-secondary);
-        mix-blend-mode: color-dodge;
-        left: -1%;
-      }
+      text-decoration: line-through;
     }
-
   }
 
-  &__specs {
-    padding: 8px 0;
+  .divider {
+    border: 1px solid var(--color-elements);
+  }
+
+  .specs {
+    padding-block: 8px;
     display: flex;
     flex-direction: column;
     gap: 8px;
 
-    &-container {
+    &__item {
       display: flex;
       justify-content: space-between;
     }
 
-    &-name {
-      font-size: 12px;
+    &__key {
+      font-weight: 700;
       color: var(--color-secondary);
-      font-weight: 700;
     }
 
-    &-value {
-      font-size: 12px;
+    &__value {
       font-weight: 700;
-      color: var(--color-primary);
-
     }
   }
 
-  &__decorative-line {
-    height: 1px;
-    width: 100%;
-    background-color: var(--color-elements);
-  }
-
-  &__buttons-container {
+  .buttons {
     display: flex;
     justify-content: space-between;
     gap: 8px;
+
+    &__add {
+      color: var(--color-white);
+      background-color: var(--color-accent);
+      border-radius: 48px;
+      padding: 9.5px 0;
+      width: 75%;
+      cursor: pointer;
+
+      @include hover {
+        box-shadow: 0 3px 13px 0 #17203166;
+      }
+
+      &--active {
+        border: 1px solid var(--color-elements);
+        color: var(--color-accent);
+        background-color: var(--color-secondary);
+      }
+    }
+
+    &__like {
+      border: 1px solid var(--color-secondary);
+      border-radius: 50%;
+      cursor: pointer;
+      background-image: url(../../assets/images/icons/light/favourites.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 16px;
+      width: 40px;
+      height: 40px;
+
+      @include hover {
+        border: 1px solid var(--color-primary);
+      }
+
+      &--active {
+        background-image: url(../../assets/images/icons/light/favourites-filled.svg);
+      }
+    }
   }
-
 }
-
-
-

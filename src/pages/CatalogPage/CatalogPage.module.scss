@@ -1,0 +1,162 @@
+@import '../../styles/index.scss';
+
+.catalogPage {
+  @include page-grid;
+  @include content-padding-inline;
+
+  .breadcrumbs {
+    grid-column: 1 / -1;
+    padding-right: 0;
+  }
+
+  .title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
+    grid-column: 1 / -1;
+    text-transform: capitalize;
+
+    @include on-tablet {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 56px;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  .countModels {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    margin-bottom: 32px;
+    color: var(--color-secondary);
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  .sortField {
+    grid-column: span 2;
+
+    &--1 {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+    }
+
+    &--2 {
+      @include on-tablet {
+        grid-column: span 3;
+      }
+    }
+  }
+
+  .query {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    margin-top: 12px;
+
+    @include on-tablet {
+      grid-column: -1 / -5;
+      margin-top: 0;
+    }
+
+    @include on-desktop {
+      grid-column: -1 / -8;
+    }
+
+    &__label {
+      margin-bottom: 4px;
+      font-weight: 700;
+      color: var(--color-secondary);
+    }
+
+    &__input {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+
+      padding: 12px;
+      background-color: inherit;
+      outline: none;
+      border: 1px solid var(--color-icons);
+      border-radius: 8px;
+
+      @include hover {
+        border: 1px solid var(--color-secondary);
+      }
+
+      &:focus {
+        border: 1px solid var(--color-primary);
+
+        @include hover {
+          border: 1px solid var(--color-primary);
+        }
+      }
+    }
+  }
+
+  .cards {
+    margin-top: 24px;
+    grid-column: 1 / -1;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(212px, 272px));
+    justify-content: center;
+    gap: 40px 16px;
+  }
+
+  .pagination {
+    margin-top: 40px;
+    grid-column: 1 / -1;
+  }
+
+  .noData {
+    padding: 12px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 40px;
+    grid-column: 1 / -1;
+  }
+
+  .error {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    background-color: rgb(251, 167, 167);
+    border-radius: 10px;
+    padding: 24px;
+
+    &__text {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+
+      display: block;
+    }
+
+    &__button {
+      padding: 9.5px;
+      background-color: var(--color-accent);
+      color: var(--color-white);
+      border: 1px solid var(--color-icons);
+      border-radius: 36px;
+      cursor: pointer;
+
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+    }
+  }
+}
