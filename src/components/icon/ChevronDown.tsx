@@ -1,10 +1,13 @@
 import { FC, useContext } from 'react';
 
+
 import { IconProps } from './types/IconProps';
 
 import chevronDownDark from '@/assets/images/icons/dark/chevron-down.svg';
 import chevronDownLight from '@/assets/images/icons/light/chevron-down.svg';
+
 import { ThemeStateContext } from '@/app/providers/ThemeProvider/ThemeContext';
+
 
 export const ChevronDown: FC<IconProps> = ({ className }) => {
   const { theme } = useContext(ThemeStateContext);
