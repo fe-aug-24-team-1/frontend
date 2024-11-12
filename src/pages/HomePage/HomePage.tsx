@@ -2,17 +2,8 @@ import { CategoryShop } from '../../components/CategoryShop/CategoryShop';
 import { ProductSlider } from '../../modules/ProductSlider/ProductSlider';
 import { Slider } from '@/modules/Slider';
 import style from './HomePage.module.scss';
-import { useEffect } from 'react';
-import { useAppDispatch } from '@/app/store/hooks';
-import { getProducts } from '@/features/products/productsSlice';
 
 export const HomePage = () => {
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
-
   return (
     <div className={style.homePage}>
       <div className={style.header}>
