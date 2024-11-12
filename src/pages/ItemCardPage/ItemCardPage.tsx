@@ -17,6 +17,7 @@ import { colorMap } from '../../utils/colorMap';
 import { ProductSlider } from '../../modules/ProductSlider/ProductSlider';
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
 import { addToCart } from '@/features/cart/cartSlice';
+import { addToWishlist } from '@/features/wishlist/wishlistSlice';
 
 type ThumbsDirectionType = 'vertical' | 'horizontal';
 
@@ -88,6 +89,14 @@ export const ItemCardPage = () => {
     const newPath = splitedPath.join('-');
 
     navigate(newPath, { replace: true });
+  };
+
+  const handleLike = (product: Product) => {
+    dispatch(addToWishlist(product));
+  };
+
+  const getActiveLike = (product: Product) => {
+    return productsOfCart.some((item: Product) => item.id === product.id);
   };
 
   useEffect(() => {

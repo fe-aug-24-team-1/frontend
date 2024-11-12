@@ -4,14 +4,16 @@ import { Header } from './widgets/Header';
 import { Footer } from './widgets/Footer';
 import { FC } from 'react';
 
+import '@/app/i18n';
+
 export const App: FC = () => {
   return (
     <div className="App">
       <Header />
 
-      <div className="App__content">
+      <main className="App__content">
         <Outlet />
-      </div>
+      </main>
 
       <Footer />
     </div>

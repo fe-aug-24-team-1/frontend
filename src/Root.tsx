@@ -17,15 +17,17 @@ export const Root = () => (
           index
           element={<HomePage />}
         />
+
         <Route
           path="home"
           element={
             <Navigate
-              to={'/'}
+              to="/"
               replace
             />
           }
         />
+
         <Route path="phones">
           <Route
             index
@@ -36,6 +38,7 @@ export const Root = () => (
             element={<ItemCardPage />}
           />
         </Route>
+
         <Route path="tablets">
           <Route
             index
@@ -46,6 +49,7 @@ export const Root = () => (
             element={<ItemCardPage />}
           />
         </Route>
+
         <Route path="accessories">
           <Route
             index

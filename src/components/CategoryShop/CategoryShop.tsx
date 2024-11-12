@@ -7,7 +7,6 @@ import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '@/app/store/hooks';
 
 export const CategoryShop = () => {
-  // const { products } = useContext(ProductContext);
   const { products } = useAppSelector((state) => state.products);
 
   const countItemsByCategory = (category: string) => {
