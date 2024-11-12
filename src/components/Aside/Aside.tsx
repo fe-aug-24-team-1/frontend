@@ -1,8 +1,10 @@
 import cn from 'classnames';
 import style from './Aside.module.scss';
 import { NavLink } from 'react-router-dom';
-import { useEffect } from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
+import { useEffect, Dispatch, SetStateAction } from 'react';
 
+import logo from '/logo.svg';
 import like from '../../assets/images/icons/light/favourites.svg';
 import cartImg from '../../assets/images/icons/light/shopping-bag.svg';
 
@@ -25,13 +27,18 @@ const navItems = [
   { path: 'accessories', name: 'Accessories' },
 ];
 
-export const Aside: React.FC = () => {
+interface Props {
+  isMenuActive: boolean;
+  setIsMenuActive: Dispatch<SetStateAction<boolean>>;
+}
+
+export const Aside: React.FC<Props> = ({ isMenuActive, setIsMenuActive }) => {
   // const { isMenuActive, setIsMenuActive } = useContext(MenuContext);
   const { products } = useAppSelector((state) => state.wishlist);
   // const { productsOfCart, getLengthOfCart } = useContext(CartContext);
   const { productsOfCart } = useAppSelector((state) => state.cart);
 
-  const isMenuActive = false;
+  // const isMenuActive = false;
 
   const getLengthOfCart = () => {
     return productsOfCart.length;
@@ -40,7 +47,7 @@ export const Aside: React.FC = () => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 639 && isMenuActive) {
-        // setIsMenuActive(false); MUST BE FROM PROPS
+        setIsMenuActive(false); // MUST BE FROM PROPS
       }
     };
 
@@ -56,6 +63,35 @@ export const Aside: React.FC = () => {
       className={cn(style.menu, {
         [style['menu--active']]: isMenuActive,
       })}>
+      <div className={style['menu__top']}>
+        <NavLink
+          to="home"
+          className={style.logo__link}>
+          <img
+            src={logo}
+            alt="logo"
+            className={style.logo}
+            onClick={() => setIsMenuActive(false)}
+          />
+        </NavLink>
+
+        <div className={style.allTopIcons}>
+          <div className={style.close}>
+            <AiOutlineClose
+              className={style.close__icon}
+              onClick={() => setIsMenuActive(false)}
+            />
+          </div>
+
+          <div className={style.close}>
+            <AiOutlineClose
+              className={style.close__icon}
+              onClick={() => setIsMenuActive(false)}
+            />
+          </div>
+        </div>
+      </div>
+
       <nav className={style.nav}>
         <ul className={style.nav__list}>
           {navItems.map(({ path, name }) => (
@@ -65,20 +101,19 @@ export const Aside: React.FC = () => {
               <NavLink
                 to={path}
                 className={getActiveLink}
-                // onClick={() => setIsMenuActive(false)}
-              >
+                onClick={() => setIsMenuActive(false)}>
                 {name}
               </NavLink>
             </li>
           ))}
         </ul>
       </nav>
+
       <div className={style.menu__bottom}>
         <NavLink
           to={'favourites'}
           className={({ isActive }) => getActiveIcon({ isActive }, 'like')}
-          // onClick={() => setIsMenuActive(false)}
-        >
+          onClick={() => setIsMenuActive(false)}>
           <img
             src={like}
             className={style.menu__bottom__icon__img}
@@ -89,13 +124,11 @@ export const Aside: React.FC = () => {
             </span>
           )}
         </NavLink>
+
         <NavLink
-          to={'productsOfCart'}
-          className={({ isActive }) =>
-            getActiveIcon({ isActive }, 'productsOfCart')
-          }
-          // onClick={() => setIsMenuActive(false)}
-        >
+          to={'cart'}
+          className={({ isActive }) => getActiveIcon({ isActive }, 'cart')}
+          onClick={() => setIsMenuActive(false)}>
           <img
             src={cartImg}
             className={style.menu__bottom__icon__img}

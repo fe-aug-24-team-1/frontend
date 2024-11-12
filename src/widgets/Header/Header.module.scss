@@ -140,7 +140,7 @@
 
     cursor: pointer;
 
-    &:not(.topbar__iconContainer--active)::after {
+    &:not(.header__iconContainer--active)::after {
       content: '';
       height: 2.5px;
       background-color: var(--color-primary);
@@ -153,7 +153,7 @@
     }
 
     @include hover {
-      &:not(.topbar__burgerMenu)::after {
+      &:not(.header__burgerMenu)::after {
         width: 100%;
       }
     }
@@ -206,11 +206,22 @@
 
     @include on-tablet {
       position: relative;
-      display: block;
+      display: flex;
+
+      width: 48px;
+      height: 48px;
+    }
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
     }
   }
 
   &__burgerMenu {
+    width: 48px;
+    height: 48px;
+
     @include on-tablet {
       display: none;
     }

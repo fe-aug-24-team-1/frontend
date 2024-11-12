@@ -1,6 +1,6 @@
 import logo from '/logo.svg';
 import style from './Header.module.scss';
-import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import { AiOutlineMenu } from 'react-icons/ai';
 import like from '../../assets/images/icons/light/favourites.svg';
 import cartImg from '../../assets/images/icons/light/shopping-bag.svg';
 import { NavLink, useSearchParams } from 'react-router-dom';
@@ -15,8 +15,8 @@ const getActiveNavLink = ({ isActive }: { isActive: boolean }) =>
   });
 
 const getActiveIcon = ({ isActive }: { isActive: boolean }, iconName: string) =>
-  cn(style.topbar__iconContainer, style[`topbar__${iconName}`], {
-    [style['topbar__iconContainer--active']]: isActive,
+  cn(style.header__iconContainer, style[`header__${iconName}`], {
+    [style['header__iconContainer--active']]: isActive,
   });
 
 const navItems = [
@@ -40,75 +40,80 @@ export const Header: FC = () => {
 
   return (
     <>
-      <div className={style.header}>
-        <div className={style.header__left}>
-          <NavLink
-            to="home"
-            className={style.logo__link}>
-            <img
-              src={logo}
-              alt="logo"
-              className={style.logo}
-            />
-          </NavLink>
-          <nav className={style.nav}>
-            <ul className={style.nav__list}>
-              {navItems.map(({ path, name }) => (
-                <li
-                  key={name}
-                  className={style.nav__item}>
-                  <NavLink
-                    to={path + '?' + searchParams}
-                    className={getActiveNavLink}>
-                    {name}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
+      {isMenuActive ? (
+        <Aside
+          isMenuActive={isMenuActive}
+          setIsMenuActive={setIsMenuActive}
+        />
+      ) : (
+        <div className={style.header}>
+          <div className={style.header__left}>
+            <NavLink
+              to="home"
+              className={style.logo__link}>
+              <img
+                src={logo}
+                alt="logo"
+                className={style.logo}
+              />
+            </NavLink>
 
-        <div className={style.topbar__right}>
-          <NavLink
-            to={'favourites'}
-            className={({ isActive }) =>
-              getActiveIcon({ isActive }, 'iconLike')
-            }>
-            <img
-              src={like}
-              className={style.topbar__icon}
-            />
-            {!!products.length && (
-              <span className={style.topbar__count}>{products.length}</span>
-            )}
-          </NavLink>
+            <nav className={style.nav}>
+              <ul className={style.nav__list}>
+                {navItems.map(({ path, name }) => (
+                  <li
+                    key={name}
+                    className={style.nav__item}>
+                    <NavLink
+                      to={path + '?' + searchParams}
+                      className={getActiveNavLink}>
+                      {name}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
 
-          <NavLink
-            to={'cart'}
-            className={({ isActive }) =>
-              getActiveIcon({ isActive }, 'iconCart')
-            }>
-            <img
-              src={cartImg}
-              className={style.topbar__icon}
-            />
-            {!!productsOfCart.length && (
-              <span className={style.topbar__count}>{getLengthOfCart()}</span>
-            )}
-          </NavLink>
+          <div className={style.header__right}>
+            <NavLink
+              to={'favourites'}
+              className={({ isActive }) =>
+                getActiveIcon({ isActive }, 'iconLike')
+              }>
+              <img
+                src={like}
+                className={style.header__icon}
+              />
+              {!!products.length && (
+                <span className={style.header__count}>{products.length}</span>
+              )}
+            </NavLink>
 
-          <div
-            className={`${style.topbar__iconContainer} ${style.topbar__burgerMenu}`}
-            onClick={() => setIsMenuActive(!isMenuActive)}>
-            {isMenuActive ? (
-              <AiOutlineClose className={style.topbar__icon} />
-            ) : (
-              <AiOutlineMenu className={style.topbar__icon} />
-            )}
+            <NavLink
+              to={'cart'}
+              className={({ isActive }) =>
+                getActiveIcon({ isActive }, 'iconCart')
+              }>
+              <img
+                src={cartImg}
+                className={style.header__icon}
+              />
+              {!!productsOfCart.length && (
+                <span className={style.header__count}>{getLengthOfCart()}</span>
+              )}
+            </NavLink>
+
+            <div
+              className={`${style.header__iconContainer} ${style.header__burgerMenu}`}>
+              <AiOutlineMenu
+                className={style.header__icon}
+                onClick={() => setIsMenuActive(true)}
+              />
+            </div>
           </div>
         </div>
-      </div>
-      <Aside />
+      )}
     </>
   );
 };
