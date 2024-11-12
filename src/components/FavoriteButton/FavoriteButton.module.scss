@@ -14,8 +14,12 @@
   align-items: center;
   transition: $effect-duration;
 
+  &--checked {
+    background-image: url('../../assets/images/icons/favourites-filled.svg');
+  }
+
   &:hover {
-    border: 1px solid #0F0F11;
+    border: 1px solid #0f0f11;
   }
 
   &__icon {

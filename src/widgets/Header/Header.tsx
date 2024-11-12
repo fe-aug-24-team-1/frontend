@@ -94,19 +94,10 @@ export const Header: FC = () => {
 
         <div className={style.header__right}>
           <div className={style.header__iconContainer}>
-            {theme === 'light' ? (
-              <AiOutlineMoon
-                size={16}
-                onClick={toggleTheme}
-                className={style.header__icon}
-              />
-            ) : (
-              <AiOutlineSun
-                size={16}
-                onClick={toggleTheme}
-                className={style.header__icon}
-              />
-            )}
+            <Icon.Theme
+              className={style.header__icon}
+              onClick={toggleTheme}
+            />
           </div>
 
           <div
