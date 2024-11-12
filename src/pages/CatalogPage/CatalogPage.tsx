@@ -21,9 +21,9 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
 
   const { products, loaded, error } = useAppSelector((state) => state.products);
 
-  const sort = searchParams.get('sort' || '');
-  const perPage = searchParams.get('perPage' || '');
-  const query = searchParams.get('query' || '');
+  const sort = searchParams.get('sort') || '';
+  const perPage = searchParams.get('perPage') || '';
+  const query = searchParams.get('query') || '';
 
   const [currentPage, setCurrentPage] = useState(1);
 

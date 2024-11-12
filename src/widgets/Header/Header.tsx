@@ -40,10 +40,10 @@ export const Header: FC = () => {
 
   return (
     <>
-      <div className={style.topbar}>
-        <div className={style.topbar__left}>
+      <div className={style.header}>
+        <div className={style.header__left}>
           <NavLink
-            to={'home'}
+            to="home"
             className={style.logo__link}>
             <img
               src={logo}

@@ -1,45 +1,46 @@
+import { Product } from '@/types/Product';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface Phone {
-  id: string;
-  category: string;
-  namespaceId: string;
-  name: string;
-  capacityAvailable: '64GB' | '128GB' | '256GB';
-  capacity: string;
-  priceRegular: number;
-  priceDiscount: number;
-  colorsAvailable: 'black' | 'green' | 'yellow' | 'white' | 'purple' | 'red';
-  color: 'black';
-  images: string[];
-  description: [
-    {
-      title: string;
-      text: string[];
-    },
-    {
-      title: string;
-      text: string[];
-    },
-    {
-      title: string;
-      text: string[];
-    },
-  ];
-  screen: string;
-  resolution: string;
-  processor: string;
-  ram: string;
-  camera: string;
-  zoom: string;
-  cell: 'GPRS' | 'EDGE' | 'WCDMA' | 'UMTS' | 'HSPA' | 'LTE';
+// interface Phone {
+//   id: string;
+//   category: string;
+//   namespaceId: string;
+//   name: string;
+//   capacityAvailable: '64GB' | '128GB' | '256GB';
+//   capacity: string;
+//   priceRegular: number;
+//   priceDiscount: number;
+//   colorsAvailable: 'black' | 'green' | 'yellow' | 'white' | 'purple' | 'red';
+//   color: 'black';
+//   images: string[];
+//   description: [
+//     {
+//       title: string;
+//       text: string[];
+//     },
+//     {
+//       title: string;
+//       text: string[];
+//     },
+//     {
+//       title: string;
+//       text: string[];
+//     },
+//   ];
+//   screen: string;
+//   resolution: string;
+//   processor: string;
+//   ram: string;
+//   camera: string;
+//   zoom: string;
+//   cell: 'GPRS' | 'EDGE' | 'WCDMA' | 'UMTS' | 'HSPA' | 'LTE';
 
-  // refactor type to Product
-  quantity: number;
-}
+//   // refactor type to Product
+//   quantity: number;
+// }
 
 interface InitialState {
-  productsOfCart: Phone[];
+  productsOfCart: Product[];
 }
 
 const initialState: InitialState = {
@@ -50,7 +51,7 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<Phone>) => {
+    addToCart: (state, action: PayloadAction<Product>) => {
       const { id } = action.payload;
 
       const isProductExist = state.productsOfCart.find(

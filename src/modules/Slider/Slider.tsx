@@ -4,7 +4,7 @@ import slider2 from '../../assets/images/slider/slider-2.png';
 import slider3 from '../../assets/images/slider/slider-3.png';
 import style from './Slider.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import { Pagination, Autoplay, Navigation, Thumbs } from 'swiper/modules';
 import 'swiper/scss';
 import 'swiper/scss/pagination';

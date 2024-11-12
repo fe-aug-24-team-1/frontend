@@ -2,7 +2,7 @@ import { Product } from '../types/Product';
 
 export const getSortedList = (
   sortingArray: Product[],
-  sortParams: string | null,
+  sortParams: string | null
 ) => {
   switch (sortParams) {
     case 'Alphabetically':

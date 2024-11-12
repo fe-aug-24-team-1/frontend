@@ -11,7 +11,7 @@ export const HomePage = () => {
 
   useEffect(() => {
     dispatch(getProducts());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={style.homePage}>

@@ -38,17 +38,17 @@ export const ItemCardPage = () => {
     }
   );
 
-  const { products } = useAppSelector((state) => state.wishlist);
+  // const { products } = useAppSelector((state) => state.wishlist);
 
   const dispatch = useAppDispatch();
 
   const { productsOfCart } = useAppSelector((state) => state.cart);
 
-  const getActiveButton = (product) => {
+  const getActiveButton = (product: Product) => {
     return productsOfCart.some((item) => product.id === item.id);
   };
 
-  const handleAddButton = (product) => {
+  const handleAddButton = (product: Product) => {
     if (getActiveButton(product)) {
       dispatch(addToCart(product));
     }
@@ -116,6 +116,7 @@ export const ItemCardPage = () => {
     return () => window.removeEventListener('resize', getWidth);
   }, []);
 
+  // eslint-disable-next-line no-unsafe-optional-chaining
   const images = currentProduct ? [...currentProduct?.images] : null;
 
   return (

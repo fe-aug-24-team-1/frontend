@@ -1,35 +1,14 @@
-import {
-  createContext,
-  Dispatch,
-  FC,
-  ReactNode,
-  useEffect,
-  useState,
-} from 'react';
-
-interface State {
-  theme: 'light' | 'dark';
-}
-
-interface Action {
-  toggleTheme: () => void;
-}
-
-const initialState: State = {
-  theme: 'light',
-};
-
-export const ThemeStateContext = createContext<State>(initialState);
-export const ThemeDispatchContext = createContext<Dispatch<Action>>(() => {});
-
-interface Props {
-  children: ReactNode;
-}
+import { FC, ReactNode, useEffect, useState } from 'react';
+import { ThemeDispatchContext, ThemeStateContext } from './ThemeContext';
 
 const getStoredTheme = (): 'light' | 'dark' => {
   const storedTheme = localStorage.getItem('theme');
   return storedTheme === 'light' ? 'dark' : 'light';
 };
+
+interface Props {
+  children: ReactNode;
+}
 
 export const ThemeProvider: FC<Props> = ({ children }) => {
   const [theme, setTheme] = useState<'light' | 'dark'>(getStoredTheme());

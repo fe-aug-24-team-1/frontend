@@ -4,7 +4,7 @@ import { getShuffledArray } from './getShuffledArray';
 export const getVisibleProducts = (
   products: Product[],
   discount: boolean,
-  random: boolean,
+  random: boolean
 ) => {
   if (!products.length) {
     return [];
@@ -26,11 +26,11 @@ export const getVisibleProducts = (
     }
 
     return [...products]
-      .filter(item => item.year === lastYearProduction)
+      .filter((item) => item.year === lastYearProduction)
       .sort((a, b) => b.fullPrice - a.fullPrice);
   }
 
   return [...products]
     .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
-    .filter(item => item.fullPrice - item.price >= 100);
+    .filter((item) => item.fullPrice - item.price >= 100);
 };

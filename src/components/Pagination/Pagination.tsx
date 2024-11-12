@@ -68,13 +68,13 @@ export const Pagination: React.FC<Props> = ({
         pageNumbers.push('...');
       } else if (currentPage > totalPages - 5) {
         pageNumbers.push('...');
-        getNumbers(totalPages - 6, totalPages - 1).map(num =>
-          pageNumbers.push(num),
+        getNumbers(totalPages - 6, totalPages - 1).map((num) =>
+          pageNumbers.push(num)
         );
       } else {
         pageNumbers.push('...');
-        getNumbers(currentPage - 2, currentPage + 2).map(num =>
-          pageNumbers.push(num),
+        getNumbers(currentPage - 2, currentPage + 2).map((num) =>
+          pageNumbers.push(num)
         );
         pageNumbers.push('...');
       }
@@ -84,8 +84,8 @@ export const Pagination: React.FC<Props> = ({
         pageNumbers.push('...');
       } else if (currentPage > totalPages - 2) {
         pageNumbers.push('...');
-        getNumbers(totalPages - 2, totalPages - 1).map(num =>
-          pageNumbers.push(num),
+        getNumbers(totalPages - 2, totalPages - 1).map((num) =>
+          pageNumbers.push(num)
         );
       } else {
         pageNumbers.push('...', currentPage, '...');
@@ -115,8 +115,7 @@ export const Pagination: React.FC<Props> = ({
               [style['number--notEmpty']]: page !== '...',
               [style['number--active']]: currentPage === page,
             })}
-            onClick={() => page === +page && onPageChange(page)}
-          >
+            onClick={() => page === +page && onPageChange(page)}>
             {page === '...' ? <span>...</span> : page}
           </li>
         ))}

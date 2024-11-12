@@ -1,8 +1,8 @@
 import style from './ProductSlider.module.scss';
 import { ProductCard } from '../ProductCard';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
-// import { ProductContext } from '../../store/ProductProvider';
+
 import { getVisibleProducts } from '../../utils/getVisibleProducts';
 import { Product } from '../../types/Product';
 import { useAppSelector } from '@/app/store/hooks';
@@ -20,7 +20,7 @@ export const ProductSlider: React.FC<Props> = ({ title, discount, random }) => {
   const [scrollValue, setScrollValue] = useState<ScrollValues>(228);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-  // const { products } = useContext(ProductContext);
+
   const { products } = useAppSelector((state) => state.products);
 
   const [visibleList, setVisibleList] = useState<Product[]>([]);
