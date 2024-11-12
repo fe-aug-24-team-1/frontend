@@ -4,7 +4,6 @@ import {
   AiOutlineMenu,
   AiOutlineClose,
   AiOutlineSun,
-  AiOutlineMore,
   AiOutlineMoon,
 } from 'react-icons/ai';
 // import like from '../../assets/images/icons/light/favourites.svg';
