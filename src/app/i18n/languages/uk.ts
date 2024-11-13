@@ -101,8 +101,8 @@ export const uk = {
   cartPage: {
     back: 'Назад',
     title: {
-      text: 'Корзина',
-      empty: 'Корзина порожня',
+      text: 'Кошик',
+      empty: 'Кошик порожній',
     },
     total: {
       checkout: 'Сплатити',

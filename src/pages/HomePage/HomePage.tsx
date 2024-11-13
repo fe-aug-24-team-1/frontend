@@ -2,19 +2,22 @@ import { CategoryShop } from '../../components/CategoryShop/CategoryShop';
 import { ProductSlider } from '../../modules/ProductSlider/ProductSlider';
 import { Slider } from '@/modules/Slider';
 import style from './HomePage.module.scss';
+import { useTranslation } from 'react-i18next';
 
 export const HomePage = () => {
+  const { t } = useTranslation();
+
   return (
     <div className={style.homePage}>
       <div className={style.header}>
         <h1 style={{ visibility: 'hidden' }}>Product Catalog</h1>
-        <h2 className={style.title}>Welcome to Nice Gadgets store!</h2>
+        <h2 className={style.title}>{t('homePage.title')}</h2>
         <Slider />
       </div>
 
       <div className={style.brandNewModels}>
         <ProductSlider
-          title={'Brand new models'}
+          title={t('homePage.newModel')}
           discount={false}
           random={false}
         />
@@ -26,7 +29,7 @@ export const HomePage = () => {
 
       <div className={style.hotPrices}>
         <ProductSlider
-          title={'Hot prices'}
+          title={t('homePage.hotPrices')}
           discount={true}
           random={false}
         />

@@ -17,7 +17,7 @@ const initialState: InitialState = {
 export const getProducts = createAsyncThunk(
   'products/fetchProducts',
   async () => {
-    return await getData<Product[]>('/api/products.json');
+    return await getData<Product[]>('api/products.json');
   }
 );
 

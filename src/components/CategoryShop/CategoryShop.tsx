@@ -5,8 +5,11 @@ import accessories from '../../assets/images/categories/accessories.png';
 import { NavLink } from 'react-router-dom';
 
 import { useAppSelector } from '@/app/store/hooks';
+import { useTranslation } from 'react-i18next';
 
 export const CategoryShop = () => {
+  const { t } = useTranslation();
+
   const { products } = useAppSelector((state) => state.products);
 
   const countItemsByCategory = (category: string) => {
@@ -16,31 +19,39 @@ export const CategoryShop = () => {
   const categories = [
     {
       img: mobiles,
-      name: 'Mobile phones',
-      models: `${countItemsByCategory('phones').length} models`,
+      name: t('homePage.categories.category.phones'),
+      models: t('phonesPage.title.count', {
+        count: countItemsByCategory('phones').length,
+      }),
       href: 'phones',
     },
     {
       img: tablet,
-      name: 'Tablets',
-      models: `${countItemsByCategory('tablets').length} models`,
+      name: t('homePage.categories.category.tablets'),
+      models: t('tabletsPage.title.count', {
+        count: countItemsByCategory('tablets').length,
+      }),
       href: 'tablets',
     },
     {
       img: accessories,
-      name: 'Accessories',
-      models: `${countItemsByCategory('accessories').length} models`,
+      name: t('homePage.categories.category.accessories'),
+      models: t('accessoriesPage.title.count', {
+        count: countItemsByCategory('accessories').length,
+      }),
       href: 'accessories',
     },
   ];
 
   return (
     <section className={style.categoryShop}>
-      <h2 className={style.title}>Shop by category</h2>
+      <h2 className={style.title}>
+        {t('homePage.categories.categoriesTitle')}
+      </h2>
       <div className={style.content}>
         {categories.map(({ img, name, models, href }) => (
           <article
-            key={name}
+            key={href}
             className={style.article}>
             <NavLink to={href}>
               <img
