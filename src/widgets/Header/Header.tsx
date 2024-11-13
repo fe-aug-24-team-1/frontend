@@ -1,13 +1,6 @@
 import logo from '/logo.svg';
 import style from './Header.module.scss';
-import {
-  AiOutlineMenu,
-  AiOutlineClose,
-  AiOutlineSun,
-  AiOutlineMoon,
-} from 'react-icons/ai';
-// import like from '../../assets/images/icons/light/favourites.svg';
-// import cartImg from '../../assets/images/icons/light/shopping-bag.svg';
+import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 import { Aside } from '../../components/Aside';
@@ -17,10 +10,7 @@ import { Icon } from '@/components/icon/Icon';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { Lang } from '@/types/Lang';
-import {
-  ThemeDispatchContext,
-  ThemeStateContext,
-} from '@/app/providers/ThemeProvider/ThemeContext';
+import { ThemeDispatchContext } from '@/app/providers/ThemeProvider/ThemeContext';
 
 const getActiveNavLink = ({ isActive }: { isActive: boolean }) =>
   cn(style.nav__link, {
@@ -33,7 +23,7 @@ const getActiveIcon = ({ isActive }: { isActive: boolean }, iconName: string) =>
   });
 
 export const Header: FC = () => {
-  const [isMenuActive, setIsMenuActive] = useState(false); // REFACTOR FOR MARIA
+  const [isMenuActive, setIsMenuActive] = useState(false);
   const [searchParams] = useSearchParams();
 
   const { products } = useAppSelector((state) => state.wishlist);
@@ -55,7 +45,6 @@ export const Header: FC = () => {
     { path: 'accessories', name: t('header.nav.accessories') },
   ];
 
-  const { theme } = useContext(ThemeStateContext);
   const toggleTheme = useContext(ThemeDispatchContext);
 
   const getLengthOfCart = () => {
@@ -112,10 +101,6 @@ export const Header: FC = () => {
               getActiveIcon({ isActive }, 'iconLike')
             }>
             <Icon.Favorites className={style.header__icon} />
-            {/* <img
-              src={like}
-              className={style.header__icon}
-            /> */}
             {!!products.length && (
               <span className={style.header__count}>{products.length}</span>
             )}
@@ -127,10 +112,6 @@ export const Header: FC = () => {
               getActiveIcon({ isActive }, 'iconCart')
             }>
             <Icon.ShoppingBag className={style.header__icon} />
-            {/* <img
-              src={cartImg}
-              className={style.header__icon}
-            /> */}
             {!!productsOfCart.length && (
               <span className={style.header__count}>{getLengthOfCart()}</span>
             )}
