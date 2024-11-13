@@ -9,6 +9,11 @@ import { Phone } from '@/types/Phone';
 import { Tablet } from '@/types/Tablet';
 import { Accessory } from '@/types/Accessory';
 import { Breadcrumbs } from '../Breadcrumbs';
+import { useLocation } from 'react-router-dom';
+import { useAppDispatch } from '@/app/store/hooks';
+import { useEffect } from 'react';
+import { getCurrentProduct } from '@/features/currentProduct/currentProduct';
+import { CategoryType } from '@/types/CategoryType';
 
 type Props = {
   product: Phone | Tablet | Accessory;
@@ -21,6 +26,18 @@ export const ProductInfo: React.FC<Props> = ({
   ...props
 }) => {
   const { t } = useTranslation();
+
+  const location = useLocation();
+
+  const dispatch = useAppDispatch();
+
+  const [category, productId] = location.pathname
+    .split('/')
+    .filter((chunk) => chunk.length);
+
+  useEffect(() => {
+    dispatch(getCurrentProduct({ category, productId }));
+  }, [category, dispatch, productId]);
 
   return (
     <div
