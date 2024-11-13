@@ -1,7 +1,9 @@
 import React from 'react';
 
 import styles from './FavoriteButton.module.scss';
+
 import { CiHeart } from 'react-icons/ci';
+
 
 interface Props {
   isGoodInFavorite?: boolean;

@@ -2,10 +2,15 @@ import styles from './ProductCard.module.scss';
 import { Product } from '../../types/Product';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
+
 import { toggleWishListProduct } from '@/features/wishlist/wishlistSlice';
 import { addToCart, removeFormCart } from '@/features/cart/cartSlice';
 import { ButtonCommon } from '@/components/ButtonCommon';
 import { FavoriteButton } from '@/components/FavoriteButton/FavoriteButton.tsx';
+
+import { addToWishlist } from '@/features/wishlist/wishlistSlice';
+import { Icon } from '@/components/icon/Icon';
+
 
 type Props = {
   prod: Product;

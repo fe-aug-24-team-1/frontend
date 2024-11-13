@@ -1,11 +1,15 @@
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
+
 import { App } from './App';
+
 import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { FavouritesPage } from './pages/FavouritesPage';
 import { CartPage } from './pages/CartPage';
 import { CatalogPage } from './pages/CatalogPage/CatalogPage';
-import { ItemCardPage } from './pages/ItemCardPage/ItemCardPage';
+import { PhonesPage } from './pages/PhonesPage';
+import { TabletsPage } from './pages/TabletsPage';
+import { AccessoriesPage } from './pages/AccessoriesPage';
 
 export const Root = () => (
   <HashRouter>
@@ -34,8 +38,8 @@ export const Root = () => (
             element={<CatalogPage category="phones" />}
           />
           <Route
-            path={':productId'}
-            element={<ItemCardPage />}
+            path=":productId?"
+            element={<PhonesPage />}
           />
         </Route>
 
@@ -45,8 +49,8 @@ export const Root = () => (
             element={<CatalogPage category="tablets" />}
           />
           <Route
-            path={':productId'}
-            element={<ItemCardPage />}
+            path=":productId?"
+            element={<TabletsPage />}
           />
         </Route>
 
@@ -56,8 +60,8 @@ export const Root = () => (
             element={<CatalogPage category="accessories" />}
           />
           <Route
-            path={':productId'}
-            element={<ItemCardPage />}
+            path=":productId?"
+            element={<AccessoriesPage />}
           />
         </Route>
 

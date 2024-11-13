@@ -1,0 +1,87 @@
+@import '../../styles/index.scss';
+
+.product {
+  @include content-padding-inline;
+  margin-top: 24px;
+
+  &__breadcrumbs {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__back-button {
+    margin-bottom: 16px;
+  }
+
+  &__name {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+      font-size: 32px;
+    }
+  }
+
+  &__photo {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / 7;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__characteristics {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 8 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / -1;
+    }
+  }
+
+  &__details {
+    @include page-grid;
+
+    row-gap: 56px;
+
+    @include on-tablet {
+      row-gap: 64px;
+    }
+
+    @include on-desktop {
+      row-gap: 80px;
+    }
+  }
+
+  &__about {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__tech-specs {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 14 / -1;
+    }
+  }
+
+  &__recommendations {
+    grid-column: 1 / -1;
+  }
+}

@@ -1,0 +1,128 @@
+@import '../../styles/index.scss';
+
+.actions {
+  display: grid;
+  gap: 32px;
+  column-gap: 16px;
+
+  @include on-desktop {
+    grid-template-columns: repeat(11, 1fr);
+  }
+
+  &__InfoBlock {
+    display: flex;
+    justify-content: space-between;
+
+    @include on-desktop {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__id {
+    font-weight: 700;
+    font-size: 12px;
+    text-align: right;
+    color: var(--color-icons);
+  }
+
+  &__line {
+    border-bottom: 1px solid var(--color-elements);
+
+    @include on-desktop {
+      grid-column: 1 / 8;
+    }
+  }
+
+  &__variants {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include on-desktop {
+      grid-column: 1 / 8;
+    }
+  }
+
+  &__title {
+    font-size: 12px;
+    font-weight: 600;
+    
+    color: var(--color-secondary);
+
+    @include on-desktop {
+      grid-column: 1 / 8;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @include on-desktop {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__buy {
+    @include on-desktop {
+      grid-column: 1 / 8;
+    }
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    margin-bottom: 16px;
+
+    @include on-desktop {
+      grid-column: 1 / 8;
+    }
+
+    &--current {
+      font-weight: 800;
+      font-size: 32px;
+      color: var(--color-primary);
+    }
+
+    &--regular {
+      font-weight: 500;
+      font-size: 22px;
+      color: var(--color-secondary);
+      position: relative;
+      isolation: isolate;
+
+      &::after {
+        content: '';
+        height: 2px;
+        width: 102%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: var(--color-secondary);
+        mix-blend-mode: color-dodge;
+        left: -1%;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+
+    @include on-desktop {
+      grid-column: 1 / 8;
+    }
+  }
+
+  &__techspecs{
+    @include on-desktop {
+      grid-column: 1 / 8;
+    }
+  }
+}
+
+

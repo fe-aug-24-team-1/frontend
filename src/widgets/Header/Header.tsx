@@ -1,13 +1,26 @@
 import logo from '/logo.svg';
 import style from './Header.module.scss';
-import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
-import like from '../../assets/images/icons/light/favourites.svg';
-import cartImg from '../../assets/images/icons/light/shopping-bag.svg';
+import {
+  AiOutlineMenu,
+  AiOutlineClose,
+  AiOutlineSun,
+  AiOutlineMoon,
+} from 'react-icons/ai';
+// import like from '../../assets/images/icons/light/favourites.svg';
+// import cartImg from '../../assets/images/icons/light/shopping-bag.svg';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 import { Aside } from '../../components/Aside';
-import { FC, useState } from 'react';
+import { FC, useContext, useState } from 'react';
 import { useAppSelector } from '@/app/store/hooks';
+import { Icon } from '@/components/icon/Icon';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import { Lang } from '@/types/Lang';
+import {
+  ThemeDispatchContext,
+  ThemeStateContext,
+} from '@/app/providers/ThemeProvider/ThemeContext';
 
 const getActiveNavLink = ({ isActive }: { isActive: boolean }) =>
   cn(style.nav__link, {
@@ -15,16 +28,9 @@ const getActiveNavLink = ({ isActive }: { isActive: boolean }) =>
   });
 
 const getActiveIcon = ({ isActive }: { isActive: boolean }, iconName: string) =>
-  cn(style.topbar__iconContainer, style[`topbar__${iconName}`], {
-    [style['topbar__iconContainer--active']]: isActive,
+  cn(style.header__iconContainer, style[`header__${iconName}`], {
+    [style['header__iconContainer--active']]: isActive,
   });
-
-const navItems = [
-  { path: '/', name: 'Home' },
-  { path: 'phones', name: 'Phones' },
-  { path: 'tablets', name: 'Tablets' },
-  { path: 'accessories', name: 'Accessories' },
-];
 
 export const Header: FC = () => {
   const [isMenuActive, setIsMenuActive] = useState(false); // REFACTOR FOR MARIA
@@ -33,6 +39,24 @@ export const Header: FC = () => {
   const { products } = useAppSelector((state) => state.wishlist);
 
   const { productsOfCart } = useAppSelector((state) => state.cart);
+
+  const { t } = useTranslation();
+
+  const handleChangeLang = () => {
+    const lang = i18next.language === Lang.EN ? Lang.UK : Lang.EN;
+
+    i18next.changeLanguage(lang);
+  };
+
+  const navItems = [
+    { path: '/', name: t('header.nav.home') },
+    { path: 'phones', name: t('header.nav.phones') },
+    { path: 'tablets', name: t('header.nav.tablets') },
+    { path: 'accessories', name: t('header.nav.accessories') },
+  ];
+
+  const { theme } = useContext(ThemeStateContext);
+  const toggleTheme = useContext(ThemeDispatchContext);
 
   const getLengthOfCart = () => {
     return productsOfCart.length;
@@ -68,18 +92,32 @@ export const Header: FC = () => {
           </nav>
         </div>
 
-        <div className={style.topbar__right}>
+        <div className={style.header__right}>
+          <div className={style.header__iconContainer}>
+            <Icon.Theme
+              className={style.header__icon}
+              onClick={toggleTheme}
+            />
+          </div>
+
+          <div
+            className={style.header__iconContainer}
+            onClick={handleChangeLang}>
+            <span className={style.header__icon}>{t('header.lang')}</span>
+          </div>
+
           <NavLink
             to={'favourites'}
             className={({ isActive }) =>
               getActiveIcon({ isActive }, 'iconLike')
             }>
-            <img
+            <Icon.Favorites className={style.header__icon} />
+            {/* <img
               src={like}
-              className={style.topbar__icon}
-            />
+              className={style.header__icon}
+            /> */}
             {!!products.length && (
-              <span className={style.topbar__count}>{products.length}</span>
+              <span className={style.header__count}>{products.length}</span>
             )}
           </NavLink>
 
@@ -88,22 +126,23 @@ export const Header: FC = () => {
             className={({ isActive }) =>
               getActiveIcon({ isActive }, 'iconCart')
             }>
-            <img
+            <Icon.ShoppingBag className={style.header__icon} />
+            {/* <img
               src={cartImg}
-              className={style.topbar__icon}
-            />
+              className={style.header__icon}
+            /> */}
             {!!productsOfCart.length && (
-              <span className={style.topbar__count}>{getLengthOfCart()}</span>
+              <span className={style.header__count}>{getLengthOfCart()}</span>
             )}
           </NavLink>
 
           <div
-            className={`${style.topbar__iconContainer} ${style.topbar__burgerMenu}`}
+            className={`${style.header__iconContainer} ${style.header__burgerMenu}`}
             onClick={() => setIsMenuActive(!isMenuActive)}>
             {isMenuActive ? (
-              <AiOutlineClose className={style.topbar__icon} />
+              <AiOutlineClose className={style.header__icon} />
             ) : (
-              <AiOutlineMenu className={style.topbar__icon} />
+              <AiOutlineMenu className={style.header__icon} />
             )}
           </div>
         </div>

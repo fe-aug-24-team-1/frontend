@@ -9,12 +9,10 @@ const getActiveLink = ({ isActive }: { isActive: boolean }) =>
     [style['path__direction--active']]: isActive,
   });
 
-type Props = {
-  name?: string | undefined;
-};
+export const Breadcrumbs: React.FC = () => {
+  const fullPath = useLocation().pathname.split('/');
 
-export const Breadcrumbs: React.FC<Props> = ({ name }) => {
-  const category = useLocation().pathname.split('/').slice(1, 2).join();
+  const [_, category, product] = fullPath;
 
   return (
     <div className={style.path}>
@@ -36,13 +34,13 @@ export const Breadcrumbs: React.FC<Props> = ({ name }) => {
         className={getActiveLink}>
         {category}
       </NavLink>
-      {name && (
+      {product && (
         <>
           <img
             src={rightArrow}
             className={style.path__arrow}
           />
-          <p className={style.path__product}>{name}</p>
+          <p className={style.path__product}>{product}</p>
         </>
       )}
     </div>

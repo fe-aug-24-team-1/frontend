@@ -1,6 +1,8 @@
 import { FC, useContext } from 'react';
 
-import { ThemeStateContext } from '@/app/providers/ThemeProvider/ThemeProvider';
+
+import { ThemeStateContext } from '@/app/providers/ThemeProvider/ThemeContext';
+
 
 import { IconProps } from './types/IconProps';
 
