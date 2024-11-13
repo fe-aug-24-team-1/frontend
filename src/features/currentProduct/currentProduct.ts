@@ -18,19 +18,16 @@ export const getCurrentProduct = createAsyncThunk(
       `api/${category}.json`
     );
     const product = data.find((item) => item.id === productId);
-    const phoneOptions = data.filter(
-      (item) =>
-        item.id !== productId && item.namespaceId === product?.namespaceId
+    const AllOptions = data.filter(
+      (item) => item.namespaceId === product?.namespaceId
     );
 
     const result = {
       currentProduct: product,
-      otherColor: phoneOptions.filter(
+      allColor: AllOptions.filter(
         (item) => item.capacity === product?.capacity
       ),
-      otherCapacity: phoneOptions.filter(
-        (item) => item.color === product?.color
-      ),
+      allCapacity: AllOptions.filter((item) => item.color === product?.color),
     };
 
     return result;
@@ -39,14 +36,14 @@ export const getCurrentProduct = createAsyncThunk(
 
 interface InitialState {
   currentProduct: Accessory | Phone | Tablet | undefined;
-  otherColor: Array<Accessory | Phone | Tablet>;
-  otherCapacity: Array<Accessory | Phone | Tablet>;
+  allColor: Array<Accessory | Phone | Tablet>;
+  allCapacity: Array<Accessory | Phone | Tablet>;
 }
 
 const initialState: InitialState = {
   currentProduct: undefined,
-  otherColor: [],
-  otherCapacity: [],
+  allColor: [],
+  allCapacity: [],
 };
 
 const currentProductSlice = createSlice({
@@ -56,8 +53,8 @@ const currentProductSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getCurrentProduct.fulfilled, (state, action) => {
       state.currentProduct = action.payload.currentProduct;
-      state.otherColor = action.payload.otherColor;
-      state.otherCapacity = action.payload.otherCapacity;
+      state.allColor = action.payload.allColor;
+      state.allCapacity = action.payload.allCapacity;
     });
   },
 });

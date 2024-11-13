@@ -17,25 +17,35 @@ export const FilterColor: React.FC<Props> = ({
   className,
   ...props
 }) => {
-  const { otherColor } = useAppSelector((state) => state.currentProduct);
+  const { allColor } = useAppSelector((state) => state.currentProduct);
 
   return (
     <div
       className={`${styles.filter} ${className}`}
       {...props}>
-      {colorsAvailable.map((color) => (
-        <Link
-          to={`/${otherColor[0].category}/${otherColor.find((item) => item.color === color)?.id}`}
-          key={color}
-          className={`${styles.filter__cell} ${color === currentColor && styles['filter__cell--active']}`}>
-          <div
-            className={styles['filter__color']}
-            style={{
-              backgroundColor: productsColor[normalizeColor(color)] ?? color,
-            }}
-          />
-        </Link>
-      ))}
+      {colorsAvailable.map((color) => {
+        const product = allColor.find((item) => item.color === color);
+
+        return (
+          <Link
+            to={
+              currentColor === color
+                ? '#'
+                : `/${allColor[0].category}/${product?.id}`
+            }
+            key={color}
+            className={`${styles.filter__cell} ${
+              color === currentColor && styles['filter__cell--active']
+            } ${!product && styles['filter__cell--unavailable']}`}>
+            <div
+              className={styles['filter__color']}
+              style={{
+                backgroundColor: productsColor[normalizeColor(color)] ?? color,
+              }}
+            />
+          </Link>
+        );
+      })}
     </div>
   );
 };
