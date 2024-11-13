@@ -28,6 +28,8 @@ export const CartPage = () => {
     }
   };
 
+  const getLengthOfCart = () => {};
+
   return (
     <div className={style.cartPage}>
       <div

@@ -33,3 +33,7 @@ button {
   appearance: none;
   -webkit-appearance: none;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
