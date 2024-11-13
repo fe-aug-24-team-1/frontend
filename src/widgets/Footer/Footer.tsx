@@ -7,23 +7,26 @@ import { Icon } from '@/components/icon/Icon';
 
 import logo from '/logo.svg';
 import style from './Footer.module.scss';
-
-const navigation = [
-  {
-    href: 'https://github.com/fe-aug-24-team-1/frontend',
-    name: 'Github',
-  },
-  {
-    href: 'https://github.com/RostyslavSharuiev',
-    name: 'Contacts',
-  },
-  {
-    href: 'https://github.com/RostyslavSharuiev',
-    name: 'Rights',
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 export const Footer: FC = () => {
+  const { t } = useTranslation();
+
+  const navigation = [
+    {
+      href: 'https://github.com/fe-aug-24-team-1/frontend',
+      name: 'Github',
+    },
+    {
+      href: 'https://github.com/RostyslavSharuiev',
+      name: t('footer.contacts'),
+    },
+    {
+      href: 'https://github.com/RostyslavSharuiev',
+      name: t('footer.rights'),
+    },
+  ];
+
   return (
     <footer className={style.footer}>
       <a
@@ -53,7 +56,7 @@ export const Footer: FC = () => {
       <button
         className={style.backToTop}
         onClick={scrollToTop}>
-        <p className={style.backToTop__text}>Back to top</p>
+        <p className={style.backToTop__text}>{t('footer.backToTop')}</p>
         <div className={style.backToTop__button}>
           <Icon.ChevronUp />
         </div>

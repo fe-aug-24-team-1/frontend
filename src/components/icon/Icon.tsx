@@ -18,7 +18,6 @@ import { Search } from './Search';
 import { ShoppingBag } from './ShoppingBag';
 import { Theme } from './Theme';
 
-
 type Props = PropsWithChildren & IconProps;
 
 const IconComponent: FC<Props> = ({ children, ...rest }) => {

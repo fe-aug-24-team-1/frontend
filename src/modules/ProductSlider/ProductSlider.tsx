@@ -10,6 +10,7 @@ import { SwiperButton } from '@/components/SwiperButton';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import 'swiper/scss';
+import 'swiper/css';
 
 import styles from './ProductSlider.module.scss';
 
@@ -37,7 +38,7 @@ export const ProductSlider: React.FC<Props> = ({ title, discount, random }) => {
   };
 
   return (
-    <div className="container">
+    <div className={styles[`swiper__wrapper`]}>
       <Swiper
         slidesPerView="auto"
         spaceBetween={16}

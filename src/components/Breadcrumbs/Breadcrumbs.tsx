@@ -12,7 +12,7 @@ const getActiveLink = ({ isActive }: { isActive: boolean }) =>
 export const Breadcrumbs: React.FC = () => {
   const fullPath = useLocation().pathname.split('/');
 
-  const [_, category, product] = fullPath;
+  const [, category, product] = fullPath;
 
   return (
     <div className={style.path}>
