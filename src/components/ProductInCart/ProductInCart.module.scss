@@ -4,10 +4,12 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background-color: var(--color-white);
+  background-color: var(--card-color-bg);
   border: 1px solid var(--color-elements);
   border-radius: 16px;
   padding: 16px;
+  justify-content: space-between;
+  color: var(--card-text-color);
 
   @include on-tablet {
     padding: 24px;
@@ -73,15 +75,39 @@
 
       &__button {
         background: none;
-        border: none;
+        //border: none;
         padding: 0;
         margin: 0;
         cursor: pointer;
+        min-width: 32px;
+        min-height: 32px;
+        border-radius: 50%;
         display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid var(--color-icons);
+
+        @include hover-active(
+                                (border: 1px solid var(--color-primary))
+        );
+
+        &__inner {
+          width: 16px;
+          height: 16px;
+
+          &--disabled {
+            fill: green;
+          }
+        }
 
         &--unactive {
           cursor: default;
           color: var(--color-icons);
+          border: 1px solid var(--color-action);
+
+          @include hover-active(
+                          (border: 1px solid var(--color-action))
+          );
         }
       }
 
@@ -95,13 +121,18 @@
     }
 
     &__price {
+      //color: var(--card-price-color);
       font-size: 32px;
       font-weight: 800;
       line-height: 41px;
       letter-spacing: -0.01em;
+      margin-right: 16px;
 
-      width: 90px;
-      text-align: right;
+      width: clamp( 4ch, 5ch, 6ch );
+
+      @include on-tablet {
+        margin-right: 16px;
+      }
     }
   }
 }
