@@ -1,12 +1,17 @@
 import cn from 'classnames';
 import style from './Aside.module.scss';
 import { NavLink } from 'react-router-dom';
-import { useEffect } from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
+import { useEffect, Dispatch, SetStateAction, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
-import like from '../../assets/images/icons/light/favourites.svg';
-import cartImg from '../../assets/images/icons/light/shopping-bag.svg';
+import logo from '/logo.svg';
 
 import { useAppSelector } from '@/app/store/hooks';
+import { Icon } from '../icon/Icon';
+import { ThemeDispatchContext } from '@/app/providers/ThemeProvider/ThemeContext';
+import { Lang } from '@/types/Lang';
 
 const getActiveLink = ({ isActive }: { isActive: boolean }) =>
   cn(style.nav__link, {
@@ -18,20 +23,40 @@ const getActiveIcon = ({ isActive }: { isActive: boolean }, iconName: string) =>
     [style['menu__bottom__icon--active']]: isActive,
   });
 
-const navItems = [
-  { path: '/', name: 'Home' },
-  { path: 'phones', name: 'Phones' },
-  { path: 'tablets', name: 'Tablets' },
-  { path: 'accessories', name: 'Accessories' },
-];
+// const navItems = [
+//   { path: '/', name: 'Home' },
+//   { path: 'phones', name: 'Phones' },
+//   { path: 'tablets', name: 'Tablets' },
+//   { path: 'accessories', name: 'Accessories' },
+// ];
 
-export const Aside: React.FC = () => {
-  // const { isMenuActive, setIsMenuActive } = useContext(MenuContext);
+interface Props {
+  isMenuActive: boolean;
+  setIsMenuActive: Dispatch<SetStateAction<boolean>>;
+}
+
+export const Aside: React.FC<Props> = ({ isMenuActive, setIsMenuActive }) => {
   const { products } = useAppSelector((state) => state.wishlist);
-  // const { productsOfCart, getLengthOfCart } = useContext(CartContext);
   const { productsOfCart } = useAppSelector((state) => state.cart);
 
-  const isMenuActive = false;
+  // const isMenuActive = false;
+
+  const { t } = useTranslation();
+
+  const handleChangeLang = () => {
+    const lang = i18next.language === Lang.EN ? Lang.UK : Lang.EN;
+
+    i18next.changeLanguage(lang);
+  };
+
+  const navItems = [
+    { path: '/', name: t('header.nav.home') },
+    { path: 'phones', name: t('header.nav.phones') },
+    { path: 'tablets', name: t('header.nav.tablets') },
+    { path: 'accessories', name: t('header.nav.accessories') },
+  ];
+
+  const toggleTheme = useContext(ThemeDispatchContext);
 
   const getLengthOfCart = () => {
     return productsOfCart.length;
@@ -40,7 +65,7 @@ export const Aside: React.FC = () => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 639 && isMenuActive) {
-        // setIsMenuActive(false); MUST BE FROM PROPS
+        setIsMenuActive(false);
       }
     };
 
@@ -56,6 +81,41 @@ export const Aside: React.FC = () => {
       className={cn(style.menu, {
         [style['menu--active']]: isMenuActive,
       })}>
+      <div className={style['menu__top']}>
+        <NavLink
+          to="home"
+          className={style.logo__link}>
+          <img
+            src={logo}
+            alt="logo"
+            className={style.logo}
+            onClick={() => setIsMenuActive(false)}
+          />
+        </NavLink>
+
+        <div className={style.allTopIcons}>
+          <div className={style.icon__container}>
+            <Icon.Theme
+              className={style.icon__top}
+              onClick={toggleTheme}
+            />
+          </div>
+
+          <div
+            className={style.icon__container}
+            onClick={handleChangeLang}>
+            <span className={style.icon__top}>{t('header.lang')}</span>
+          </div>
+
+          <div className={style.icon__container}>
+            <AiOutlineClose
+              className={style.icon__top}
+              onClick={() => setIsMenuActive(false)}
+            />
+          </div>
+        </div>
+      </div>
+
       <nav className={style.nav}>
         <ul className={style.nav__list}>
           {navItems.map(({ path, name }) => (
@@ -65,41 +125,34 @@ export const Aside: React.FC = () => {
               <NavLink
                 to={path}
                 className={getActiveLink}
-                // onClick={() => setIsMenuActive(false)}
-              >
+                onClick={() => setIsMenuActive(false)}>
                 {name}
               </NavLink>
             </li>
           ))}
         </ul>
       </nav>
+
       <div className={style.menu__bottom}>
         <NavLink
           to={'favourites'}
           className={({ isActive }) => getActiveIcon({ isActive }, 'like')}
-          // onClick={() => setIsMenuActive(false)}
-        >
-          <img
-            src={like}
-            className={style.menu__bottom__icon__img}
-          />
+          onClick={() => setIsMenuActive(false)}>
+          <Icon.Favorites className={style.menu__bottom__icon__img} />
+
           {!!products.length && (
             <span className={style.menu__bottom__icon__count}>
               {products.length}
             </span>
           )}
         </NavLink>
+
         <NavLink
-          to={'productsOfCart'}
-          className={({ isActive }) =>
-            getActiveIcon({ isActive }, 'productsOfCart')
-          }
-          // onClick={() => setIsMenuActive(false)}
-        >
-          <img
-            src={cartImg}
-            className={style.menu__bottom__icon__img}
-          />
+          to={'cart'}
+          className={({ isActive }) => getActiveIcon({ isActive }, 'cart')}
+          onClick={() => setIsMenuActive(false)}>
+          <Icon.ShoppingBag className={style.menu__bottom__icon__img} />
+
           {!!productsOfCart.length && (
             <span className={style.menu__bottom__icon__count}>
               {getLengthOfCart()}
