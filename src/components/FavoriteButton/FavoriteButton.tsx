@@ -2,6 +2,9 @@ import React from 'react';
 
 import styles from './FavoriteButton.module.scss';
 
+import { CiHeart } from 'react-icons/ci';
+
+
 interface Props {
   isGoodInFavorite?: boolean;
 }
@@ -12,11 +15,19 @@ export const FavoriteButton: React.FC<Props> = ({
   return (
     <>
       {isGoodInFavorite ? (
-        <div
-          className={`${styles[`favorite-button`]} ${styles[`favorite-button--checked`]}`}
-        />
+        <div className={styles[`favorite-button`]}>
+          <CiHeart
+            size={16}
+            color={'black'}
+          />
+        </div>
       ) : (
-        <div className={styles[`favorite-button`]} />
+        <div className={styles[`favorite-button`]}>
+          <CiHeart
+            size={16}
+            color={'green'}
+          />
+        </div>
       )}
     </>
   );

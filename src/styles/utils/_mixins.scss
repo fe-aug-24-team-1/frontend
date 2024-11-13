@@ -61,3 +61,23 @@
     --columns: 24;
   }
 }
+
+@mixin hover-active($hover-styles, $active-styles: null) {
+  transition: 0.3s;
+
+  @media (hover: hover) {
+    &:hover {
+      @each $property, $value in $hover-styles {
+        #{$property}: #{$value};
+      }
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      @each $property, $value in if($active-styles != null, $active-styles, $hover-styles) {
+        #{$property}: #{$value};
+      }
+    }
+  }
+}
