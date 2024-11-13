@@ -1,18 +1,21 @@
 import { useNavigate } from 'react-router-dom';
 import notFoundPage from '/img/page-not-found.png';
 import style from './NotFoundPage.module.scss';
+import { useTranslation } from 'react-i18next';
 
 export const NotFoundPage = () => {
   const navigate = useNavigate();
 
+  const { t } = useTranslation();
+
   return (
     <div className={style.pageNotFound}>
-      <h1 className={style.pageNotFound__title}>Page not found =(</h1>
+      <h1 className={style.pageNotFound__title}>{t('notFoundPage.title')}</h1>
       <button
         type="button"
         className={style.pageNotFound__button}
         onClick={() => navigate('/home')}>
-        Go to Home Page
+        {t('notFoundPage.backToHome')}
       </button>
       <img
         src={notFoundPage}
