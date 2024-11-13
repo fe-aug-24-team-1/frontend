@@ -53,6 +53,10 @@ export const Header: FC = () => {
     return productsOfCart.length;
   };
 
+  const handleToggleTheme = () => {
+    toggleTheme();
+  };
+
   return (
     <>
       {isMenuActive ? (
@@ -92,11 +96,9 @@ export const Header: FC = () => {
 
           <div className={style.header__right}>
             <div
-              className={`${style.header__iconContainer} ${style.iconTheme}`}>
-              <Icon.Theme
-                className={style.header__icon}
-                onClick={toggleTheme}
-              />
+              className={`${style.header__iconContainer} ${style.iconTheme}`}
+              onClick={handleToggleTheme}>
+              <Icon.Theme className={style.header__icon} />
             </div>
 
             <div
