@@ -3,12 +3,15 @@ import { useState } from 'react';
 import cn from 'classnames';
 import { useSearchParams } from 'react-router-dom';
 import { SortType } from '../../types/SortType';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   dropdownName: 'sort' | 'perPage';
 };
 
 export const Dropdown: React.FC<Props> = ({ dropdownName }) => {
+  const { t } = useTranslation();
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const variants =
@@ -36,7 +39,7 @@ export const Dropdown: React.FC<Props> = ({ dropdownName }) => {
   return (
     <div className={style.dropdown}>
       <p className={style.label}>
-        {dropdownName === 'sort' ? 'Sort by' : 'Items on page'}
+        {dropdownName === 'sort' ? t('dropdownMenu.title') : 'Items on page'}
       </p>
       <div
         tabIndex={0}
