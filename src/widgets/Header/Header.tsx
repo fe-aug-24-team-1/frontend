@@ -25,7 +25,7 @@ const getActiveIcon = ({ isActive }: { isActive: boolean }, iconName: string) =>
   });
 
 export const Header: FC = () => {
-  const [isMenuActive, setIsMenuActive] = useState(false); // REFACTOR FOR MARIA
+  const [isMenuActive, setIsMenuActive] = useState(false);
   const [searchParams] = useSearchParams();
 
   const { products } = useAppSelector((state) => state.wishlist);
@@ -51,6 +51,10 @@ export const Header: FC = () => {
 
   const getLengthOfCart = () => {
     return productsOfCart.length;
+  };
+
+  const handleToggleTheme = () => {
+    toggleTheme();
   };
 
   return (
@@ -92,11 +96,9 @@ export const Header: FC = () => {
 
           <div className={style.header__right}>
             <div
-              className={`${style.header__iconContainer} ${style.iconTheme}`}>
-              <Icon.Theme
-                className={style.header__icon}
-                onClick={toggleTheme}
-              />
+              className={`${style.header__iconContainer} ${style.iconTheme}`}
+              onClick={handleToggleTheme}>
+              <Icon.Theme className={style.header__icon} />
             </div>
 
             <div

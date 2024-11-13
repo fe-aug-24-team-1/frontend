@@ -12,7 +12,7 @@ export const FavoritesFilled: FC<IconProps> = ({ className }) => {
 
   return (
     <img
-      src={theme === 'light' ? favoritesFilledDark : favoritesFilledLight}
+      src={theme === 'light' ? favoritesFilledLight : favoritesFilledDark}
       alt={`Favorites Filled Down Icon - ${theme}`}
       className={className}
     />
