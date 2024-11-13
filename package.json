@@ -1,12 +1,12 @@
 {
-  "name": "phone_catalog",
-  "homepage": "frontend",
+  "name": "frontend",
+  "homepage": "https://fe-aug-24-team-1.github.io/frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix",
     "format": "prettier --write './src/**/*.{ts,tsx}'",
