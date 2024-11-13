@@ -39,8 +39,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 //   quantity: number;
 // }
 
+interface ExtendedProduct extends Product {
+  quantity: number;
+}
+
 interface InitialState {
-  productsOfCart: Product[];
+  productsOfCart: ExtendedProduct[];
 }
 
 const initialState: InitialState = {
@@ -84,7 +88,7 @@ const cartSlice = createSlice({
       localStorage.setItem('cart', JSON.stringify(state.productsOfCart));
     },
 
-    decrementItemInCart: (state, action: PayloadAction<string>) => {
+    decrementItemInCart: (state, action: PayloadAction<number>) => {
       const id = action.payload;
 
       const productInCart = state.productsOfCart.find((item) => item.id === id);

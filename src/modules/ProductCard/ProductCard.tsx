@@ -8,10 +8,6 @@ import { addToCart, removeFormCart } from '@/features/cart/cartSlice';
 import { ButtonCommon } from '@/components/ButtonCommon';
 import { FavoriteButton } from '@/components/FavoriteButton/FavoriteButton.tsx';
 
-import { addToWishlist } from '@/features/wishlist/wishlistSlice';
-import { Icon } from '@/components/icon/Icon';
-
-
 type Props = {
   prod: Product;
   discount?: boolean;
@@ -25,6 +21,7 @@ export const ProductCard: React.FC<Props> = ({ prod, discount = true }) => {
   ];
 
   const { productsOfCart } = useAppSelector((state) => state.cart);
+  const { products } = useAppSelector((state) => state.wishlist);
   const dispatch = useAppDispatch();
 
   const handleLike = (product: Product) => {
@@ -35,6 +32,8 @@ export const ProductCard: React.FC<Props> = ({ prod, discount = true }) => {
     return productsOfCart.some((item: Product) => product.id === item.id);
   };
 
+  const isInWishlist = products.some((product) => product.id === prod.id);
+
   const handleAddButton = (product: Product) => {
     if (!getActiveButton(product)) {
       dispatch(addToCart(product));
@@ -42,58 +41,6 @@ export const ProductCard: React.FC<Props> = ({ prod, discount = true }) => {
       dispatch(removeFormCart(product.id));
     }
   };
-
-  // return (
-  //   <article className={style.card}>
-  //     <NavLink
-  //       to={`/${prod.category}/${prod.itemId}`}
-  //       className={style.img__link}
-  //       onClick={() => window.scrollTo(0, 0)}>
-  //       <img
-  //         src={prod.image}
-  //         className={style.img}
-  //       />
-  //     </NavLink>
-  //     <NavLink
-  //       to={`/${prod.category}/${prod.itemId}`}
-  //       className={style.title}>
-  //       {prod.name}
-  //     </NavLink>
-  //     <div className={style.price}>
-  //       <div className={style.price__actual}>
-  //         ${discount ? prod.price : prod.fullPrice}
-  //       </div>
-  //       {prod.fullPrice && discount && (
-  //         <div className={style.price__old}>${prod.fullPrice}</div>
-  //       )}
-  //     </div>
-  //     <div className={style.divider} />
-  //     <div className={style.specs}>
-  //       {specs.map(({ key, value }) => (
-  //         <div
-  //           className={style.specs__item}
-  //           key={key}>
-  //           <div className={style.specs__key}>{key}</div>
-  //           <div className={style.specs__value}>{value}</div>
-  //         </div>
-  //       ))}
-  //     </div>
-  //     <div className={style.buttons}>
-  //       <button
-  //         className={cn(style.buttons__add, {
-  //           [style['buttons__add--active']]: getActiveButton(prod),
-  //         })}
-  //         onClick={() => handleAddButton(prod)}>
-  //         {getActiveButton(prod) ? 'Added' : 'Add to cart'}
-  //       </button>
-  //       <div
-  //         className={cn(style.buttons__like, {
-  //           [style['buttons__like--active']]: getActiveLike(prod),
-  //         })}
-  //         onClick={() => handleLike(prod)}
-  //       />
-  //     </div>
-  //   </article>
 
   return (
     <div className={styles.product}>
@@ -155,7 +102,7 @@ export const ProductCard: React.FC<Props> = ({ prod, discount = true }) => {
         </div>
 
         <div onClick={() => handleLike(prod)}>
-          <FavoriteButton />
+          <FavoriteButton isGoodInFavorite={isInWishlist} />
         </div>
       </div>
     </div>
