@@ -10,7 +10,7 @@ import { Tablet } from '@/types/Tablet';
 import { Accessory } from '@/types/Accessory';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { useLocation } from 'react-router-dom';
-import { useAppDispatch } from '@/app/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
 import { useEffect } from 'react';
 import { getCurrentProduct } from '@/features/currentProduct/currentProduct';
 import { CategoryType } from '@/types/CategoryType';
@@ -34,6 +34,10 @@ export const ProductInfo: React.FC<Props> = ({
   const [category, productId] = location.pathname
     .split('/')
     .filter((chunk) => chunk.length);
+
+  const { currentProduct } = useAppSelector((state) => state.currentProduct);
+
+  console.log(currentProduct);
 
   useEffect(() => {
     dispatch(getCurrentProduct({ category, productId }));
