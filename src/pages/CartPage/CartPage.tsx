@@ -6,7 +6,7 @@ import emptyCart from '/img/cart-is-empty.png';
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
 import { clearCart } from '@/features/cart/cartSlice';
 
-export const CartPage = () => {
+const CartPage = () => {
   const dispatch = useAppDispatch();
   const { productsOfCart } = useAppSelector((state) => state.cart);
   const navigate = useNavigate();
@@ -83,3 +83,5 @@ export const CartPage = () => {
     </div>
   );
 };
+
+export default CartPage;

@@ -5,7 +5,7 @@ import style from './FavouritesPage.module.scss';
 import { useAppSelector } from '@/app/store/hooks';
 import { FC } from 'react';
 
-export const FavouritesPage: FC = () => {
+const FavouritesPage: FC = () => {
   const favourites = useAppSelector((state) => state.wishlist.products);
 
   return (
@@ -42,3 +42,5 @@ export const FavouritesPage: FC = () => {
     </div>
   );
 };
+
+export default FavouritesPage;

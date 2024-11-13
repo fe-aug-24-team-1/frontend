@@ -16,7 +16,7 @@ type Props = {
   category: 'phones' | 'tablets' | 'accessories';
 };
 
-export const CatalogPage: React.FC<Props> = ({ category }) => {
+const CatalogPage: React.FC<Props> = ({ category }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const { products, loaded, error } = useAppSelector((state) => state.products);
@@ -156,3 +156,5 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
     </div>
   );
 };
+
+export default CatalogPage;
