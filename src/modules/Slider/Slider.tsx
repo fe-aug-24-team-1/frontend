@@ -10,6 +10,7 @@ import 'swiper/scss';
 import 'swiper/scss/pagination';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { Icon } from '@/components/icon/Icon';
 
 export const Slider = () => {
   const [isActiveNavigation, setIsActiveNavigation] = useState(false);
@@ -70,8 +71,16 @@ export const Slider = () => {
 
       {isActiveNavigation && (
         <>
-          <div className={`${style.swiperButtonNext} swiper-button-next`} />
-          <div className={`${style.swiperButtonPrev} swiper-button-prev`} />
+          <div className={`${style.swiperButtonNext}`}>
+            <Icon.ChevronRight />
+          </div>
+
+          <div className={`${style.swiperButtonPrev}`}>
+            <Icon.ChevronLeft />
+          </div>
+
+          {/* <div className={`${style.swiperButtonNext} swiper-button-next`} /> */}
+          {/* <div className={`${style.swiperButtonPrev} swiper-button-prev`} /> */}
         </>
       )}
     </Swiper>

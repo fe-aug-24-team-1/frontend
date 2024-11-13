@@ -5,6 +5,7 @@ import cn from 'classnames';
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
 import { addToWishlist } from '@/features/wishlist/wishlistSlice';
 import { addToCart } from '@/features/cart/cartSlice';
+import { Icon } from '@/components/icon/Icon';
 
 type Props = {
   prod: Product;
@@ -93,8 +94,9 @@ export const ProductCard: React.FC<Props> = ({ prod, discount = true }) => {
           className={cn(style.buttons__like, {
             [style['buttons__like--active']]: getActiveLike(prod),
           })}
-          onClick={() => handleLike(prod)}
-        />
+          onClick={() => handleLike(prod)}>
+          <Icon.FavoritesFilled />
+        </div>
       </div>
     </article>
   );

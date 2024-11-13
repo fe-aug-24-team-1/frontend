@@ -167,12 +167,12 @@
   &__icon {
     position: relative;
     display: flex;
-    height: var(--color-icons)-size;
-    width: var(--color-icons)-size;
-    margin: var(--color-icons)-margin-mobile;
+    height: 16px;
+    width: 16px;
+    margin: 16px;
 
     @include on-desktop {
-      margin: var(--color-icons)-margin-desktop;
+      margin: 24px;
     }
 
     @include hover {
@@ -199,7 +199,8 @@
       top: 18px;
     }
   }
-
+  .iconLang,
+  .iconTheme,
   &__iconLike,
   &__iconCart {
     display: none;
