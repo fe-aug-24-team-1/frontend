@@ -1,23 +1,17 @@
-import { GeneralProduct } from './GeneralProduct';
+import { CategoryType } from './CategoryType';
 
-export interface DescriptionProduct {
-  title: string;
-  text: string[];
-}
-
-export interface Product extends GeneralProduct {
-  quantity: number;
-  id: string;
-  namespaceId: string;
-  capacityAvailable: string[];
-  priceRegular: number;
-  priceDiscount: number;
-  colorsAvailable: string[];
-  images: string[];
-  description: DescriptionProduct[];
-  resolution: string;
-  processor: string;
-  camera: string;
-  zoom: string;
-  cell: string[];
+export interface Product {
+  id: number;
+  category: CategoryType;
+  itemId: string;
+  name: string;
+  fullPrice: number;
+  price: number;
+  screen: string;
+  capacity: string;
+  color: string;
+  ram: string;
+  year: number;
+  image: string;
+  quantity?: number;
 }

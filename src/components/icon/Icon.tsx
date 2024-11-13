@@ -16,6 +16,8 @@ import { Minus } from './Minus';
 import { Plus } from './Plus';
 import { Search } from './Search';
 import { ShoppingBag } from './ShoppingBag';
+import { Theme } from './Theme';
+
 
 type Props = PropsWithChildren & IconProps;
 
@@ -38,4 +40,5 @@ export const Icon = Object.assign(IconComponent, {
   Plus,
   Search,
   ShoppingBag,
+  Theme,
 });

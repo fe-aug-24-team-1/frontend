@@ -10,11 +10,11 @@
   }
 }
 
-@mixin hover($property, $toValue) {
-  transition: $property $effect-duration;
+@mixin hover {
+  transition: all 0.3s ease;
 
   &:hover {
-    #{$property}: $toValue;
+    @content;
   }
 }
 
@@ -26,6 +26,24 @@
     margin-inline: auto;
     padding-inline: 24px;
   }
+}
+
+@mixin uppercase {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+
+  @content;
+}
+
+@mixin small-text {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px; // use % or rem (15.34 px is imposible value)
+
+  @content;
 }
 
 @mixin page-grid {
@@ -41,5 +59,25 @@
 
   @include on-desktop {
     --columns: 24;
+  }
+}
+
+@mixin hover-active($hover-styles, $active-styles: null) {
+  transition: 0.3s;
+
+  @media (hover: hover) {
+    &:hover {
+      @each $property, $value in $hover-styles {
+        #{$property}: #{$value};
+      }
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      @each $property, $value in if($active-styles != null, $active-styles, $hover-styles) {
+        #{$property}: #{$value};
+      }
+    }
   }
 }

@@ -1,22 +1,31 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { Header } from './widgets/Header/Header';
-
 import '@/app/i18n';
+import { useAppDispatch } from './app/store/hooks';
+import { getProducts } from './features/products/productsSlice';
 
-// import { Footer } from './modules/shared/Footer';
+import { Header } from './widgets/Header';
+import { Footer } from './widgets/Footer';
+
+import './App.scss';
 
 export const App: FC = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [dispatch]);
+
   return (
-    <div>
+    <div className="App">
       <Header />
 
-      <main className="App__main">
+      <main className="App__content">
         <Outlet />
       </main>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

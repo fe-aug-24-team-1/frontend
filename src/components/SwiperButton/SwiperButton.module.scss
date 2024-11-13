@@ -1,0 +1,30 @@
+@import '@/styles/index';
+
+.button {
+  user-select: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--color-icons);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: border $effect-duration;
+
+  &:active {
+    border: 1px solid #0F0F11;
+  }
+
+  &[disabled] {
+    border: 1px solid var(--color-action);
+    cursor: default;
+
+    &:hover {
+      border: 1px solid var(--color-action);
+    }
+  }
+
+  &__icon {
+    width: 16px;
+  }
+}
