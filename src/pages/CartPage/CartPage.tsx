@@ -13,10 +13,14 @@ export const CartPage = () => {
 
   const getSum = () => {
     return productsOfCart.reduce(
-      (acc, val) => acc + val.price * (val.inCart || 1),
+      (acc, val) => acc + val.price * (val.quantity || 1),
       0
     );
   };
+
+  const itemsInCart = productsOfCart.reduce((acc, product) => {
+    return acc + product.quantity;
+  }, 0);
 
   const handleCheckout = () => {
     const userResponse = confirm(
@@ -27,8 +31,6 @@ export const CartPage = () => {
       dispatch(clearCart());
     }
   };
-
-  const getLengthOfCart = () => {};
 
   return (
     <div className={style.cartPage}>
@@ -68,7 +70,7 @@ export const CartPage = () => {
             <div className={style.checkout__items}>
               <h2 className={style.checkout__items__price}>${getSum()}</h2>
               <p className={style.checkout__items__total}>
-                Total for {getLengthOfCart()} items
+                Total for {itemsInCart} items
               </p>
             </div>
             <div className={style.checkout__divider} />
