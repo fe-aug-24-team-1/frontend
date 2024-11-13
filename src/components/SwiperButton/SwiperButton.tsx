@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Icon } from '@/components/icon/Icon.tsx';
 
 import styles from './SwiperButton.module.scss';
 import { useSwiper } from 'swiper/react';

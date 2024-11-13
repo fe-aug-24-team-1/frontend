@@ -9,6 +9,9 @@ import { Phone } from '@/types/Phone';
 import { Tablet } from '@/types/Tablet';
 import { Accessory } from '@/types/Accessory';
 import { Breadcrumbs } from '../Breadcrumbs';
+import { ProductSlider } from '@/modules/ProductSlider';
+import { useAppSelector } from '@/app/store/hooks';
+import { Product } from '@/types/Product';
 
 type Props = {
   product: Phone | Tablet | Accessory;
@@ -21,6 +24,16 @@ export const ProductInfo: React.FC<Props> = ({
   ...props
 }) => {
   const { t } = useTranslation();
+
+  const { products } = useAppSelector((state) => state.products);
+
+  const currentProduct: Product | undefined = products.find(
+    (item) => item.itemId === product.id
+  );
+
+  if (currentProduct === undefined) {
+    return;
+  }
 
   return (
     <div
@@ -54,6 +67,7 @@ export const ProductInfo: React.FC<Props> = ({
           resolution={product.resolution}
           processor={product.processor}
           ram={product.ram}
+          product={currentProduct}
           className={styles['product__characteristics']}
         />
 
@@ -75,7 +89,11 @@ export const ProductInfo: React.FC<Props> = ({
         />
 
         <div className={styles['product__recommendations']}>
-          <h2>{t('productDetailsPage.slider.title')}</h2>
+          <ProductSlider
+            title={t('productDetailsPage.slider.title')}
+            discount={true}
+            random={true}
+          />
         </div>
 
         <div />
