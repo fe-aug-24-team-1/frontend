@@ -1,8 +1,8 @@
-import { CategoryType } from './CategoryType';
+export type ProductCategory = 'phones' | 'accessories' | 'tablets';
 
-export interface Product {
-  id: number;
-  category: CategoryType;
+export interface GeneralProduct {
+  id: number | string;
+  category: ProductCategory;
   itemId: string;
   name: string;
   fullPrice: number;
@@ -13,5 +13,4 @@ export interface Product {
   ram: string;
   year: number;
   image: string;
-  quantity?: number;
 }

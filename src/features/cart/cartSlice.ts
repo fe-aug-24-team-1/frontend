@@ -61,17 +61,18 @@ const cartSlice = createSlice({
       if (isProductExist) {
         if (isProductExist.quantity) {
           isProductExist.quantity += 1;
-        } else {
-          state.productsOfCart.push({ ...isProductExist, quantity: 1 });
         }
       } else {
-        state.productsOfCart.push({ ...action.payload, quantity: 1 });
+        state.productsOfCart = [
+          ...state.productsOfCart,
+          { ...action.payload, quantity: 1 },
+        ];
       }
 
       localStorage.setItem('cart', JSON.stringify(state.productsOfCart));
     },
 
-    removeFormCart: (state, action: PayloadAction<string>) => {
+    removeFormCart: (state, action: PayloadAction<number>) => {
       state.productsOfCart = state.productsOfCart.filter(
         (item) => item.id !== action.payload
       );
