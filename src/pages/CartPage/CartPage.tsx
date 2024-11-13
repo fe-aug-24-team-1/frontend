@@ -5,8 +5,10 @@ import { ProductInCart } from '../../components/ProductInCart';
 import emptyCart from '/img/cart-is-empty.png';
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
 import { clearCart } from '@/features/cart/cartSlice';
+import { useTranslation } from 'react-i18next';
 
 const CartPage = () => {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const { productsOfCart } = useAppSelector((state) => state.cart);
   const navigate = useNavigate();
@@ -28,20 +30,20 @@ const CartPage = () => {
     }
   };
 
-  const getLengthOfCart = () => {};
-
   return (
     <div className={style.cartPage}>
       <div
         className={style.backButton}
         onClick={() => navigate(-1)}>
         <div className={style.backButton__arrow} />
-        <p className={style.backButton__text}>Back</p>
+        <p className={style.backButton__text}>{t('cartPage.back')}</p>
       </div>
 
       {!productsOfCart.length && (
         <div className={style.emptyCart}>
-          <h1 className={style.emptyCart__title}>Your cart is empty</h1>
+          <h1 className={style.emptyCart__title}>
+            {t('cartPage.title.empty')}
+          </h1>
           <img
             src={emptyCart}
             alt="Empty Cart"
@@ -52,7 +54,7 @@ const CartPage = () => {
 
       {!!productsOfCart.length && (
         <>
-          <h1 className={style.title}>Cart</h1>
+          <h1 className={style.title}>{t('cartPage.title.text')}</h1>
 
           <ul className={style.main}>
             {productsOfCart.map((prod) => (
@@ -68,14 +70,14 @@ const CartPage = () => {
             <div className={style.checkout__items}>
               <h2 className={style.checkout__items__price}>${getSum()}</h2>
               <p className={style.checkout__items__total}>
-                Total for {getLengthOfCart()} items
+                {t('cartPage.total.items', { items: productsOfCart.length })}
               </p>
             </div>
             <div className={style.checkout__divider} />
             <button
               className={style.checkout__button}
               onClick={handleCheckout}>
-              Checkout
+              {t('cartPage.total.checkout')}
             </button>
           </div>
         </>
