@@ -4,8 +4,11 @@ import { Product } from '../../types/Product';
 import style from './FavouritesPage.module.scss';
 import { useAppSelector } from '@/app/store/hooks';
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const FavouritesPage: FC = () => {
+  const { t } = useTranslation();
+
   const favourites = useAppSelector((state) => state.wishlist.products);
 
   return (
@@ -16,17 +19,17 @@ const FavouritesPage: FC = () => {
 
       {!favourites.length && (
         <>
-          <h1 className={style.title}>
-            You haven&apos;t favourite products =(
-          </h1>
+          <h1 className={style.title}>{t('favoritesPage.title.empty')}</h1>
         </>
       )}
 
       {!!favourites.length && (
         <>
-          <h1 className={style.title}>Favourites</h1>
+          <h1 className={style.title}>{t('favoritesPage.title.text')}</h1>
 
-          <p className={style.countItems}>{favourites.length} items</p>
+          <p className={style.countItems}>
+            {t('favoritesPage.title.count', { count: favourites.length })}
+          </p>
 
           <div className={style.cards}>
             {favourites.map((item: Product) => (

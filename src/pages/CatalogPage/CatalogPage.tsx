@@ -11,12 +11,15 @@ import { Pagination } from '../../components/Pagination';
 import { getSortedList } from '../../utils/getSortedList';
 import { useAppSelector } from '@/app/store/hooks';
 import { Loader } from './../../components/Loader/Loader';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   category: 'phones' | 'tablets' | 'accessories';
 };
 
 const CatalogPage: React.FC<Props> = ({ category }) => {
+  const { t } = useTranslation();
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const { products, loaded, error } = useAppSelector((state) => state.products);
@@ -95,9 +98,11 @@ const CatalogPage: React.FC<Props> = ({ category }) => {
       {!!products.length && loaded && !error && (
         <>
           <h1 className={style.title}>
-            {category === 'phones' ? 'mobile phones' : category}
+            {category === 'phones' ? t('phonesPage.title.text') : category}
           </h1>
-          <p className={style.countModels}>{visibleList.length} models</p>
+          <p className={style.countModels}>
+            {t('phonesPage.title.count', { count: visibleList.length })}
+          </p>
 
           <div className={`${style.sortField} ${style['sortField--1']}`}>
             <Dropdown dropdownName={'sort'} />
