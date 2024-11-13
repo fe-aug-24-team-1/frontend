@@ -23,13 +23,6 @@ const getActiveIcon = ({ isActive }: { isActive: boolean }, iconName: string) =>
     [style['menu__bottom__icon--active']]: isActive,
   });
 
-// const navItems = [
-//   { path: '/', name: 'Home' },
-//   { path: 'phones', name: 'Phones' },
-//   { path: 'tablets', name: 'Tablets' },
-//   { path: 'accessories', name: 'Accessories' },
-// ];
-
 interface Props {
   isMenuActive: boolean;
   setIsMenuActive: Dispatch<SetStateAction<boolean>>;
@@ -38,8 +31,6 @@ interface Props {
 export const Aside: React.FC<Props> = ({ isMenuActive, setIsMenuActive }) => {
   const { products } = useAppSelector((state) => state.wishlist);
   const { productsOfCart } = useAppSelector((state) => state.cart);
-
-  // const isMenuActive = false;
 
   const { t } = useTranslation();
 
@@ -74,7 +65,7 @@ export const Aside: React.FC<Props> = ({ isMenuActive, setIsMenuActive }) => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [isMenuActive]);
+  }, [isMenuActive, setIsMenuActive]);
 
   return (
     <aside
