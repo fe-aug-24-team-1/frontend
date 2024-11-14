@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './PhotosBlock.module.scss';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -26,6 +26,13 @@ export const PhotosBlock: React.FC<Props> = ({
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<SwiperType | null>(null);
   const visiblePhotos = photos.length ? photos : [PhotoNotFound];
+
+  useEffect(() => {
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(0);
+      setActiveIndex(0);
+    }
+  }, [name]);
 
   return (
     <section
