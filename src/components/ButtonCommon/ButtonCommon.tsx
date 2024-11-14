@@ -6,18 +6,20 @@ interface Props {
   onAction?: () => void;
   children?: string;
   isGoodInCart?: boolean | undefined;
+  className?: string;
 }
 
 export const ButtonCommon: React.FC<Props> = ({
   onAction = () => {},
   children = 'Add to cart',
   isGoodInCart = false,
+  className,
 }) => {
   return (
     <>
       <button
         className={cn(
-          `${styles.button} ${isGoodInCart ? styles[`button--selected`] : ''}`
+          `${className} ${styles.button} ${isGoodInCart ? styles[`button--selected`] : ''}`
         )}
         onClick={() => onAction()}>
         {isGoodInCart ? (

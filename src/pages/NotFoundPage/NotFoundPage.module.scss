@@ -11,6 +11,7 @@
   padding: 16px;
   margin: 32px auto 0;
   width: 90%;
+  gap: 15px;
 
   @include on-tablet {
     padding: 24px;
@@ -27,6 +28,7 @@
     font-weight: 800;
     line-height: 41px;
     letter-spacing: -0.01em;
+    text-align: center;
 
     @include on-tablet {
       font-size: 48px;
@@ -48,6 +50,10 @@
     border: 1px solid var(--color-icons);
     border-radius: 36px;
     cursor: pointer;
+
+    &__text {
+      padding: 0 25px;
+    }
   }
 
   &__img {
