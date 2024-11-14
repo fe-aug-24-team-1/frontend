@@ -33,6 +33,7 @@ export const PhotosBlock: React.FC<Props> = ({
       {...props}>
       <div className={styles['photos__main']}>
         <Swiper
+          key={name}
           navigation={{
             nextEl: '.custom-next',
             prevEl: '.custom-prev',

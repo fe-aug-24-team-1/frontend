@@ -88,6 +88,7 @@ export const ProductInfo: React.FC<Props> = ({ className, ...props }) => {
 
         <div className={styles['product__recommendations']}>
           <ProductSlider
+            key={productId}
             title={t('productDetailsPage.slider.title')}
             discount={true}
             random={true}
