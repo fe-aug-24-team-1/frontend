@@ -5,8 +5,8 @@
   flex-direction: column;
   gap: 16px;
   background-color: var(--card-color-bg);
-  border: 1px solid var(--color-elements);
-  border-radius: 16px;
+  border: 1px solid var(--color-cards-border);
+  border-radius: var(--border-radius-cart);
   padding: 16px;
   justify-content: space-between;
   color: var(--card-text-color);
@@ -81,15 +81,15 @@
         cursor: pointer;
         min-width: 32px;
         min-height: 32px;
-        border-radius: 50%;
+        border-radius: var(--border-radius-swiper);
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 1px solid var(--color-icons);
+        color: var(--color-swiper-arrow);
+        border: 1px solid var(--color-swiper-border);
+        background-color: var(--color-swiper-background);
 
-        @include hover-active(
-                                (border: 1px solid var(--color-primary))
-        );
+        @include hover-active((border: 1px solid var(--color-primary)));
 
         &__inner {
           width: 16px;
@@ -102,12 +102,11 @@
 
         &--unactive {
           cursor: default;
-          color: var(--color-icons);
-          border: 1px solid var(--color-action);
+          color: var(--color-swiper-border-disabled);
+          border: 1px solid var(--color-swiper-border-disabled);
+          background-color: var(--color-cart-disabled);
 
-          @include hover-active(
-                          (border: 1px solid var(--color-action))
-          );
+          @include hover-active((border: 1px solid var(--color-action)));
         }
       }
 
@@ -121,14 +120,14 @@
     }
 
     &__price {
-      //color: var(--card-price-color);
+      color: var(--card-primary);
       font-size: 32px;
       font-weight: 800;
       line-height: 41px;
       letter-spacing: -0.01em;
       margin-right: 16px;
 
-      width: clamp( 4ch, 5ch, 6ch );
+      width: clamp(4ch, 5ch, 6ch);
 
       @include on-tablet {
         margin-right: 16px;

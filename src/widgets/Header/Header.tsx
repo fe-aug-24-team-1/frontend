@@ -1,4 +1,5 @@
-import logo from '/logo.svg';
+import logoLight from '/logo.svg';
+import logoDark from '/logoDark.svg';
 import style from './Header.module.scss';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FC, useContext, useState } from 'react';
@@ -12,7 +13,10 @@ import { Icon } from '@/components/icon/Icon';
 import { Lang } from '@/types/Lang';
 
 import { useAppSelector } from '@/app/store/hooks';
-import { ThemeDispatchContext } from '@/app/providers/ThemeProvider/ThemeContext';
+import {
+  ThemeDispatchContext,
+  ThemeStateContext,
+} from '@/app/providers/ThemeProvider/ThemeContext';
 
 const getActiveNavLink = ({ isActive }: { isActive: boolean }) =>
   cn(style.nav__link, {
@@ -47,6 +51,7 @@ export const Header: FC = () => {
     { path: 'accessories', name: t('header.nav.accessories') },
   ];
 
+  const { theme } = useContext(ThemeStateContext);
   const toggleTheme = useContext(ThemeDispatchContext);
 
   const getLengthOfCart = () => {
@@ -71,7 +76,7 @@ export const Header: FC = () => {
               to="home"
               className={style.logo__link}>
               <img
-                src={logo}
+                src={theme === 'light' ? logoLight : logoDark}
                 alt="logo"
                 className={style.logo}
               />

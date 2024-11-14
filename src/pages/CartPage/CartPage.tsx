@@ -20,10 +20,6 @@ const CartPage = () => {
     );
   };
 
-  const itemsInCart = productsOfCart.reduce((acc, product) => {
-    return acc + product.quantity;
-  }, 0);
-
   const handleCheckout = () => {
     const userResponse = confirm(
       'Checkout is not implemented yet, do you want to clear a cart?'
@@ -74,9 +70,7 @@ const CartPage = () => {
             <div className={style.checkout__items}>
               <h2 className={style.checkout__items__price}>${getSum()}</h2>
               <p className={style.checkout__items__total}>
-
                 {t('cartPage.total.items', { items: productsOfCart.length })}
-
               </p>
             </div>
             <div className={style.checkout__divider} />

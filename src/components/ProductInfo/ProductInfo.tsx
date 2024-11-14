@@ -11,13 +11,10 @@ import { Accessory } from '@/types/Accessory';
 import { Breadcrumbs } from '../Breadcrumbs';
 
 import { ProductSlider } from '@/modules/ProductSlider';
-import { Product } from '@/types/Product';
 import { useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
 import { useEffect } from 'react';
 import { getCurrentProduct } from '@/features/currentProduct/currentProduct';
-import { CategoryType } from '@/types/CategoryType';
-
 
 type Props = {
   product: Phone | Tablet | Accessory;
@@ -40,8 +37,6 @@ export const ProductInfo: React.FC<Props> = ({
     .filter((chunk) => chunk.length);
 
   const { currentProduct } = useAppSelector((state) => state.currentProduct);
-
-  console.log(currentProduct);
 
   useEffect(() => {
     dispatch(getCurrentProduct({ category, productId }));

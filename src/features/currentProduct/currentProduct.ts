@@ -2,7 +2,6 @@ import { getData } from '@/services/httpClient';
 import { Accessory } from '@/types/Accessory';
 import { CategoryType } from '@/types/CategoryType';
 import { Phone } from '@/types/Phone';
-import { Product } from '@/types/Product';
 import { Tablet } from '@/types/Tablet';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 

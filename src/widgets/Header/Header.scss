@@ -62,6 +62,7 @@
     align-items: center;
     border-left: 1px solid var(--border-color);
     cursor: pointer;
+    color: var(--color-primary);
 
     &:hover {
       background-color: var(--elements-color);
@@ -120,6 +121,7 @@
 
   &__logo {
     padding: 16px;
+    fill: white;
 
     @include on-desktop {
       padding: 18px 24px;
@@ -199,6 +201,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--color-primary);
 
     &_img {
       display: flex;
@@ -297,6 +300,7 @@
       width: 100%;
       position: relative;
       border: 1px solid var(--elements-color);
+      color: var(--color-primary);
 
       &:hover {
         background-color: var(--elements-color);

@@ -13,25 +13,65 @@
   --card-color-bg: #ffffff;
   --main-bg-color: #FAFBFC;
   --card-text-color: #0F0F11;
-
+  --slider-button-color: #ffffff;
+  --button-disabled: #E2E6E9;
+  --color-swiper-arrow: #0F0F11;
+  --color-swiper-arrow-disabled: #B4BDC3;
+  --color-swiper-border: #B4BDC3;
+  --color-swiper-border-disabled: #E2E6E9;
+  --color-swiper-background: #ffffff00; 
+  --color-cards-border: 1px solid #E2E6E9;
+  --border-radius: 48px;
+  --border-radius-swiper: 50%;
+  --border-radius-card: 8px;
+  --color-breadcramps: #89939A;
+  --color-circle: #E2E6E9;
+  --color-memory: #fff;
+  --color-button-text: #fff;
+  --color-border-header: #E2E6E9;
+  --color-button-bg-active: #e2e6e900;
+  --color-text-button-active: #4219D0;
+  --color-border-button-active: #e2e6e9;
+  --border-radius-cart: 16px;
+  --color-cart-disabled: #ffffff00;
 }
 
 // not complete, need to investigate colors in figma
 :root[data-theme='dark'] {
   --color-accent: #905bff;
   --color-secondary-accent: #f4ba47;
-  --color-primary: #0f0f11;
+  --color-primary: #F1F2F9;
   --color-secondary: #75767f;
   --color-icons: #4a4d58;
   --color-elements: #e2e6e9;
   --color-action: #e2e6e9;
-  --color-white: #f1f2f9;
+  --color-white: #0F1121;
   --color-green: #27ae60;
   --color-red: #eb5757;
   --card-color-bg: #161827;
   --main-bg-color: #0F1121;
   --card-text-color: #F1F2F9;
-
+  --slider-button-color: #323542;
+  --button-disabled:#4A4D58;
+  --color-swiper-arrow: #F1F2F9;
+  --color-swiper-arrow-disabled: #4A4D58;
+  --color-swiper-border: #4A4D58;
+  --color-swiper-border-disabled: #4A4D58;
+  --color-swiper-background: #323542; 
+  --color-cards-border: none;
+  --border-radius: 0px;
+  --border-radius-swiper: 0%;
+  --border-radius-card: 0px;
+  --color-breadcramps: #F1F2F9;
+  --color-circle: #3B3E4A;
+  --color-memory: #0F1121;
+  --color-button-text: #F1F2F9;
+  --color-border-header: #323542;
+  --color-button-bg-active: #323542;
+  --color-text-button-active: #F1F2F9;
+  --color-border-button-active: #323542;
+  --border-radius-cart: 0px;
+  --color-cart-disabled: #ffffff00;
 }
 
 /* BREAKPOINTS */
