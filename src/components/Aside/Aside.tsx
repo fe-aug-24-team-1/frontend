@@ -6,8 +6,8 @@ import { useEffect, Dispatch, SetStateAction, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 
-import logoLight from '/logo.svg';
-import logoDark from '/logoDark.svg';
+import logoLight from '../../assets/images/icons/dark/logo.svg';
+import logoDark from '../../assets/images/icons/dark/logo.svg';
 
 import { useAppSelector } from '@/app/store/hooks';
 import { Icon } from '../icon/Icon';

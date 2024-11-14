@@ -5,8 +5,8 @@ import { scrollToTop } from '@/utils/scrolltoTop';
 
 import { Icon } from '@/components/icon/Icon';
 
-import logoLight from '/logo.svg';
-import logoDark from '/logoDark.svg';
+import logoLight from '../../assets/images/icons/light/logo.svg';
+import logoDark from '../../assets/images/icons/dark/logo.svg';
 import style from './Footer.module.scss';
 import { useTranslation } from 'react-i18next';
 import { ThemeStateContext } from '@/app/providers/ThemeProvider/ThemeContext';
