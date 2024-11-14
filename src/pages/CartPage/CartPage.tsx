@@ -74,7 +74,7 @@ const CartPage = () => {
             <div className={style.checkout__items}>
               <h2 className={style.checkout__items__price}>${getSum()}</h2>
               <p className={style.checkout__items__total}>
-                {t('cartPage.total.items', { total: productsOfCart.length })}
+                {t('cartPage.total.items', { total: itemsInCart })}
               </p>
             </div>
             <div className={style.checkout__divider} />
