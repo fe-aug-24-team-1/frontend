@@ -86,7 +86,7 @@ export const uk = {
   },
 
   itemsDropdown: {
-    title: 'Кількість на сторінці',
+    title: 'Кількість',
     all: 'Всі',
   },
 
