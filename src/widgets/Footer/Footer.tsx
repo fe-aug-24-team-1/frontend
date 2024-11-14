@@ -1,15 +1,19 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { scrollToTop } from '@/utils/scrolltoTop';
 
 import { Icon } from '@/components/icon/Icon';
 
-import logo from '/logo.svg';
+import logoLight from '../../assets/images/icons/light/logo.svg';
+import logoDark from '../../assets/images/icons/dark/logo.svg';
 import style from './Footer.module.scss';
 import { useTranslation } from 'react-i18next';
+import { ThemeStateContext } from '@/app/providers/ThemeProvider/ThemeContext';
 
 export const Footer: FC = () => {
+  const { theme } = useContext(ThemeStateContext);
+
   const { t } = useTranslation();
 
   const navigation = [
@@ -33,7 +37,7 @@ export const Footer: FC = () => {
         href="#"
         className={style.logo__link}>
         <img
-          src={logo}
+          src={theme === 'light' ? logoLight : logoDark}
           className={style.logo}
         />
       </a>
