@@ -65,7 +65,9 @@ export const ProductActions: React.FC<Props> = ({
       <div className={styles['actions__container']}>
         <div className={styles['actions__InfoBlock']}>
           <span className={styles['actions__title']}>{t('filter.title')}</span>
-          <span className={styles['actions__id']}>ID: 802390</span>
+          <span className={styles['actions__id']}>
+            ID: {currentProduct?.id || 0}
+          </span>
         </div>
         <FilterColor
           colorsAvailable={product.colorsAvailable}
