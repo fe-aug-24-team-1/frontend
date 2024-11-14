@@ -25,7 +25,7 @@
     line-height: 14px;
 
     &--active {
-      color: black;
+      color: var(--color-secondary);
     }
 
     @include hover {

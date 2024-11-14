@@ -1,8 +1,11 @@
 import style from './Breadcrumbs.module.scss';
-import home from '../../assets/images/icons/light/home.svg';
+import homeLight from '../../assets/images/icons/light/home.svg';
+import homeDark from '../../assets/images/icons/dark/home.svg';
 import rightArrow from '../../assets/images/icons/light/chevron-right.svg';
 import { NavLink, useLocation } from 'react-router-dom';
 import cn from 'classnames';
+import { ThemeStateContext } from '@/app/providers/ThemeProvider/ThemeContext';
+import { useContext } from 'react';
 
 const getActiveLink = ({ isActive }: { isActive: boolean }) =>
   cn(style.path__direction, {
@@ -10,6 +13,8 @@ const getActiveLink = ({ isActive }: { isActive: boolean }) =>
   });
 
 export const Breadcrumbs: React.FC = () => {
+  const { theme } = useContext(ThemeStateContext);
+
   const fullPath = useLocation().pathname.split('/');
 
   const [, category, product] = fullPath;
@@ -20,7 +25,7 @@ export const Breadcrumbs: React.FC = () => {
         to="/"
         className={style.path__link}>
         <img
-          src={home}
+          src={theme === 'light' ? homeLight : homeDark}
           className={style.path__home}
         />
       </NavLink>
