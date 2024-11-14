@@ -11,27 +11,72 @@
   --color-green: #27ae60;
   --color-red: #eb5757;
   --card-color-bg: #ffffff;
-  --main-bg-color: #FAFBFC;
-  --card-text-color: #0F0F11;
+  --main-bg-color: #fafbfc;
+  --card-text-color: #0f0f11;
+  --slider-button-color: #ffffff;
+  --button-disabled: #e2e6e9;
+  --color-swiper-arrow: #0f0f11;
+  --color-swiper-arrow-disabled: #b4bdc3;
+  --color-swiper-border: #b4bdc3;
+  --color-swiper-border-disabled: #e2e6e9;
+  --color-swiper-background: #ffffff00;
+  --color-cards-border: 1px solid #e2e6e9;
+  --border-radius: 48px;
+  --border-radius-swiper: 50%;
+  --border-radius-card: 8px;
+  --color-breadcramps: #89939a;
+  --color-circle: #e2e6e9;
+  --color-memory: #fff;
+  --color-button-text: #fff;
+  --color-border-header: #e2e6e9;
+  --color-button-bg-active: #e2e6e900;
+  --color-text-button-active: #4219d0;
+  --color-border-button-active: #e2e6e9;
+  --border-radius-cart: 16px;
+  --color-cart-disabled: #ffffff00;
   --round-button-hover: #0f0f11;
+
 }
 
 // not complete, need to investigate colors in figma
 :root[data-theme='dark'] {
   --color-accent: #905bff;
   --color-secondary-accent: #f4ba47;
-  --color-primary: #0f0f11;
+  --color-primary: #f1f2f9;
   --color-secondary: #75767f;
   --color-icons: #4a4d58;
   --color-elements: #e2e6e9;
   --color-action: #e2e6e9;
-  --color-white: #f1f2f9;
+  --color-white: #0f1121;
   --color-green: #27ae60;
   --color-red: #eb5757;
   --card-color-bg: #161827;
-  --main-bg-color: #0F1121;
-  --card-text-color: #F1F2F9;
+  --main-bg-color: #0f1121;
+  --card-text-color: #f1f2f9;
+  --slider-button-color: #323542;
+  --button-disabled: #4a4d58;
+  --color-swiper-arrow: #f1f2f9;
+  --color-swiper-arrow-disabled: #4a4d58;
+  --color-swiper-border: #4a4d58;
+  --color-swiper-border-disabled: #4a4d58;
+  --color-swiper-background: #323542;
+  --color-cards-border: none;
+  --border-radius: 0px;
+  --border-radius-swiper: 0%;
+  --border-radius-card: 0px;
+  --color-breadcramps: #f1f2f9;
+  --color-circle: #3b3e4a;
+  --color-memory: #0f1121;
+  --color-button-text: #f1f2f9;
+  --color-border-header: #323542;
+  --color-button-bg-active: #323542;
+  --color-text-button-active: #f1f2f9;
+  --color-border-button-active: #323542;
+  --border-radius-cart: 0px;
+  --color-cart-disabled: #ffffff00;
+
   --round-button-hover: #3B3E4A;
+
 }
 
 /* BREAKPOINTS */

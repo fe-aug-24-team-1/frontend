@@ -13,16 +13,16 @@ const CartPage = () => {
   const { productsOfCart } = useAppSelector((state) => state.cart);
   const navigate = useNavigate();
 
+  const itemsInCart = productsOfCart.reduce((acc, product) => {
+    return acc + product.quantity;
+  }, 0);
+
   const getSum = () => {
     return productsOfCart.reduce(
       (acc, val) => acc + val.price * (val.quantity || 1),
       0
     );
   };
-
-  const itemsInCart = productsOfCart.reduce((acc, product) => {
-    return acc + product.quantity;
-  }, 0);
 
   const handleCheckout = () => {
     const userResponse = confirm(

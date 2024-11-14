@@ -37,6 +37,7 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    
 
     @include on-desktop {
       grid-column: 1 / 8;
