@@ -13,16 +13,16 @@ const CartPage = () => {
   const { productsOfCart } = useAppSelector((state) => state.cart);
   const navigate = useNavigate();
 
+  const itemsInCart = productsOfCart.reduce((acc, product) => {
+    return acc + product.quantity;
+  }, 0);
+
   const getSum = () => {
     return productsOfCart.reduce(
       (acc, val) => acc + val.price * (val.quantity || 1),
       0
     );
   };
-
-  const itemsInCart = productsOfCart.reduce((acc, product) => {
-    return acc + product.quantity;
-  }, 0);
 
   const handleCheckout = () => {
     const userResponse = confirm(
@@ -74,7 +74,7 @@ const CartPage = () => {
             <div className={style.checkout__items}>
               <h2 className={style.checkout__items__price}>${getSum()}</h2>
               <p className={style.checkout__items__total}>
-                {t('cartPage.total.items', { items: itemsInCart })}
+                {t('cartPage.total.items', { total: itemsInCart })}
               </p>
             </div>
             <div className={style.checkout__divider} />

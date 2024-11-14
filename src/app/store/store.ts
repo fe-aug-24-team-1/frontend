@@ -3,6 +3,7 @@ import productsSlice from '@/features/products/productsSlice';
 import wishlistSlice from '@/features/wishlist/wishlistSlice';
 import cartSlice from '@/features/cart/cartSlice';
 import currentProduct from '@/features/currentProduct/currentProduct';
+import notification from '@/features/notification/notificationSlice';
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     wishlist: wishlistSlice,
     cart: cartSlice,
     currentProduct,
+    notification: notification,
   },
 });
 

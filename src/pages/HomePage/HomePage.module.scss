@@ -27,13 +27,15 @@
     gap: 80px;
   }
 
+  @include content-padding-inline;
+
   .title {
-    @include content-padding-inline;
 
     font-size: 32px;
     font-weight: 800;
     line-height: 41px;
     letter-spacing: -0.01em;
+    color: var(--color-primary);
 
     margin-block: 24px;
 

@@ -1,24 +1,30 @@
-import React from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { ToastContainer, toast, ToastOptions } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '@/app/store/hooks.ts';
+import { setNotification } from '@/features/notification/notificationSlice.ts';
+// import { useNavigate } from 'react-router-dom';
 
 interface NotificationProps {
-  type: 'success' | 'warning' | 'error';
-  message: string;
-  position: ToastOptions['position'];
-  duration: number;
-  redirectUrl: string;
+  className?: string;
+  children?: ReactNode;
+  type?: 'success' | 'warning' | 'error';
+  message?: string;
+  position?: ToastOptions['position'];
+  duration?: number;
+  redirectUrl?: string;
 }
 
 const Notification: React.FC<NotificationProps> = ({
-  type,
-  message,
-  position,
-  duration,
-  redirectUrl,
+  position = 'bottom-right',
+  duration = 3000,
+  // redirectUrl,
 }) => {
-  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { notification } = useAppSelector((state) => state.notification);
+  // const navigate = useNavigate();
+
+  const [message, type] = notification;
 
   const notify = () => {
     const options: ToastOptions = {
@@ -28,9 +34,7 @@ const Notification: React.FC<NotificationProps> = ({
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      onClose: () => {
-        navigate(redirectUrl);
-      },
+      onClose: () => dispatch(setNotification[('none', 'none')]),
       style: {
         background: '#1a73e8',
         color: '#fff',
@@ -53,11 +57,16 @@ const Notification: React.FC<NotificationProps> = ({
     }
   };
 
+  useEffect(() => {
+    if (message !== 'none') {
+      notify();
+    }
+  }, [notification]);
+
   return (
-    <div>
-      <button onClick={notify}>Show Notification</button>
+    <>
       <ToastContainer />
-    </div>
+    </>
   );
 };
 

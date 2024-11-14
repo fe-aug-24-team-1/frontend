@@ -11,6 +11,7 @@ import { Pagination } from '../../components/Pagination';
 import { getSortedList } from '../../utils/getSortedList';
 import { useAppSelector } from '@/app/store/hooks';
 import { useTranslation } from 'react-i18next';
+import prodNotFound from '@/assets/images/EmptyFavorite/product-not-found.png';
 
 type Props = {
   category: 'phones' | 'tablets' | 'accessories';
@@ -18,6 +19,17 @@ type Props = {
 
 const CatalogPage: React.FC<Props> = ({ category }) => {
   const { t } = useTranslation();
+
+  const getLocalizationType = () => {
+    switch (category) {
+      case 'phones':
+        return 'phonesPage';
+      case 'tablets':
+        return 'tabletsPage';
+      case 'accessories':
+        return 'accessoriesPage';
+    }
+  };
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -124,21 +136,34 @@ const CatalogPage: React.FC<Props> = ({ category }) => {
               placeholder="I want to find ..."
             />
           </div>
-
-          <ul className={style.cards}>
-            {visibleList
-              .slice(
-                currentPage * correctPerPage - correctPerPage,
-                currentPage * correctPerPage
-              )
-              .map((prod) => (
-                <li
-                  key={prod.id}
-                  className={style.card}>
-                  <ProductCard prod={prod} />
-                </li>
-              ))}
-          </ul>
+          {!visibleList.length ? (
+            <div className={style.wrapper}>
+              {/*<h1 className={style.title}>{t('favoritesPage.title.empty')}</h1>*/}
+              <h1 className={style.title}>
+                {t(`${getLocalizationType()}.notFoundProduct.${category}`)}
+              </h1>
+              <img
+                className={style.emptyImage}
+                src={prodNotFound}
+                alt="No favourites yet"
+              />
+            </div>
+          ) : (
+            <ul className={style.cards}>
+              {visibleList
+                .slice(
+                  currentPage * correctPerPage - correctPerPage,
+                  currentPage * correctPerPage
+                )
+                .map((prod) => (
+                  <li
+                    key={prod.id}
+                    className={style.card}>
+                    <ProductCard prod={prod} />
+                  </li>
+                ))}
+            </ul>
+          )}
           {correctPerPage < visibleList.length && (
             <div className={style.pagination}>
               <Pagination
