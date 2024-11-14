@@ -1,5 +1,19 @@
 @import '../../styles/index.scss';
 
+.loader {
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include on-tablet {
+    padding-top: 32px;
+  }
+
+  @include on-desktop {
+    padding-top: 56px;
+    padding-bottom: 80px;
+  }
+}
+
 .homePage {
   display: flex;
   flex-direction: column;
@@ -13,8 +27,9 @@
     gap: 80px;
   }
 
+  @include content-padding-inline;
+
   .title {
-    @include content-padding-inline;
 
     font-size: 32px;
     font-weight: 800;

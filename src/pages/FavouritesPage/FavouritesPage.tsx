@@ -5,6 +5,7 @@ import style from './FavouritesPage.module.scss';
 import { useAppSelector } from '@/app/store/hooks';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
+import prodNotFound from '@/assets/images/EmptyFavorite/product-not-found.png';
 
 const FavouritesPage: FC = () => {
   const { t } = useTranslation();
@@ -18,9 +19,14 @@ const FavouritesPage: FC = () => {
       </div>
 
       {!favourites.length && (
-        <>
+        <div className={style.wrapper}>
           <h1 className={style.title}>{t('favoritesPage.title.empty')}</h1>
-        </>
+          <img
+            className={style.emptyImage}
+            src={prodNotFound}
+            alt="No favourites yet"
+          />
+        </div>
       )}
 
       {!!favourites.length && (
