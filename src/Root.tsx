@@ -5,7 +5,7 @@ import { App } from './App';
 
 import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
-import FavouritesPageLoader from './pages/CartPage/Loader';
+import FavouritesPageLoader from './pages/FavouritesPage/Loader';
 import CatalogPageLoader from './pages/CatalogPage/Loader';
 import ProductInfoPageLoader from './pages/ProductInfoPage/Loader';
 import CartPageLoader from './pages/CartPage/Loader';
