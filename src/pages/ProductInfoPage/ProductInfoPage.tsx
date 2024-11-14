@@ -1,11 +1,11 @@
-import styles from './ProductInfo.module.scss';
-import { AboutProduct } from '../AboutProduct';
-import { TechSpecsProduct } from '../TechSpecsProduct';
+import styles from './ProductInfoPage.module.scss';
+import { AboutProduct } from '../../components/AboutProduct';
+import { TechSpecsProduct } from '../../components/TechSpecsProduct';
 import { useTranslation } from 'react-i18next';
-import { BackButton } from '../BackButton';
-import { ProductActions } from '../ProductActions';
-import { PhotosBlock } from '../PhotosBlock';
-import { Breadcrumbs } from '../Breadcrumbs';
+import { BackButton } from '../../components/BackButton';
+import { ProductActions } from '../../components/ProductActions';
+import { PhotosBlock } from '../../components/PhotosBlock';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 import { ProductSlider } from '@/modules/ProductSlider';
 import { useLocation } from 'react-router-dom';
@@ -13,12 +13,13 @@ import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
 import { useEffect } from 'react';
 import { getCurrentProduct } from '@/features/currentProduct/currentProduct';
 import { CategoryType } from '@/types/CategoryType';
+import ProductInfoPageLoader from './Loader';
 
 type Props = {
   className?: string;
 };
 
-export const ProductInfo: React.FC<Props> = ({ className, ...props }) => {
+export const ProductInfoPage: React.FC<Props> = ({ className, ...props }) => {
   const { t } = useTranslation();
 
   const location = useLocation();
@@ -29,7 +30,7 @@ export const ProductInfo: React.FC<Props> = ({ className, ...props }) => {
     .split('/')
     .filter((chunk) => chunk.length);
 
-  const { currentProduct: product } = useAppSelector(
+  const { currentProduct: product, loaded } = useAppSelector(
     (state) => state.currentProduct
   );
   const category: CategoryType = categoryRaw as CategoryType;
@@ -40,7 +41,15 @@ export const ProductInfo: React.FC<Props> = ({ className, ...props }) => {
   }, [category, dispatch, productId]);
 
   if (!product) {
-    return <h1>Product is underfined</h1>;
+    if (!loaded) {
+      return (
+        <div className={`${styles.product} ${className}`}>
+          <ProductInfoPageLoader />
+        </div>
+      );
+    } else {
+      return <h1>Product was not found</h1>;
+    }
   }
 
   return (
@@ -101,3 +110,5 @@ export const ProductInfo: React.FC<Props> = ({ className, ...props }) => {
     </div>
   );
 };
+
+export default ProductInfoPage;
