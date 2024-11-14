@@ -31,7 +31,8 @@ export const en = {
   },
 
   searchField: {
-    title: 'Search in {{category}}',
+    title: 'Search',
+    placeholder: 'I want to find...',
     category: {
       phones: 'phones',
       tablets: 'tablets',

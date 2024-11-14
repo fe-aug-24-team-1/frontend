@@ -126,7 +126,7 @@ const CatalogPage: React.FC<Props> = ({ category }) => {
             <label
               htmlFor="query"
               className={style.query__label}>
-              Search
+              {t('searchField.title')}
             </label>
             <input
               id="query"
@@ -134,7 +134,7 @@ const CatalogPage: React.FC<Props> = ({ category }) => {
               type="text"
               value={query || ''}
               onChange={handleQuery}
-              placeholder="I want to find ..."
+              placeholder={t('searchField.placeholder')}
             />
           </div>
           {!visibleList.length ? (
