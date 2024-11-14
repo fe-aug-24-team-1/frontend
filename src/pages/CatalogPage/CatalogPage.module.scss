@@ -110,7 +110,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(212px, 272px));
     justify-content: center;
-    gap: 40px 16px;
+    gap: 40px clamp(16px, 2vw, 21px);
   }
 
   .pagination {

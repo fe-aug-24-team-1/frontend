@@ -10,6 +10,7 @@ import {
   removeFormCart,
 } from '@/features/cart/cartSlice';
 import { Icon } from '@/components/icon/Icon.tsx';
+import { setNotification } from '@/features/notification/notificationSlice.ts';
 
 interface test extends Product {
   quantity: number;
@@ -40,7 +41,12 @@ export const ProductInCart: React.FC<Props> = ({ prod }) => {
         <AiOutlineClose
           className={style.about__close}
           size={16}
-          onClick={() => handleDeleteFromCart()}
+          onClick={() => {
+            handleDeleteFromCart();
+            dispatch(
+              setNotification(['Successfully removed from cart', 'success'])
+            );
+          }}
         />
         <Link
           to={`/${prod.category}/${prod.itemId}`}
