@@ -1,17 +1,16 @@
 import style from './CartPage.module.scss';
-import { useNavigate } from 'react-router-dom';
 import { ProductInCart } from '../../components/ProductInCart';
 
 import emptyCart from '/img/cart-is-empty.png';
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
 import { clearCart } from '@/features/cart/cartSlice';
 import { useTranslation } from 'react-i18next';
+import { BackButton } from '@/components/BackButton';
 
 const CartPage = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const { productsOfCart } = useAppSelector((state) => state.cart);
-  const navigate = useNavigate();
 
   const itemsInCart = productsOfCart.reduce((acc, product) => {
     return acc + product.quantity;
@@ -36,11 +35,8 @@ const CartPage = () => {
 
   return (
     <div className={style.cartPage}>
-      <div
-        className={style.backButton}
-        onClick={() => navigate(-1)}>
-        <div className={style.backButton__arrow} />
-        <p className={style.backButton__text}>{t('cartPage.back')}</p>
+      <div className={style.backButton}>
+        <BackButton />
       </div>
 
       {!productsOfCart.length && (

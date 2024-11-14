@@ -13,7 +13,6 @@ import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
 import { useEffect } from 'react';
 import { getCurrentProduct } from '@/features/currentProduct/currentProduct';
 import { CategoryType } from '@/types/CategoryType';
-import ProductInfoPageLoader from './Loader';
 
 type Props = {
   className?: string;
@@ -41,15 +40,11 @@ export const ProductInfoPage: React.FC<Props> = ({ className, ...props }) => {
   }, [category, dispatch, productId]);
 
   if (!product) {
-    if (!loaded) {
-      return (
-        <div className={`${styles.product} ${className}`}>
-          <ProductInfoPageLoader />
-        </div>
-      );
-    } else {
+    if (loaded) {
       return <h1>Product was not found</h1>;
     }
+
+    return;
   }
 
   return (
