@@ -1,15 +1,15 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './PhotosBlock.module.scss';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperType } from 'swiper';
 import { Navigation } from 'swiper/modules';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 import PhotoNotFound from '@/assets/images/Photo-not-found.svg';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-// import { Icon } from '../icon/Icon';
 
 type Props = {
   name: string;
@@ -27,12 +27,20 @@ export const PhotosBlock: React.FC<Props> = ({
   const swiperRef = useRef<SwiperType | null>(null);
   const visiblePhotos = photos.length ? photos : [PhotoNotFound];
 
+  useEffect(() => {
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(0);
+      setActiveIndex(0);
+    }
+  }, [name]);
+
   return (
     <section
       className={`${styles.photos} ${className}`}
       {...props}>
       <div className={styles['photos__main']}>
         <Swiper
+          key={name}
           navigation={{
             nextEl: '.custom-next',
             prevEl: '.custom-prev',
@@ -62,13 +70,13 @@ export const PhotosBlock: React.FC<Props> = ({
         <div
           className={`${styles.photos__button} ${styles['photos__button--prev']} ${activeIndex === 0 && styles['photos__button--disabled']}`}
           onClick={() => swiperRef.current?.slidePrev()}>
-          {/* <Icon.ChevronLeft className="photos__icon" /> */}
+          <FaChevronLeft className="photos__icon" />
         </div>
 
         <div
           className={`${styles.photos__button} ${styles['photos__button--next']} ${activeIndex === photos.length - 1 && styles['photos__button--disabled']}`}
           onClick={() => swiperRef.current?.slideNext()}>
-          {/* <Icon.ChevronRight className="photos__icon" /> */}
+          <FaChevronRight className="photos__icon" />
         </div>
       </div>
 
