@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './ButtonCommon.module.scss';
 import cn from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   onAction?: () => void;
@@ -11,10 +12,10 @@ interface Props {
 
 export const ButtonCommon: React.FC<Props> = ({
   onAction = () => {},
-  children = 'Add to cart',
   isGoodInCart = false,
   className,
 }) => {
+  const { t } = useTranslation();
   return (
     <>
       <button
@@ -23,9 +24,9 @@ export const ButtonCommon: React.FC<Props> = ({
         )}
         onClick={() => onAction()}>
         {isGoodInCart ? (
-          <p className={styles.button__text}>Added to cart</p>
+          <p className={styles.button__text}>{t('productCard.button.added')}</p>
         ) : (
-          <p className={styles.button__text}>{children}</p>
+          <p className={styles.button__text}>{t('productCard.button.add')}</p>
         )}
       </button>
     </>

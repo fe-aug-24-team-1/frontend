@@ -135,7 +135,7 @@ export const uk = {
     },
 
     button: {
-      add: 'В корзину',
+      add: 'В кошик',
       added: 'Уже в кошику',
     },
   },
