@@ -9,11 +9,15 @@ import { Phone } from '@/types/Phone';
 import { Tablet } from '@/types/Tablet';
 import { Accessory } from '@/types/Accessory';
 import { Breadcrumbs } from '../Breadcrumbs';
+
+import { ProductSlider } from '@/modules/ProductSlider';
+import { Product } from '@/types/Product';
 import { useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
 import { useEffect } from 'react';
 import { getCurrentProduct } from '@/features/currentProduct/currentProduct';
 import { CategoryType } from '@/types/CategoryType';
+
 
 type Props = {
   product: Phone | Tablet | Accessory;
@@ -75,6 +79,7 @@ export const ProductInfo: React.FC<Props> = ({
           resolution={product.resolution}
           processor={product.processor}
           ram={product.ram}
+          product={currentProduct}
           className={styles['product__characteristics']}
         />
 
@@ -96,7 +101,11 @@ export const ProductInfo: React.FC<Props> = ({
         />
 
         <div className={styles['product__recommendations']}>
-          <h2>{t('productDetailsPage.slider.title')}</h2>
+          <ProductSlider
+            title={t('productDetailsPage.slider.title')}
+            discount={true}
+            random={true}
+          />
         </div>
 
         <div />

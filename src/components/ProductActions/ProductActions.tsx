@@ -4,9 +4,13 @@ import styles from './ProductActions.module.scss';
 import { useTranslation } from 'react-i18next';
 import { FilterColor } from '../FilterColor';
 import { FilterCapacity } from '../FilterCapacity';
-import { Button } from '../Button';
 import { TechSpecsListItem } from '../TechSpecsListItem';
 import { FavoriteButton } from '../FavoriteButton/FavoriteButton';
+import { ButtonCommon } from '../ButtonCommon';
+import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
+import { Product } from '@/types/Product';
+import { toggleWishListProduct } from '@/features/wishlist/wishlistSlice';
+import { addToCart, removeFormCart } from '@/features/cart/cartSlice';
 
 type Props = {
   colorsAvailable: string[];
@@ -19,6 +23,7 @@ type Props = {
   resolution?: string;
   processor?: string;
   ram?: string;
+  product: Product;
   className?: string;
 };
 
@@ -33,10 +38,31 @@ export const ProductActions: React.FC<Props> = ({
   resolution,
   processor,
   ram,
+  product,
   className,
   ...props
 }) => {
   const { t } = useTranslation();
+
+  const { productsOfCart } = useAppSelector((state) => state.cart);
+  const dispatch = useAppDispatch();
+
+  const handleLike = (product: Product) => {
+    dispatch(toggleWishListProduct(product));
+  };
+
+  const getActiveButton = (product: Product) => {
+    return productsOfCart.some((item: Product) => product.id === item.id);
+  };
+
+  const handleAddButton = (product: Product) => {
+    if (!getActiveButton(product)) {
+      dispatch(addToCart(product));
+    } else {
+      dispatch(removeFormCart(product.id));
+    }
+  };
+
   return (
     <div
       className={`${styles.actions} ${className}`}
@@ -80,8 +106,15 @@ export const ProductActions: React.FC<Props> = ({
           )}
         </div>
         <div className={styles[`actions__buttons`]}>
-          <Button />
-          <FavoriteButton />
+          <div
+            onClick={() => handleAddButton(product)}
+            style={{ width: '100%' }}>
+            <ButtonCommon isGoodInCart={getActiveButton(product)} />
+          </div>
+
+          <div onClick={() => handleLike(product)}>
+            <FavoriteButton />
+          </div>
         </div>
       </div>
 
