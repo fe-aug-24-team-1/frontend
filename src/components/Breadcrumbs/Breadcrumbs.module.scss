@@ -6,6 +6,8 @@
   display: flex;
   align-items: flex-end;
   gap: 8px;
+  text-align: center;
+  line-height: 16px;
 
   @include on-tablet {
     margin-bottom: 40px;
@@ -20,6 +22,7 @@
   &__direction {
     color: var(--color-secondary);
     text-transform: capitalize;
+    line-height: 14px;
 
     &--active {
       color: var(--color-secondary);

@@ -13,8 +13,9 @@
     gap: 80px;
   }
 
+  @include content-padding-inline;
+
   .title {
-    @include content-padding-inline;
 
     font-size: 32px;
     font-weight: 800;
