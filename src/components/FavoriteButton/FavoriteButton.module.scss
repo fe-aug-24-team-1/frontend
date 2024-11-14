@@ -14,7 +14,7 @@
   transition: $effect-duration;
 
   &:hover {
-    border: 1px solid #0F0F11;
+    border: 1px solid var(--color-secondary);
   }
 
   &__icon {
