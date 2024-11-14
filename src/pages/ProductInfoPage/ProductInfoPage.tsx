@@ -48,7 +48,7 @@ export const ProductInfoPage: React.FC<Props> = ({ className, ...props }) => {
         </div>
       );
     } else {
-      return <h1>Product is underfined</h1>;
+      return <h1>Product was not found</h1>;
     }
   }
 
