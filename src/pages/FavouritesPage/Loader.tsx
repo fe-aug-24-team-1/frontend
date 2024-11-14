@@ -86,7 +86,7 @@ const FavouritesPageLoader = () => {
           />
           <rect
             x="579"
-            y="726"
+            y="727"
             rx="20"
             ry="20"
             width="274"
