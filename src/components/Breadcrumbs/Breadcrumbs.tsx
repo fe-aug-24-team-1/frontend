@@ -14,6 +14,13 @@ export const Breadcrumbs: React.FC = () => {
 
   const [, category, product] = fullPath;
 
+  const normilizedProduct = product
+    ? product
+        .replace(/\b\w/g, (char) => char.toUpperCase())
+        .split('-')
+        .join(' ')
+    : '';
+
   return (
     <div className={style.path}>
       <NavLink
@@ -34,13 +41,13 @@ export const Breadcrumbs: React.FC = () => {
         className={getActiveLink}>
         {category}
       </NavLink>
-      {product && (
+      {normilizedProduct && (
         <>
           <img
             src={rightArrow}
             className={style.path__arrow}
           />
-          <p className={style.path__product}>{product}</p>
+          <p className={style.path__product}>{normilizedProduct}</p>
         </>
       )}
     </div>

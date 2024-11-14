@@ -10,7 +10,6 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Pagination } from '../../components/Pagination';
 import { getSortedList } from '../../utils/getSortedList';
 import { useAppSelector } from '@/app/store/hooks';
-import { Loader } from './../../components/Loader/Loader';
 import { useTranslation } from 'react-i18next';
 
 type Props = {
@@ -80,8 +79,6 @@ const CatalogPage: React.FC<Props> = ({ category }) => {
       <div className={style.breadcrumbs}>
         <Breadcrumbs />
       </div>
-
-      {!loaded && <Loader />}
 
       {error && !loaded && (
         <div className={style.error}>
