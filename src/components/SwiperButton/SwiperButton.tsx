@@ -3,8 +3,7 @@ import React from 'react';
 import styles from './SwiperButton.module.scss';
 import { useSwiper } from 'swiper/react';
 
-import { FaChevronRight } from 'react-icons/fa6';
-import { FaChevronLeft } from 'react-icons/fa6';
+import { Icon } from '@/components/icon/Icon.tsx';
 
 interface Props {
   direction: 'right' | 'left';
@@ -24,14 +23,16 @@ export const SwiperButton: React.FC<Props> = ({
           disabled={disabled}
           onClick={() => swiper.slideNext()}
           className={styles[`button`]}>
-          <FaChevronRight size={16} />
+          {/*<FaChevronRight size={16} />*/}
+          <Icon.ChevronRight />
         </button>
       ) : (
         <button
           disabled={disabled}
           onClick={() => swiper.slidePrev()}
           className={styles[`button`]}>
-          <FaChevronLeft size={16} />
+          {/*<FaChevronLeft size={16} />*/}
+          <Icon.ChevronLeft />
         </button>
       )}
     </>

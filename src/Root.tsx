@@ -7,9 +7,7 @@ import { Loader } from './components/Loader';
 
 import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
-import { PhonesPage } from './pages/PhonesPage';
-import { TabletsPage } from './pages/TabletsPage';
-import { AccessoriesPage } from './pages/AccessoriesPage';
+import { ProductInfo } from './components/ProductInfo';
 
 const Catalog = lazy(
   () =>
@@ -61,7 +59,7 @@ export const Root = () => (
           />
           <Route
             path=":productId?"
-            element={<PhonesPage />}
+            element={<ProductInfo />}
           />
         </Route>
 
@@ -76,7 +74,7 @@ export const Root = () => (
           />
           <Route
             path=":productId?"
-            element={<TabletsPage />}
+            element={<ProductInfo />}
           />
         </Route>
 
@@ -91,7 +89,7 @@ export const Root = () => (
           />
           <Route
             path=":productId?"
-            element={<AccessoriesPage />}
+            element={<ProductInfo />}
           />
         </Route>
 

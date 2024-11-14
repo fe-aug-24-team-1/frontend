@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './PhotosBlock.module.scss';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -27,12 +27,20 @@ export const PhotosBlock: React.FC<Props> = ({
   const swiperRef = useRef<SwiperType | null>(null);
   const visiblePhotos = photos.length ? photos : [PhotoNotFound];
 
+  useEffect(() => {
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(0);
+      setActiveIndex(0);
+    }
+  }, [name]);
+
   return (
     <section
       className={`${styles.photos} ${className}`}
       {...props}>
       <div className={styles['photos__main']}>
         <Swiper
+          key={name}
           navigation={{
             nextEl: '.custom-next',
             prevEl: '.custom-prev',
