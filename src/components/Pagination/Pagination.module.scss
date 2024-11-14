@@ -7,11 +7,11 @@
   justify-content: center;
 
   .arrow {
-    background-image: url(../../assets/img/icons/arrow-right-active.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    width: var(--color-icons)-size;
-    height: var(--color-icons)-size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
     padding: 16px;
     border: 1px solid var(--color-icons);
     border-radius: 48px;
@@ -45,6 +45,7 @@
       text-align: center;
       border: 1px solid var(--color-elements);
       border-radius: 16px;
+      color: var(--color-primary);
       background-color: inherit;
       cursor: pointer;
 

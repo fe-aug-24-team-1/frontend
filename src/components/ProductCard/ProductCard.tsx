@@ -63,7 +63,9 @@ export const ProductCard: FC<Props> = ({ product, discount }) => {
           className={cn(styles.buttons__add, {
             [styles['buttons__add--active']]: true,
           })}
-          onClick={() => dispatch(addToCart(product))}>
+          onClick={() => {
+            dispatch(addToCart(product));
+          }}>
           Add to cart
         </button>
 

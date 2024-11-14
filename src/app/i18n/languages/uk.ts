@@ -31,7 +31,8 @@ export const uk = {
   },
 
   searchField: {
-    title: 'Пошук в {{category}}',
+    title: 'Пошук',
+    placeholder: 'Я шукаю...',
     category: {
       phones: 'телефонах',
       tablets: 'планшетах',
@@ -86,7 +87,7 @@ export const uk = {
   },
 
   itemsDropdown: {
-    title: 'Кількість на сторінці',
+    title: 'Кількість',
     all: 'Всі',
   },
 

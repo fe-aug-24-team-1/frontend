@@ -38,12 +38,16 @@ interface InitialState {
   currentProduct: Accessory | Phone | Tablet | undefined;
   allColor: Array<Accessory | Phone | Tablet>;
   allCapacity: Array<Accessory | Phone | Tablet>;
+  loaded: boolean;
+  error: boolean;
 }
 
 const initialState: InitialState = {
   currentProduct: undefined,
   allColor: [],
   allCapacity: [],
+  loaded: false,
+  error: false,
 };
 
 const currentProductSlice = createSlice({
@@ -51,10 +55,21 @@ const currentProductSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(getCurrentProduct.pending, (state) => {
+      state.error = false;
+      state.loaded = false;
+    });
+
     builder.addCase(getCurrentProduct.fulfilled, (state, action) => {
+      state.loaded = true;
       state.currentProduct = action.payload.currentProduct;
       state.allColor = action.payload.allColor;
       state.allCapacity = action.payload.allCapacity;
+    });
+
+    builder.addCase(getCurrentProduct.rejected, (state) => {
+      state.error = true;
+      state.loaded = true;
     });
   },
 });

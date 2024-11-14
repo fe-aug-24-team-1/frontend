@@ -10,8 +10,8 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Pagination } from '../../components/Pagination';
 import { getSortedList } from '../../utils/getSortedList';
 import { useAppSelector } from '@/app/store/hooks';
-import { Loader } from './../../components/Loader/Loader';
 import { useTranslation } from 'react-i18next';
+import prodNotFound from '@/assets/images/EmptyFavorite/product-not-found.png';
 
 type Props = {
   category: 'phones' | 'tablets' | 'accessories';
@@ -19,6 +19,17 @@ type Props = {
 
 const CatalogPage: React.FC<Props> = ({ category }) => {
   const { t } = useTranslation();
+
+  const getLocalizationType = () => {
+    switch (category) {
+      case 'phones':
+        return 'phonesPage';
+      case 'tablets':
+        return 'tabletsPage';
+      case 'accessories':
+        return 'accessoriesPage';
+    }
+  };
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -81,8 +92,6 @@ const CatalogPage: React.FC<Props> = ({ category }) => {
         <Breadcrumbs />
       </div>
 
-      {!loaded && <Loader />}
-
       {error && !loaded && (
         <div className={style.error}>
           <span className={style.error__text}>Something went wrong</span>
@@ -98,7 +107,8 @@ const CatalogPage: React.FC<Props> = ({ category }) => {
       {!!products.length && loaded && !error && (
         <>
           <h1 className={style.title}>
-            {category === 'phones' ? t('phonesPage.title.text') : category}
+            {/* {category === 'phones' ? t('phonesPage.title.text') : category} */}
+            {t(`${category}Page.title.text`)}
           </h1>
           <p className={style.countModels}>
             {t('phonesPage.title.count', { count: visibleList.length })}
@@ -116,7 +126,7 @@ const CatalogPage: React.FC<Props> = ({ category }) => {
             <label
               htmlFor="query"
               className={style.query__label}>
-              Search
+              {t('searchField.title')}
             </label>
             <input
               id="query"
@@ -124,24 +134,37 @@ const CatalogPage: React.FC<Props> = ({ category }) => {
               type="text"
               value={query || ''}
               onChange={handleQuery}
-              placeholder="I want to find ..."
+              placeholder={t('searchField.placeholder')}
             />
           </div>
-
-          <ul className={style.cards}>
-            {visibleList
-              .slice(
-                currentPage * correctPerPage - correctPerPage,
-                currentPage * correctPerPage
-              )
-              .map((prod) => (
-                <li
-                  key={prod.id}
-                  className={style.card}>
-                  <ProductCard prod={prod} />
-                </li>
-              ))}
-          </ul>
+          {!visibleList.length ? (
+            <div className={style.wrapper}>
+              {/*<h1 className={style.title}>{t('favoritesPage.title.empty')}</h1>*/}
+              <h1 className={style.title}>
+                {t(`${getLocalizationType()}.notFoundProduct.${category}`)}
+              </h1>
+              <img
+                className={style.emptyImage}
+                src={prodNotFound}
+                alt="No favourites yet"
+              />
+            </div>
+          ) : (
+            <ul className={style.cards}>
+              {visibleList
+                .slice(
+                  currentPage * correctPerPage - correctPerPage,
+                  currentPage * correctPerPage
+                )
+                .map((prod) => (
+                  <li
+                    key={prod.id}
+                    className={style.card}>
+                    <ProductCard prod={prod} />
+                  </li>
+                ))}
+            </ul>
+          )}
           {correctPerPage < visibleList.length && (
             <div className={style.pagination}>
               <Pagination

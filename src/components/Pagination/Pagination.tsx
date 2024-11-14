@@ -3,6 +3,7 @@ import { Product } from '../../types/Product';
 import { getNumbers } from '../../utils/getNumbers';
 import style from './Pagination.module.scss';
 import cn from 'classnames';
+import { Icon } from '../icon/Icon';
 
 type Props = {
   currentPage: number;
@@ -104,8 +105,9 @@ export const Pagination: React.FC<Props> = ({
       <button
         className={`${style.arrow} ${style['arrow--left']}`}
         onClick={handlePrevPage}
-        disabled={currentPage <= 1}
-      />
+        disabled={currentPage <= 1}>
+        <Icon.ChevronRight />
+      </button>
 
       <ul className={style.numbers}>
         {pageNumbers.map((page, index) => (
@@ -124,8 +126,9 @@ export const Pagination: React.FC<Props> = ({
       <button
         className={`${style.arrow} ${style['arrow--right']}`}
         onClick={handleNextPage}
-        disabled={currentPage >= Math.ceil(visibleList.length / perPage)}
-      />
+        disabled={currentPage >= Math.ceil(visibleList.length / perPage)}>
+        <Icon.ChevronRight />
+      </button>
     </div>
   );
 };

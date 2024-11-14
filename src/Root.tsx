@@ -3,11 +3,12 @@ import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { App } from './App';
 
-import { Loader } from './components/Loader';
-
 import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
-import { ProductInfo } from './components/ProductInfo';
+import FavouritesPageLoader from './pages/FavouritesPage/Loader';
+import CatalogPageLoader from './pages/CatalogPage/Loader';
+import ProductInfoPageLoader from './pages/ProductInfoPage/Loader';
+import CartPageLoader from './pages/CartPage/Loader';
 
 const Catalog = lazy(
   () =>
@@ -25,6 +26,13 @@ const Favorites = lazy(
 
 const Cart = lazy(
   () => import(/* webpackChunkName: "CartPage" */ '@/pages/CartPage/CartPage')
+);
+
+const ProductInfo = lazy(
+  () =>
+    import(
+      /* webpackChunkName: "ProductInfo" */ '@/pages/ProductInfoPage/ProductInfoPage'
+    )
 );
 
 export const Root = () => (
@@ -52,14 +60,18 @@ export const Root = () => (
           <Route
             index
             element={
-              <Suspense fallback={<Loader />}>
+              <Suspense fallback={<CatalogPageLoader />}>
                 <Catalog category="phones" />
               </Suspense>
             }
           />
           <Route
             path=":productId?"
-            element={<ProductInfo />}
+            element={
+              <Suspense fallback={<ProductInfoPageLoader />}>
+                <ProductInfo />
+              </Suspense>
+            }
           />
         </Route>
 
@@ -67,14 +79,18 @@ export const Root = () => (
           <Route
             index
             element={
-              <Suspense fallback={<Loader />}>
+              <Suspense fallback={<CatalogPageLoader />}>
                 <Catalog category="tablets" />
               </Suspense>
             }
           />
           <Route
             path=":productId?"
-            element={<ProductInfo />}
+            element={
+              <Suspense fallback={<ProductInfoPageLoader />}>
+                <ProductInfo />
+              </Suspense>
+            }
           />
         </Route>
 
@@ -82,21 +98,25 @@ export const Root = () => (
           <Route
             index
             element={
-              <Suspense fallback={<Loader />}>
+              <Suspense fallback={<CatalogPageLoader />}>
                 <Catalog category="accessories" />
               </Suspense>
             }
           />
           <Route
             path=":productId?"
-            element={<ProductInfo />}
+            element={
+              <Suspense fallback={<ProductInfoPageLoader />}>
+                <ProductInfo />
+              </Suspense>
+            }
           />
         </Route>
 
         <Route
           path="favourites"
           element={
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={<FavouritesPageLoader />}>
               <Favorites />
             </Suspense>
           }
@@ -104,7 +124,7 @@ export const Root = () => (
         <Route
           path="cart"
           element={
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={<CartPageLoader />}>
               <Cart />
             </Suspense>
           }

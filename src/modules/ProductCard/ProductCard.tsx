@@ -7,6 +7,8 @@ import { toggleWishListProduct } from '@/features/wishlist/wishlistSlice';
 import { addToCart, removeFormCart } from '@/features/cart/cartSlice';
 import { ButtonCommon } from '@/components/ButtonCommon';
 import { FavoriteButton } from '@/components/FavoriteButton/FavoriteButton.tsx';
+import { setNotification } from '@/features/notification/notificationSlice.ts';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   prod: Product;
@@ -14,11 +16,7 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ prod, discount = true }) => {
-  const specs = [
-    { key: 'Screen', value: prod.screen },
-    { key: 'Capacity', value: prod.capacity },
-    { key: 'Ram', value: prod.ram },
-  ];
+  const { t } = useTranslation();
 
   const { productsOfCart } = useAppSelector((state) => state.cart);
   const { products } = useAppSelector((state) => state.wishlist);
@@ -39,6 +37,24 @@ export const ProductCard: React.FC<Props> = ({ prod, discount = true }) => {
       dispatch(addToCart(product));
     } else {
       dispatch(removeFormCart(product.id));
+    }
+  };
+
+  const handleAddToCartNotification = () => {
+    if (getActiveButton(prod)) {
+      dispatch(setNotification(['Successfully removed from cart', 'success']));
+    } else {
+      dispatch(setNotification(['Successfully added to cart', 'success']));
+    }
+  };
+
+  const handleAddToWishlistNotification = () => {
+    if (isInWishlist) {
+      dispatch(
+        setNotification(['Successfully removed from wishlist', 'success'])
+      );
+    } else {
+      dispatch(setNotification(['Successfully added to wishlist', 'success']));
     }
   };
 
@@ -84,24 +100,43 @@ export const ProductCard: React.FC<Props> = ({ prod, discount = true }) => {
       <div className={styles[`product__decorative-line`]}></div>
 
       <div className={styles[`product__specs`]}>
-        {specs.map(({ key, value }) => (
-          <div
-            className={styles[`product__specs-container`]}
-            key={key}>
-            <span className={styles[`product__specs-name`]}>{key}</span>
-            <span className={styles[`product__specs-value`]}>{value}</span>
-          </div>
-        ))}
+        <div className={styles[`product__specs-container`]}>
+          <span className={styles[`product__specs-name`]}>
+            {t('productDetailsCard.info.screen')}
+          </span>
+          <span className={styles[`product__specs-value`]}>{prod.screen}</span>
+        </div>
+        <div className={styles[`product__specs-container`]}>
+          <span className={styles[`product__specs-name`]}>
+            {t('productDetailsCard.info.memory')}
+          </span>
+          <span className={styles[`product__specs-value`]}>
+            {prod.capacity}
+          </span>
+        </div>
+        <div className={styles[`product__specs-container`]}>
+          <span className={styles[`product__specs-name`]}>
+            {t('productDetailsCard.info.ram')}
+          </span>
+          <span className={styles[`product__specs-value`]}>{prod.ram}</span>
+        </div>
       </div>
 
       <div className={styles[`product__buttons-container`]}>
         <div
-          onClick={() => handleAddButton(prod)}
+          onClick={() => {
+            handleAddButton(prod);
+            handleAddToCartNotification();
+          }}
           style={{ width: '100%' }}>
           <ButtonCommon isGoodInCart={getActiveButton(prod)} />
         </div>
 
-        <div onClick={() => handleLike(prod)}>
+        <div
+          onClick={() => {
+            handleLike(prod);
+            handleAddToWishlistNotification();
+          }}>
           <FavoriteButton isGoodInFavorite={isInWishlist} />
         </div>
       </div>
