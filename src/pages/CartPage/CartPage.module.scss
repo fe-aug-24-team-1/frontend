@@ -44,6 +44,7 @@
     font-size: 22px;
     font-weight: 800;
     line-height: 30.8px;
+    color: var(--color-primary);
 
     grid-column: 1 / -1;
     margin-top: 16px;
@@ -70,8 +71,8 @@
     grid-column: span 8;
     padding: 24px;
     margin-top: 32px;
-    border: 1px solid var(--color-elements);
-    border-radius: 16px;
+    border: 1px solid var(--color-border-header);
+    border-radius: var(--border-radius-cart);
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -91,6 +92,7 @@
         font-size: 32px;
         font-weight: 800;
         line-height: 41px;
+        color: var(--color-primary);
         letter-spacing: -0.01em;
       }
 
@@ -104,7 +106,7 @@
     }
 
     &__divider {
-      border: 1px solid var(--color-elements);
+      border: 1px solid var(--color-border-header);
       width: 100%;
     }
 
@@ -116,8 +118,8 @@
       padding-block: 13.5px;
       width: 100%;
       background-color: var(--color-accent);
-      color: var(--color-white);
-      border-radius: 48px;
+      color: var(--color-elements);
+      border-radius: var(--border-radius);
       cursor: pointer;
 
       @include hover {
@@ -133,6 +135,7 @@
     border: 1px solid var(--color-elements);
     border-radius: 36px;
     padding: 16px;
+    color: var(--color-primary);
 
     @include on-tablet {
       padding: 24px;
