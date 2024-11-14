@@ -27,6 +27,7 @@ export const App: FC = () => {
       </main>
 
       <Notification />
+
       <Footer />
     </div>
   );
