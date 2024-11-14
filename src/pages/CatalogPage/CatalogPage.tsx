@@ -107,7 +107,8 @@ const CatalogPage: React.FC<Props> = ({ category }) => {
       {!!products.length && loaded && !error && (
         <>
           <h1 className={style.title}>
-            {category === 'phones' ? t('phonesPage.title.text') : category}
+            {/* {category === 'phones' ? t('phonesPage.title.text') : category} */}
+            {t(`${category}Page.title.text`)}
           </h1>
           <p className={style.countModels}>
             {t('phonesPage.title.count', { count: visibleList.length })}

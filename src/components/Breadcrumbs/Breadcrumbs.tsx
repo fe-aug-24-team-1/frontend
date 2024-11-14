@@ -6,6 +6,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import { ThemeStateContext } from '@/app/providers/ThemeProvider/ThemeContext';
 import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const getActiveLink = ({ isActive }: { isActive: boolean }) =>
   cn(style.path__direction, {
@@ -13,6 +14,8 @@ const getActiveLink = ({ isActive }: { isActive: boolean }) =>
   });
 
 export const Breadcrumbs: React.FC = () => {
+  const { t } = useTranslation();
+
   const { theme } = useContext(ThemeStateContext);
 
   const fullPath = useLocation().pathname.split('/');
@@ -44,7 +47,7 @@ export const Breadcrumbs: React.FC = () => {
         to={`/${category}`}
         relative="path"
         className={getActiveLink}>
-        {category}
+        {t(`breadCrumbs.${category}`)}
       </NavLink>
       {normilizedProduct && (
         <>
