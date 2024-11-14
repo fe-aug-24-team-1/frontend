@@ -5,7 +5,7 @@
   flex-direction: column;
   gap: 16px;
   background-color: var(--card-color-bg);
-  border: 1px solid var(--color-cards-border);
+  border: var(--color-cards-border);
   border-radius: var(--border-radius-cart);
   padding: 16px;
   justify-content: space-between;

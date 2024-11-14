@@ -6,11 +6,15 @@ import { useEffect, Dispatch, SetStateAction, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 
-import logo from '/logo.svg';
+import logoLight from '/logo.svg';
+import logoDark from '/logoDark.svg';
 
 import { useAppSelector } from '@/app/store/hooks';
 import { Icon } from '../icon/Icon';
-import { ThemeDispatchContext } from '@/app/providers/ThemeProvider/ThemeContext';
+import {
+  ThemeDispatchContext,
+  ThemeStateContext,
+} from '@/app/providers/ThemeProvider/ThemeContext';
 import { Lang } from '@/types/Lang';
 
 const getActiveLink = ({ isActive }: { isActive: boolean }) =>
@@ -33,6 +37,8 @@ export const Aside: React.FC<Props> = ({ isMenuActive, setIsMenuActive }) => {
   const { productsOfCart } = useAppSelector((state) => state.cart);
 
   const { t } = useTranslation();
+
+  const { theme } = useContext(ThemeStateContext);
 
   const handleChangeLang = () => {
     const lang = i18next.language === Lang.EN ? Lang.UK : Lang.EN;
@@ -77,7 +83,7 @@ export const Aside: React.FC<Props> = ({ isMenuActive, setIsMenuActive }) => {
           to="home"
           className={style.logo__link}>
           <img
-            src={logo}
+            src={theme === 'light' ? logoLight : logoDark}
             alt="logo"
             className={style.logo}
             onClick={() => setIsMenuActive(false)}

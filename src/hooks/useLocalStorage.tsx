@@ -20,4 +20,3 @@ export const useLocalStorage = (key: string, initialValue: Product[]) => {
 
   return [value, setValue] as const;
 };
-
