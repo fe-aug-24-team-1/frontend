@@ -5,9 +5,6 @@ import { useTranslation } from 'react-i18next';
 import { BackButton } from '../BackButton';
 import { ProductActions } from '../ProductActions';
 import { PhotosBlock } from '../PhotosBlock';
-import { Phone } from '@/types/Phone';
-import { Tablet } from '@/types/Tablet';
-import { Accessory } from '@/types/Accessory';
 import { Breadcrumbs } from '../Breadcrumbs';
 
 import { ProductSlider } from '@/modules/ProductSlider';
@@ -15,32 +12,36 @@ import { useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
 import { useEffect } from 'react';
 import { getCurrentProduct } from '@/features/currentProduct/currentProduct';
+import { CategoryType } from '@/types/CategoryType';
 
 type Props = {
-  product: Phone | Tablet | Accessory;
   className?: string;
 };
 
-export const ProductInfo: React.FC<Props> = ({
-  product,
-  className,
-  ...props
-}) => {
+export const ProductInfo: React.FC<Props> = ({ className, ...props }) => {
   const { t } = useTranslation();
 
   const location = useLocation();
 
   const dispatch = useAppDispatch();
 
-  const [category, productId] = location.pathname
+  const [categoryRaw, productId] = location.pathname
     .split('/')
     .filter((chunk) => chunk.length);
 
-  const { currentProduct } = useAppSelector((state) => state.currentProduct);
+  const { currentProduct: product } = useAppSelector(
+    (state) => state.currentProduct
+  );
+  const category: CategoryType = categoryRaw as CategoryType;
 
   useEffect(() => {
     dispatch(getCurrentProduct({ category, productId }));
+    window.scrollTo(0, 0);
   }, [category, dispatch, productId]);
+
+  if (!product) {
+    return <h1>Product is underfined</h1>;
+  }
 
   return (
     <div
@@ -64,17 +65,7 @@ export const ProductInfo: React.FC<Props> = ({
         />
 
         <ProductActions
-          colorsAvailable={product.colorsAvailable}
-          color={product.color}
-          capacityAvailable={product.capacityAvailable}
-          capacity={product.capacity}
-          priceDiscount={product.priceDiscount}
-          priceRegular={product.priceRegular}
-          screen={product.screen}
-          resolution={product.resolution}
-          processor={product.processor}
-          ram={product.ram}
-          product={currentProduct}
+          product={product}
           className={styles['product__characteristics']}
         />
 
@@ -97,6 +88,7 @@ export const ProductInfo: React.FC<Props> = ({
 
         <div className={styles['product__recommendations']}>
           <ProductSlider
+            key={productId}
             title={t('productDetailsPage.slider.title')}
             discount={true}
             random={true}

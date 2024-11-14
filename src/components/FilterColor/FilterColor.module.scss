@@ -8,14 +8,38 @@
   &__cell {
     width: 32px;
     height: 32px;
-    
+
     border-radius: 50%;
     border: 1px solid var(--color-circle);
 
     transition: border-color var(--effect-duration);
+    position: relative;
+    overflow: hidden;
+
+    &--unavailable {
+      position: relative;
+      pointer-events: none;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+          45deg,
+          var(--color-secondary),
+          var(--color-secondary) 5px,
+          transparent 5px,
+          transparent 10px
+        );
+      }
+    }
 
     &--active {
       border-color: var(--color-primary);
+      pointer-events: none;
     }
 
     &:hover {
@@ -24,13 +48,12 @@
     }
   }
 
-
   &__color {
     width: auto;
     width: 100%;
     height: 100%;
     border-radius: 50%;
 
-    border: 2px solid #FFFFFF;
+    border: 2px solid #ffffff;
   }
 }

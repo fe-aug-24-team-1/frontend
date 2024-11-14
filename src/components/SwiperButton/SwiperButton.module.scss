@@ -12,9 +12,28 @@
   justify-content: center;
   align-items: center;
   transition: border $effect-duration;
+  position: relative;
 
-  &:active {
-    border: 1px solid #0F0F11;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.1s ease, height 0.1s ease;
+  }
+
+  @include hover-active(
+                          (border: 1px solid var(--round-button-hover))
+  );
+
+  &:active::after {
+    width: 32px;
+    height: 32px;
   }
 
   &[disabled] {
@@ -25,6 +44,11 @@
 
     &:hover {
       border: 1px solid var(--color-action);
+    }
+
+    &:active::after {
+      width: 0;
+      height: 0;
     }
   }
 
