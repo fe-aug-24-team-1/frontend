@@ -9,6 +9,7 @@ import { Header } from './widgets/Header';
 import { Footer } from './widgets/Footer';
 
 import './App.scss';
+import Notification from '@/widgets/Notiflication/Notiflication.tsx';
 
 export const App: FC = () => {
   const dispatch = useAppDispatch();
@@ -25,6 +26,7 @@ export const App: FC = () => {
         <Outlet />
       </main>
 
+      <Notification />
       <Footer />
     </div>
   );
