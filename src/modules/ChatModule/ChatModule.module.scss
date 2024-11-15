@@ -23,13 +23,13 @@
 }
 
 .widget {
+  z-index: 700;
   display: flex;
   gap: 8px;
   position: fixed;
   right: 20px;
   bottom: 60px;
   height: 80vh;
-  //width: 80vw;
 
   @include on-desktop {
     height: auto;
@@ -46,7 +46,7 @@
 }
 
 .modal {
-  z-index: 5000;
+  z-index: 700;
   overflow: hidden;
   background-color: var(--main-bg-color);
   //height: 60vh;
