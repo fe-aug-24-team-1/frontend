@@ -6,6 +6,7 @@ import emptyCart from '/img/cart-is-empty.png';
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
 import { clearCart } from '@/features/cart/cartSlice';
 import { useTranslation } from 'react-i18next';
+import { setNotification } from '@/features/notification/notificationSlice.ts';
 
 const CartPage = () => {
   const { t } = useTranslation();
@@ -31,6 +32,7 @@ const CartPage = () => {
 
     if (userResponse) {
       dispatch(clearCart());
+      dispatch(setNotification(['Your order is being processed.', 'success']));
     }
   };
 
