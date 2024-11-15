@@ -10,7 +10,6 @@ import { setNotification } from '@/features/notification/notificationSlice.ts';
 
 import { BackButton } from '@/components/BackButton';
 
-
 const CartPage = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();

@@ -12,7 +12,7 @@ import { ThemeStateContext } from '@/app/providers/ThemeProvider/ThemeContext.ts
 import { ButtonCommon } from '@/components/ButtonCommon';
 
 const key =
-  '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';
+  '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';
 
 export const ChatModule: React.FC = () => {
   const { theme } = useContext(ThemeStateContext);
