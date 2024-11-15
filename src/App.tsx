@@ -10,6 +10,7 @@ import { Footer } from './widgets/Footer';
 
 import './App.scss';
 import Notification from '@/widgets/Notiflication/Notiflication.tsx';
+import { ChatModule } from '@/modules/ChatModule';
 
 export const App: FC = () => {
   const dispatch = useAppDispatch();
@@ -27,6 +28,7 @@ export const App: FC = () => {
       </main>
 
       <Notification />
+      <ChatModule />
 
       <Footer />
     </div>
