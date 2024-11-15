@@ -47,7 +47,7 @@ export const Breadcrumbs: React.FC = () => {
         to={`/${category}`}
         relative="path"
         className={getActiveLink}>
-        {t(`breadCrumbs.${category}`)}
+        {t(`${category}`)}
       </NavLink>
       {normilizedProduct && (
         <>
