@@ -39,7 +39,9 @@ export const Dropdown: React.FC<Props> = ({ dropdownName }) => {
   return (
     <div className={style.dropdown}>
       <p className={style.label}>
-        {dropdownName === 'sort' ? t('dropdownMenu.title') : 'Items on page'}
+        {dropdownName === 'sort'
+          ? t('dropdownMenu.title')
+          : t('itemsDropdown.title')}
       </p>
       <div
         tabIndex={0}

@@ -10,7 +10,6 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Pagination } from '../../components/Pagination';
 import { getSortedList } from '../../utils/getSortedList';
 import { useAppSelector } from '@/app/store/hooks';
-import { Loader } from './../../components/Loader/Loader';
 import { useTranslation } from 'react-i18next';
 import prodNotFound from '@/assets/images/EmptyFavorite/product-not-found.png';
 
@@ -93,8 +92,6 @@ const CatalogPage: React.FC<Props> = ({ category }) => {
         <Breadcrumbs />
       </div>
 
-      {!loaded && <Loader />}
-
       {error && !loaded && (
         <div className={style.error}>
           <span className={style.error__text}>Something went wrong</span>
@@ -110,7 +107,8 @@ const CatalogPage: React.FC<Props> = ({ category }) => {
       {!!products.length && loaded && !error && (
         <>
           <h1 className={style.title}>
-            {category === 'phones' ? t('phonesPage.title.text') : category}
+            {/* {category === 'phones' ? t('phonesPage.title.text') : category} */}
+            {t(`${category}Page.title.text`)}
           </h1>
           <p className={style.countModels}>
             {t('phonesPage.title.count', { count: visibleList.length })}
@@ -128,7 +126,7 @@ const CatalogPage: React.FC<Props> = ({ category }) => {
             <label
               htmlFor="query"
               className={style.query__label}>
-              Search
+              {t('searchField.title')}
             </label>
             <input
               id="query"
@@ -136,7 +134,7 @@ const CatalogPage: React.FC<Props> = ({ category }) => {
               type="text"
               value={query || ''}
               onChange={handleQuery}
-              placeholder="I want to find ..."
+              placeholder={t('searchField.placeholder')}
             />
           </div>
           {!visibleList.length ? (
