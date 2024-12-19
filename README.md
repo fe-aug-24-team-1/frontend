@@ -1,50 +1,46 @@
-# React + TypeScript + Vite
+# Product Catalog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This multi-page website offers you many tech products including phones, tablets, and accessories.
+You can easily add your favorite products to a special list or add them to your cart.
 
-Currently, two official plugins are available:
+  - [LIVE DEMO](https://fe-aug-24-team-1.github.io/frontend/)
+  - [Design Dark](https://www.figma.com/design/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark?node-id=0-1&p=f)
+  - [Design Rounded Purple](https://www.figma.com/design/xMK2Dy0mfBbJJSNctmOuLW/Phone-catalog-(V2)-Rounded-Style-1?node-id=0-1)
+   
+## Technologies used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  - TypeScript
+  - React, Redux thunk, Rest Api
+  - React Pagination, Skeleton, Swiper, i18next
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+  - Theme switch
+  - Different language support (Ukrainian and English)
+  - Different sliders for images and products
+  - You can add products to your cart or to your special list of favourites
 
-- Configure the top-level `parserOptions` property like this:
+## Installation
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+  - Clone repository
+    
+    ```bash
+    git clone https://fe-aug-24-team-1.github.io/frontend/
+    ```
+  - Navigate to the project directory
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+    ```bash
+    cd frontend
+    ```
+  - Open the terminal and install NPM packages
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react';
+    ```bash
+    npm install
+    ```
+  - Run project
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-});
-```
+    ```bash
+    npm run dev
+    ```
+  - Click on the URL in the terminal
+
