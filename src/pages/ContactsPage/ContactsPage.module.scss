@@ -1,0 +1,70 @@
+@import '../../styles/index.scss';
+
+.ContactsPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-background);
+  min-height: 100vh;
+  padding: 40px 20px;
+
+  @include on-tablet {
+    padding: 60px 32px;
+  }
+
+  @include on-desktop {
+    padding: 80px 40px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--color-primary);
+    margin-bottom: 40px;
+    text-align: center;
+    position: relative;
+
+    @include on-tablet {
+      font-size: 48px;
+      margin-bottom: 60px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background-color: var(--color-accent);
+      border-radius: 2px;
+    }
+  }
+
+  &__content {
+    background: var(--color-white);
+    border: 1px solid var(--color-elements);
+    border-radius: 36px;
+    padding: 32px 24px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+    @include on-tablet {
+      padding: 40px 32px;
+    }
+
+    @include on-desktop {
+      padding: 48px 40px;
+    }
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+    justify-items: center;
+    align-items: start;
+  }
+}

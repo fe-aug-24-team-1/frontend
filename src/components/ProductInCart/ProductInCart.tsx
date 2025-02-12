@@ -71,15 +71,6 @@ export const ProductInCart: React.FC<Props> = ({ prod }) => {
             className={cn(style.actions__buttons__button, {
               [style['actions__buttons__button--unactive']]: prod.quantity < 2,
             })}>
-            {/*<AiOutlineMinusCircle*/}
-            {/*  size={24}*/}
-            {/*  style={*/}
-            {/*    prod.quantity < 2*/}
-            {/*      ? { fill: '#b4bdc3' }*/}
-            {/*      : { fill: '' }*/}
-            {/*  }*/}
-            {/*/>*/}
-            {/*<Icon.Minus className={style.actions__buttons__button__inner} />*/}
             <Icon.Minus
               className={cn(style.actions__buttons__button__inner, {
                 [style[`actions__buttons__button__inner--disabled`]]:
@@ -93,7 +84,6 @@ export const ProductInCart: React.FC<Props> = ({ prod }) => {
           <button
             onClick={handlePlusCount}
             className={style.actions__buttons__button}>
-            {/*<AiOutlinePlusCircle size={24} />*/}
             <Icon.Plus className={style.actions__buttons__button__inner} />
           </button>
         </div>

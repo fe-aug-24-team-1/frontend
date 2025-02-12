@@ -23,7 +23,6 @@ export const SwiperButton: React.FC<Props> = ({
           disabled={disabled}
           onClick={() => swiper.slideNext()}
           className={styles[`button`]}>
-          {/*<FaChevronRight size={16} />*/}
           <Icon.ChevronRight />
         </button>
       ) : (
@@ -31,7 +30,6 @@ export const SwiperButton: React.FC<Props> = ({
           disabled={disabled}
           onClick={() => swiper.slidePrev()}
           className={styles[`button`]}>
-          {/*<FaChevronLeft size={16} />*/}
           <Icon.ChevronLeft />
         </button>
       )}

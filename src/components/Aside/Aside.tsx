@@ -94,7 +94,7 @@ export const Aside: React.FC<Props> = ({ isMenuActive, setIsMenuActive }) => {
           <div className={style.icon__container}>
             <Icon.Theme
               className={style.icon__top}
-              onClick={toggleTheme}
+              onClick={() => toggleTheme}
             />
           </div>
 

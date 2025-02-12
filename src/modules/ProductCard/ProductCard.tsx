@@ -64,7 +64,6 @@ export const ProductCard: React.FC<Props> = ({ prod, discount = true }) => {
         className={styles[`product__image-link`]}
         to={{
           pathname: `/${prod.category}/${prod.itemId}`,
-          // search: searchParams.toString(),
         }}>
         <img
           className={styles[`product__image`]}
@@ -76,7 +75,6 @@ export const ProductCard: React.FC<Props> = ({ prod, discount = true }) => {
       <Link
         to={{
           pathname: `/${prod.category}/${prod.itemId}`,
-          // search: searchParams.toString(),
         }}
         className={styles[`product__name`]}>
         {prod.name}
@@ -86,7 +84,6 @@ export const ProductCard: React.FC<Props> = ({ prod, discount = true }) => {
         title="Product prices"
         className={styles[`product__prices`]}>
         <span className={styles[`product__prices--current`]}>
-          {/*{`$${prod.priceDiscount}`}*/}$
           {discount ? prod.price : prod.fullPrice}
         </span>
 

@@ -30,6 +30,38 @@ export const en = {
     },
   },
 
+  contactsPage: {
+    title: 'Our team',
+  },
+
+  rightsPage: {
+    title: 'Rights',
+    copyright: {
+      title: 'Copyright',
+      text: '© 2025. All rights reserved. All content on this website, including texts, images, logos, graphics, videos, and other materials, is the property of NiceGadgets or used with appropriate permission.',
+    },
+    trademarks: {
+      title: 'Trademarks',
+      text: 'All trademarks, logos, and branded elements presented on this site belong to their respective owners. The use of these trademarks without written permission is prohibited.',
+    },
+    useOfContent: {
+      title: 'Use of Content',
+      text: 'Materials published on the site may only be used for personal, non-commercial use. Copying, modifying, distributing, or publishing content without prior permission from the site administration is prohibited.',
+    },
+    limitationOfLiability: {
+      title: 'Limitation of Liability',
+      text: 'NiceGadgets is not responsible for possible inaccuracies in the provided information or technical failures that may affect the operation of the site. We do not guarantee the continuous operation of the website and the possibility of error-free access to it.',
+    },
+    contentUsePolicy: {
+      title: 'Content Use Policy',
+      text: 'If you wish to use any material from our website for commercial or other purposes, please contact us at: support@nicegadgets.com.',
+    },
+    changesInPolicy: {
+      title: 'Changes in Policy',
+      text: 'NiceGadgets reserves the right to modify this policy without prior notice. Any changes take effect from the moment they are published on this page.',
+    },
+  },
+
   searchField: {
     title: 'Search',
     placeholder: 'I want to find...',

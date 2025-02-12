@@ -22,11 +22,11 @@ export const Footer: FC = () => {
       name: 'Github',
     },
     {
-      href: 'https://github.com/RostyslavSharuiev',
+      href: '/contacts',
       name: t('footer.contacts'),
     },
     {
-      href: 'https://github.com/RostyslavSharuiev',
+      href: '/rights',
       name: t('footer.rights'),
     },
   ];
@@ -49,7 +49,6 @@ export const Footer: FC = () => {
               className={style.nav__item}>
               <NavLink
                 to={href}
-                target="_blank"
                 className={style.nav__link}>
                 {name}
               </NavLink>

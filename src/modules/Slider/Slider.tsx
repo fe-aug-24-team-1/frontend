@@ -6,8 +6,6 @@ import style from './Slider.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { Pagination, Autoplay, Navigation, Thumbs } from 'swiper/modules';
-import 'swiper/scss';
-import 'swiper/scss/pagination';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Icon } from '@/components/icon/Icon';
@@ -78,9 +76,6 @@ export const Slider = () => {
           <div className={`${style.swiperButtonPrev}`}>
             <Icon.ChevronLeft />
           </div>
-
-          {/* <div className={`${style.swiperButtonNext} swiper-button-next`} /> */}
-          {/* <div className={`${style.swiperButtonPrev} swiper-button-prev`} /> */}
         </>
       )}
     </Swiper>

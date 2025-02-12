@@ -12,15 +12,7 @@ export const NotFoundPage = () => {
   return (
     <div className={style.pageNotFound}>
       <h1 className={style.pageNotFound__title}>{t('notFoundPage.title')}</h1>
-      {/*<button*/}
-      {/*  type="button"*/}
-      {/*  className={style.pageNotFound__button}*/}
-      {/*  onClick={() => navigate('/home')}>*/}
-      {/*  {t('notFoundPage.backToHome')}*/}
-      {/*</button>*/}
-      <div
-        // className={style.pageNotFound__button__text}
-        onClick={() => navigate('/home')}>
+      <div onClick={() => navigate('/home')}>
         <ButtonCommon className={style.pageNotFound__button__text}>
           {t('notFoundPage.backToHome')}
         </ButtonCommon>
