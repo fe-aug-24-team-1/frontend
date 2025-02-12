@@ -103,8 +103,6 @@ export const ProductActions: React.FC<Props> = ({
           )}
         </div>
 
-        {/* У кнопках треба вставити нотифікації на помилки, якщо currentProduct underfind */}
-
         <div className={styles[`actions__buttons`]}>
           <div
             onClick={

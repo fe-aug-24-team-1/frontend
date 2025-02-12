@@ -9,6 +9,8 @@ import FavouritesPageLoader from './pages/FavouritesPage/Loader';
 import CatalogPageLoader from './pages/CatalogPage/Loader';
 import ProductInfoPageLoader from './pages/ProductInfoPage/Loader';
 import CartPageLoader from './pages/CartPage/Loader';
+import { ContactsPage } from './pages/ContactsPage';
+import { RightsPage } from './pages/RightsPage';
 
 const Catalog = lazy(
   () =>
@@ -121,6 +123,7 @@ export const Root = () => (
             </Suspense>
           }
         />
+
         <Route
           path="cart"
           element={
@@ -128,6 +131,16 @@ export const Root = () => (
               <Cart />
             </Suspense>
           }
+        />
+
+        <Route
+          path="contacts"
+          element={<ContactsPage />}
+        />
+
+        <Route
+          path="rights"
+          element={<RightsPage />}
         />
 
         <Route

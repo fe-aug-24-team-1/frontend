@@ -3,7 +3,6 @@ import { ToastContainer, toast, ToastOptions } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks.ts';
 import { setNotification } from '@/features/notification/notificationSlice.ts';
-// import { useNavigate } from 'react-router-dom';
 
 interface NotificationProps {
   className?: string;
@@ -18,11 +17,9 @@ interface NotificationProps {
 const Notification: React.FC<NotificationProps> = ({
   position = 'bottom-right',
   duration = 3000,
-  // redirectUrl,
 }) => {
   const dispatch = useAppDispatch();
   const { notification } = useAppSelector((state) => state.notification);
-  // const navigate = useNavigate();
 
   const [message, type] = notification;
 

@@ -15,18 +15,10 @@ export const FavoriteButton: React.FC<Props> = ({
     <>
       {isGoodInFavorite ? (
         <div className={styles[`favorite-button`]}>
-          {/*<CiHeart*/}
-          {/*  size={16}*/}
-          {/*  color={'black'}*/}
-          {/*/>*/}
           <Icon.FavoritesFilled />
         </div>
       ) : (
         <div className={styles[`favorite-button`]}>
-          {/*<CiHeart*/}
-          {/*  size={16}*/}
-          {/*  color={'green'}*/}
-          {/*/>*/}
           <Icon.Favorites />
         </div>
       )}

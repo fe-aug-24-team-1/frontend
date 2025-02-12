@@ -100,7 +100,6 @@ export const ProductInfoPage: React.FC<Props> = ({ className, ...props }) => {
         </div>
 
         <div />
-        {/* This div is needed to indent the footer */}
       </div>
     </div>
   );
